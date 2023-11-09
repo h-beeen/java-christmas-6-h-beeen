@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.MenuOrders;
+import christmas.domain.MenusOrder;
 import christmas.domain.VisitingDate;
 
 public class PlannerController {
@@ -9,6 +9,6 @@ public class PlannerController {
 
     public static void start() {
         VisitingDate visitingDate = DateController.requestVisitingDate();
-        MenuOrders menuOrders = OrderController.requestOrder();
+        MenusOrder menuOrders = OrderController.requestOrder();
     }
 }
