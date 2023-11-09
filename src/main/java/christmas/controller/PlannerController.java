@@ -1,20 +1,12 @@
 package christmas.controller;
 
-import christmas.controller.input.DateInputController;
+import christmas.domain.VisitingDate;
 
 public class PlannerController {
-    private static final PlannerController plannerController = new PlannerController();
-    private final DateInputController dateInputController;
-
     private PlannerController() {
-        this.dateInputController = DateInputController.getInstance();
     }
 
-    public void start() {
-        dateInputController.executeRequest();
-    }
-
-    public static PlannerController getInstance() {
-        return plannerController;
+    public static void start() {
+        VisitingDate visitingDate = DateController.requestDate();
     }
 }
