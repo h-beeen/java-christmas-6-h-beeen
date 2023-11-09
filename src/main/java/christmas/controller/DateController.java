@@ -1,8 +1,8 @@
 package christmas.controller;
 
-import christmas.domain.Parser;
 import christmas.domain.VisitingDate;
 import christmas.exception.ExceptionHandler;
+import christmas.utility.Parser;
 import christmas.view.InputReader;
 import christmas.view.OutputWriter;
 
@@ -13,15 +13,15 @@ public class DateController {
     private DateController() {
     }
 
-    public static VisitingDate requestDate() {
+    public static VisitingDate requestVisitingDate() {
         OutputWriter.printResponseMessage(WELCOME_MESSAGE);
         OutputWriter.printResponseMessage(REQUEST_VISITING_DATE);
-        return ExceptionHandler.retryOnBusinessException(DateController::getDate);
+        return ExceptionHandler.retryOnBusinessException(DateController::createVisitingDateFromInput);
     }
 
-    public static VisitingDate getDate() {
+    private static VisitingDate createVisitingDateFromInput() {
         String dateInput = InputReader.readInput();
-        int parsedDate = Parser.parseDate(dateInput);
+        int parsedDate = Parser.parseDateInput(dateInput);
         return VisitingDate.create(parsedDate);
     }
 }

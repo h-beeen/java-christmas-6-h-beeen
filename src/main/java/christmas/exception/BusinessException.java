@@ -2,24 +2,28 @@ package christmas.exception;
 
 public class BusinessException extends IllegalArgumentException {
     private BusinessException(
-            ErrorMessage errorMessage,
+            ExceptionCode errorMessage,
             Exception exception
     ) {
         super(errorMessage.getMessage(), exception);
     }
 
-    private BusinessException(ErrorMessage errorMessage) {
+    private BusinessException(ExceptionCode errorMessage) {
         super(errorMessage.getMessage());
     }
 
     public static BusinessException of(
-            ErrorMessage errorMessage,
+            ExceptionCode errorMessage,
             Exception exception
     ) {
         return new BusinessException(errorMessage, exception);
     }
 
-    public static BusinessException from(ErrorMessage errorMessage) {
+    public static BusinessException from(ExceptionCode errorMessage) {
+        return new BusinessException(errorMessage);
+    }
+
+    public static BusinessException dynamicInvokeBy(ExceptionCode errorMessage) {
         return new BusinessException(errorMessage);
     }
 }
