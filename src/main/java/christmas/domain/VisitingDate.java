@@ -4,8 +4,8 @@ import christmas.exception.ExceptionHandler;
 
 import java.time.LocalDate;
 
-import static christmas.domain.constants.EventConstraint.EVENT_MONTH;
-import static christmas.domain.constants.EventConstraint.EVENT_YEAR;
+import static christmas.domain.promotion.PromotionPeriodConstraint.PROMOTION_MONTH;
+import static christmas.domain.promotion.PromotionPeriodConstraint.PROMOTION_YEAR;
 
 public class VisitingDate {
     private final LocalDate visitingDate;
@@ -23,6 +23,6 @@ public class VisitingDate {
 
     //== Validation Method ==//
     private LocalDate convertLocalDate(final int visitingDate) {
-        return LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), visitingDate);
+        return LocalDate.of(PROMOTION_YEAR.getValue(), PROMOTION_MONTH.getValue(), visitingDate);
     }
 }

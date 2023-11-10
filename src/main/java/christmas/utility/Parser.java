@@ -1,6 +1,6 @@
 package christmas.utility;
 
-import christmas.domain.constants.Menu;
+import christmas.domain.menu.Menu;
 import christmas.exception.BusinessException;
 
 import java.util.Arrays;

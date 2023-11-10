@@ -1,13 +1,11 @@
-package christmas.domain;
-
-import christmas.domain.constants.Menu;
+package christmas.domain.menu;
 
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
 
-import static christmas.domain.constants.MenuCategory.BEVERAGE;
+import static christmas.domain.menu.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
 
 public class MenuOrders {

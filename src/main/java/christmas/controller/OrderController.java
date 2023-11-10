@@ -1,7 +1,7 @@
 package christmas.controller;
 
-import christmas.domain.MenuOrders;
-import christmas.domain.constants.Menu;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuOrders;
 import christmas.exception.ExceptionHandler;
 import christmas.utility.Parser;
 import christmas.view.InputReader;
