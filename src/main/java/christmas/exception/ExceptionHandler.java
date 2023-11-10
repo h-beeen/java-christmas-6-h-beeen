@@ -5,7 +5,7 @@ import christmas.view.OutputWriter;
 import java.time.DateTimeException;
 import java.util.function.Supplier;
 
-import static christmas.exception.ExceptionCode.INVALID_DATE;
+import static christmas.exception.ErrorCode.INVALID_DATE;
 
 public class ExceptionHandler {
     private ExceptionHandler() {

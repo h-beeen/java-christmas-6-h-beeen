@@ -8,6 +8,7 @@ public class MenuOrders {
     private final EnumMap<Menu, Integer> menuOrders;
 
     private MenuOrders(EnumMap<Menu, Integer> menuOrders) {
+        ErrorCode
         this.menuOrders = menuOrders;
     }
 

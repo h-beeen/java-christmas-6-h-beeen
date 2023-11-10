@@ -12,8 +12,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static christmas.exception.ExceptionCode.INVALID_DATE;
-import static christmas.exception.ExceptionCode.INVALID_ORDER;
+import static christmas.exception.ErrorCode.INVALID_DATE;
+import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public class Parser {
     private static final String DELIMITER = ",";

@@ -5,7 +5,7 @@ import christmas.exception.BusinessException;
 import java.util.Arrays;
 
 import static christmas.domain.constants.MenuCategory.*;
-import static christmas.exception.ExceptionCode.INVALID_ORDER;
+import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public enum Menu {
     //== APPETIZER ==//
