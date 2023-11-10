@@ -3,9 +3,10 @@ package christmas.domain.constants;
 import christmas.exception.BusinessException;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import static christmas.domain.constants.MenuCategory.*;
-import static christmas.exception.ErrorCode.INVALID_ORDER;
+import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
 
 public enum Menu {
     //== APPETIZER ==//
@@ -47,12 +48,16 @@ public enum Menu {
         return Arrays.stream(values())
                 .filter(menu -> menu.name.equals(name))
                 .findFirst()
-                .orElseThrow(() -> BusinessException.from(INVALID_ORDER));
+                .orElseThrow(() -> BusinessException.from(ONLY_ORDER_BEVERAGES));
     }
 
     //== Getter ==//
     public MenuCategory getCategory() {
         return category;
+    }
+
+    public boolean isSameCategory(MenuCategory menuCategory) {
+        return Objects.deepEquals(menuCategory, category);
     }
 
     public String getName() {

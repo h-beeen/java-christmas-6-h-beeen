@@ -12,9 +12,8 @@ public class VisitingDate {
 
     //== Constructor ==//
     private VisitingDate(final int visitingDate) {
-        validateDate(visitingDate);
-
-        this.visitingDate = eventDate(visitingDate);
+        ExceptionHandler.tryOnDateTimeException(() -> convertLocalDate(visitingDate));
+        this.visitingDate = convertLocalDate(visitingDate);
     }
 
     //== Static Factory Method ==//
@@ -22,17 +21,8 @@ public class VisitingDate {
         return new VisitingDate(visitingDate);
     }
 
-    //== Utility Method ==//
-    private static LocalDate eventDate(final int visitingDate) {
-        return LocalDate.of(
-                EVENT_YEAR.getValue(),
-                EVENT_MONTH.getValue(),
-                visitingDate
-        );
-    }
-
     //== Validation Method ==//
-    private void validateDate(final int visitingDate) {
-        ExceptionHandler.tryOnDateTimeException(() -> eventDate(visitingDate));
+    private LocalDate convertLocalDate(final int visitingDate) {
+        return LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), visitingDate);
     }
 }

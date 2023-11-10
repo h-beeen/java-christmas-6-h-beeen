@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static christmas.exception.ErrorCode.INVALID_DATE;
-import static christmas.exception.ErrorCode.INVALID_ORDER;
+import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
 
 public class Parser {
     private static final String DELIMITER = ",";
@@ -33,8 +33,8 @@ public class Parser {
     }
 
     public static EnumMap<Menu, Integer> parseMenuOrdersInputByDelimiter(String menuOrderInput) {
-        INVALID_ORDER.validate(isEndsWithDelimiter(menuOrderInput));
-        INVALID_ORDER.validate(hasWhitespace(menuOrderInput));
+        ONLY_ORDER_BEVERAGES.validate(isEndsWithDelimiter(menuOrderInput));
+        ONLY_ORDER_BEVERAGES.validate(hasWhitespace(menuOrderInput));
 
         List<String> parsedByDelimiterMenuOrders = Arrays.asList(splitByDelimiter(menuOrderInput));
 
@@ -46,7 +46,7 @@ public class Parser {
     }
 
     private static EnumMap<Menu, Integer> parseMenuOrdersInputByHyphen(List<String> parsedByDelimiterMenuOrders) {
-        INVALID_ORDER.validate(areInvalidPattern(parsedByDelimiterMenuOrders));
+        ONLY_ORDER_BEVERAGES.validate(areInvalidPattern(parsedByDelimiterMenuOrders));
 
         return parsedByDelimiterMenuOrders.stream()
                 .map(splitMenuOrdersInputByHyphen())
@@ -89,7 +89,7 @@ public class Parser {
     }
 
     private static Integer validateDuplicate(Integer existing, Integer replacement) {
-        throw BusinessException.from(INVALID_ORDER);
+        throw BusinessException.from(ONLY_ORDER_BEVERAGES);
     }
 
     /**
