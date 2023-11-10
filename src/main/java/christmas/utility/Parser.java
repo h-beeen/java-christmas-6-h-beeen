@@ -2,6 +2,7 @@ package christmas.utility;
 
 import christmas.domain.menu.Menu;
 import christmas.exception.BusinessException;
+import christmas.exception.ExceptionHandler;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -12,8 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static christmas.exception.ErrorCode.INVALID_DATE;
-import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
+import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public class Parser {
     private static final String DELIMITER = ",";
@@ -25,16 +25,12 @@ public class Parser {
 
     //== Business Logic ==//
     public static int parseDateInput(String dateInput) {
-        try {
-            return Integer.parseInt(dateInput);
-        } catch (NumberFormatException exception) {
-            throw BusinessException.of(INVALID_DATE, exception);
-        }
+        return ExceptionHandler.tryOnSpecificException(() -> Integer.parseInt(dateInput));
     }
 
     public static EnumMap<Menu, Integer> parseMenuOrdersInputByDelimiter(String menuOrderInput) {
-        ONLY_ORDER_BEVERAGES.validate(isEndsWithDelimiter(menuOrderInput));
-        ONLY_ORDER_BEVERAGES.validate(hasWhitespace(menuOrderInput));
+        INVALID_ORDER.validate(isEndsWithDelimiter(menuOrderInput));
+        INVALID_ORDER.validate(hasWhitespace(menuOrderInput));
 
         List<String> parsedByDelimiterMenuOrders = Arrays.asList(splitByDelimiter(menuOrderInput));
 
@@ -46,7 +42,7 @@ public class Parser {
     }
 
     private static EnumMap<Menu, Integer> parseMenuOrdersInputByHyphen(List<String> parsedByDelimiterMenuOrders) {
-        ONLY_ORDER_BEVERAGES.validate(areInvalidPattern(parsedByDelimiterMenuOrders));
+        INVALID_ORDER.validate(areInvalidPattern(parsedByDelimiterMenuOrders));
 
         return parsedByDelimiterMenuOrders.stream()
                 .map(splitMenuOrdersInputByHyphen())
@@ -67,7 +63,7 @@ public class Parser {
     }
 
     private static int extractQuantity(String[] parts) {
-        return Integer.parseInt(parts[1]);
+        return ExceptionHandler.tryOnSpecificException(() -> Integer.parseInt(parts[1]));
     }
 
     private static EnumMap<Menu, Integer> createEnumMap() {
@@ -89,7 +85,7 @@ public class Parser {
     }
 
     private static Integer validateDuplicate(Integer existing, Integer replacement) {
-        throw BusinessException.from(ONLY_ORDER_BEVERAGES);
+        throw BusinessException.from(INVALID_ORDER);
     }
 
     /**

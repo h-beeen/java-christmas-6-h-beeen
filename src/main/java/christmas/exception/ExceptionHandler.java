@@ -21,10 +21,10 @@ public class ExceptionHandler {
         }
     }
 
-    public static <T> void tryOnDateTimeException(Supplier<T> supplier) {
+    public static <T> T tryOnSpecificException(Supplier<T> supplier) {
         try {
-            supplier.get();
-        } catch (DateTimeException exception) {
+            return supplier.get();
+        } catch (DateTimeException | NumberFormatException exception) {
             throw BusinessException.of(INVALID_DATE, exception);
         }
     }

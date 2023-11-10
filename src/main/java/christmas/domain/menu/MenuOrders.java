@@ -2,7 +2,6 @@ package christmas.domain.menu;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
 
 import static christmas.domain.menu.MenuCategory.BEVERAGE;
@@ -12,8 +11,8 @@ public class MenuOrders {
     private final EnumMap<Menu, Integer> menuOrders;
 
     private MenuOrders(EnumMap<Menu, Integer> menuOrders) {
-        ONLY_ORDER_BEVERAGES.validate(hasOnlyBeverages(menuOrders));
-        
+        ONLY_ORDER_BEVERAGES.validate(() -> isAllBeverages(menuOrders));
+
         this.menuOrders = menuOrders;
     }
 
@@ -21,13 +20,13 @@ public class MenuOrders {
         return new MenuOrders(menuOrders);
     }
 
-    private BooleanSupplier hasOnlyBeverages(EnumMap<Menu, Integer> menuOrders) {
-        return () -> menuOrders.entrySet()
+    private boolean isAllBeverages(EnumMap<Menu, Integer> menuOrders) {
+        return menuOrders.entrySet()
                 .stream()
-                .allMatch(hasBeverage());
+                .allMatch(isBeverage());
     }
 
-    private Predicate<Map.Entry<Menu, Integer>> hasBeverage() {
+    private Predicate<Map.Entry<Menu, Integer>> isBeverage() {
         return entry -> entry.getKey().isSameCategory(BEVERAGE);
     }
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import static christmas.domain.menu.MenuCategory.*;
-import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
+import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public enum Menu {
     //== APPETIZER ==//
@@ -48,7 +48,7 @@ public enum Menu {
         return Arrays.stream(values())
                 .filter(menu -> menu.name.equals(name))
                 .findFirst()
-                .orElseThrow(() -> BusinessException.from(ONLY_ORDER_BEVERAGES));
+                .orElseThrow(() -> BusinessException.from(INVALID_ORDER));
     }
 
     //== Getter ==//

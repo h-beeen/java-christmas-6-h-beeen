@@ -12,8 +12,7 @@ public class VisitingDate {
 
     //== Constructor ==//
     private VisitingDate(final int visitingDate) {
-        ExceptionHandler.tryOnDateTimeException(() -> convertLocalDate(visitingDate));
-        this.visitingDate = convertLocalDate(visitingDate);
+        this.visitingDate = ExceptionHandler.tryOnSpecificException(() -> convertLocalDate(visitingDate));
     }
 
     //== Static Factory Method ==//
