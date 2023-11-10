@@ -1,6 +1,10 @@
 package christmas.view;
 
 import christmas.dto.MenuOrdersResponse;
+import christmas.view.constants.ResponseMessage;
+
+import static christmas.view.constants.ResponseFormat.ORDER_MENUS_RESULT;
+import static christmas.view.constants.ResponseFormat.TOTAL_ORIGIN_PRICE_RESULT;
 
 public class OutputWriter {
     private OutputWriter() {
@@ -14,16 +18,18 @@ public class OutputWriter {
         System.out.println();
     }
 
-    public static void print(Object object) {
-        System.out.print(object);
-    }
-
     public static void printResponseMessage(ResponseMessage responseMessage) {
         System.out.println(responseMessage.getMessage());
     }
 
     public static void printMenuOrdersResponse(MenuOrdersResponse menuOrdersResponse) {
-        menuOrdersResponse.menuOrders()
-                .forEach((key, value) -> System.out.printf("%s : %d개%n", key, value));
+        menuOrdersResponse
+                .menuOrders()
+                .forEach((menuName, orderQuantity) ->
+                        println(ORDER_MENUS_RESULT.generateFormat(menuName, orderQuantity)));
+    }
+
+    public static void printTotalOriginPrice(final int originPrice) {
+        println(TOTAL_ORIGIN_PRICE_RESULT.generateFormat(originPrice));
     }
 }

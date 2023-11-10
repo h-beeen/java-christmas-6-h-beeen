@@ -11,8 +11,7 @@ import christmas.view.OutputWriter;
 
 import java.util.EnumMap;
 
-import static christmas.view.ResponseMessage.REQUEST_MENU_ORDER;
-import static christmas.view.ResponseMessage.RESPONSE_ORIGINAL_TOTAL_PRICE;
+import static christmas.view.constants.ResponseMessage.*;
 
 public class OrderController {
     private static final OrderMenuResponseMapper orderMenuResponseMapper = OrderMenuResponseMapper.getInstance();
@@ -31,11 +30,21 @@ public class OrderController {
         return MenuOrders.create(parsedMenuOrders);
     }
 
-    public static void responseMenuOrders(MenuOrders menuOrders) {
+    public static void responseMenuOrderResult(MenuOrders menuOrders) {
         MenuOrdersResponse menuOrdersResponse = orderMenuResponseMapper.toResponse(menuOrders);
 
         OutputWriter.printNewLine();
-        OutputWriter.printResponseMessage(RESPONSE_ORIGINAL_TOTAL_PRICE);
+        OutputWriter.printResponseMessage(RESPONSE_MENU_ORDER_RESULT);
         OutputWriter.printMenuOrdersResponse(menuOrdersResponse);
+
+
+    }
+
+    public static void responseTotalOriginPriceResult(MenuOrders menuOrders) {
+        int totalOriginPrice = menuOrders.calculateTotalOriginPrice();
+
+        OutputWriter.printNewLine();
+        OutputWriter.printResponseMessage(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT);
+        OutputWriter.printTotalOriginPrice(totalOriginPrice);
     }
 }

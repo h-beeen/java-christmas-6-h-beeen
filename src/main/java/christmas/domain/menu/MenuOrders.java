@@ -29,14 +29,14 @@ public class MenuOrders {
     }
 
     //== Utility Method ==//
-    public int calculateTotalPrice() {
+    public int calculateTotalOriginPrice() {
         return menuOrders.entrySet()
                 .stream()
-                .mapToInt(calculateMenuPrice())
+                .mapToInt(calculateOriginPrice())
                 .sum();
     }
 
-    private ToIntFunction<Entry<Menu, Integer>> calculateMenuPrice() {
+    private ToIntFunction<Entry<Menu, Integer>> calculateOriginPrice() {
         return entry -> entry.getKey().calculatePrice(entry.getValue());
     }
 

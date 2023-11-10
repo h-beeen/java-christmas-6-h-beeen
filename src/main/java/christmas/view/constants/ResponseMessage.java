@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.constants;
 
 import static christmas.domain.promotion.constants.PromotionPeriodConstraint.PROMOTION_MONTH;
 
@@ -15,7 +15,8 @@ public enum ResponseMessage {
     REQUEST_MENU_ORDER("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g 해산물파스타-2,레드와인-1,초코케이크-1)"),
 
 
-    RESPONSE_ORIGINAL_TOTAL_PRICE("<주문 메뉴>");
+    RESPONSE_MENU_ORDER_RESULT("<주문 메뉴>"),
+    RESPONSE_TOTAL_ORIGIN_PRICE_RESULT("<할인 전 총주문 금액>");
 
     private final String message;
 

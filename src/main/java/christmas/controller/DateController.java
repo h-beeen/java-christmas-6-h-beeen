@@ -6,8 +6,8 @@ import christmas.utility.Parser;
 import christmas.view.InputReader;
 import christmas.view.OutputWriter;
 
-import static christmas.view.ResponseMessage.REQUEST_VISITING_DATE;
-import static christmas.view.ResponseMessage.WELCOME_MESSAGE;
+import static christmas.view.constants.ResponseMessage.REQUEST_VISITING_DATE;
+import static christmas.view.constants.ResponseMessage.WELCOME_MESSAGE;
 
 public class DateController {
     private DateController() {
