@@ -51,20 +51,12 @@ public enum Menu {
                 .orElseThrow(() -> BusinessException.from(INVALID_ORDER));
     }
 
-    //== Getter ==//
-    public MenuCategory getCategory() {
-        return category;
+    public int calculatePrice(final int quantity) {
+        return price * quantity;
     }
 
+    //== Validation Method ==//
     public boolean isSameCategory(MenuCategory menuCategory) {
         return Objects.deepEquals(menuCategory, category);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getPrice() {
-        return price;
     }
 }

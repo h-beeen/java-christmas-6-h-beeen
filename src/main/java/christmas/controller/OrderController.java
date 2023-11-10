@@ -22,7 +22,7 @@ public class OrderController {
 
     private static MenuOrders createMenuOrdersFromInput() {
         String menuOrdersInput = InputReader.readInput();
-        EnumMap<Menu, Integer> menuOrders = Parser.parseMenuOrdersInputByDelimiter(menuOrdersInput);
-        return MenuOrders.create(menuOrders);
+        EnumMap<Menu, Integer> parsedMenuOrders = Parser.parseMenuOrdersInputByDelimiter(menuOrdersInput);
+        return MenuOrders.create(parsedMenuOrders);
     }
 }

@@ -20,8 +20,15 @@ public class VisitingDate {
         return new VisitingDate(visitingDate);
     }
 
-    //== Validation Method ==//
+    //== Utility Method ==//
     private LocalDate convertLocalDate(final int visitingDate) {
         return LocalDate.of(PROMOTION_YEAR.getValue(), PROMOTION_MONTH.getValue(), visitingDate);
+    }
+
+    public boolean isInEventPeriod(
+            LocalDate startDate,
+            LocalDate endDate
+    ) {
+        return !visitingDate.isBefore(startDate) && !visitingDate.isAfter(endDate);
     }
 }
