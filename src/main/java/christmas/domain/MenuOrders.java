@@ -4,14 +4,14 @@ import christmas.domain.constants.Menu;
 
 import java.util.EnumMap;
 
-public class MenusOrder {
+public class MenuOrders {
     private final EnumMap<Menu, Integer> menuOrders;
 
-    private MenusOrder(EnumMap<Menu, Integer> menuOrders) {
+    private MenuOrders(EnumMap<Menu, Integer> menuOrders) {
         this.menuOrders = menuOrders;
     }
 
-    public static MenusOrder create(EnumMap<Menu, Integer> menuOrders) {
-        return new MenusOrder(menuOrders);
+    public static MenuOrders create(EnumMap<Menu, Integer> menuOrders) {
+        return new MenuOrders(menuOrders);
     }
 }

@@ -1,6 +1,11 @@
 package christmas.domain.constants;
 
+import christmas.exception.BusinessException;
+
+import java.util.Arrays;
+
 import static christmas.domain.constants.MenuCategory.*;
+import static christmas.exception.ExceptionCode.INVALID_ORDER;
 
 public enum Menu {
     //== APPETIZER ==//
@@ -37,6 +42,15 @@ public enum Menu {
         this.price = price;
     }
 
+    //== Utility Method ==//
+    public static Menu findMenuByName(String name) {
+        return Arrays.stream(values())
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .orElseThrow(() -> BusinessException.from(INVALID_ORDER));
+    }
+
+    //== Getter ==//
     public MenuCategory getCategory() {
         return category;
     }
