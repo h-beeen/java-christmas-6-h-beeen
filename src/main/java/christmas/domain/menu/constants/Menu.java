@@ -1,11 +1,11 @@
-package christmas.domain.menu;
+package christmas.domain.menu.constants;
 
 import christmas.exception.BusinessException;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-import static christmas.domain.menu.MenuCategory.*;
+import static christmas.domain.menu.constants.MenuCategory.*;
 import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public enum Menu {
@@ -58,5 +58,10 @@ public enum Menu {
     //== Validation Method ==//
     public boolean isSameCategory(MenuCategory menuCategory) {
         return Objects.deepEquals(menuCategory, category);
+    }
+
+    //== Getter (Only permit to use Dto/Mapper) ==//
+    public String getName() {
+        return name;
     }
 }

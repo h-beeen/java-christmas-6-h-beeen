@@ -1,11 +1,13 @@
 package christmas.domain.menu;
 
+import christmas.domain.menu.constants.Menu;
+
 import java.util.EnumMap;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
-import static christmas.domain.menu.MenuCategory.BEVERAGE;
+import static christmas.domain.menu.constants.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.EXCEED_ORDER_QUANTITY_LIMIT;
 import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
 
@@ -46,6 +48,7 @@ public class MenuOrders {
         return totalOrderQuantity > ORDER_QUANTITY_LIMIT;
     }
 
+
     //== Validation Method ==//
     private boolean isAllBeverages(EnumMap<Menu, Integer> menuOrders) {
         return menuOrders.entrySet()
@@ -55,5 +58,10 @@ public class MenuOrders {
 
     private Predicate<Entry<Menu, Integer>> isBeverage() {
         return entry -> entry.getKey().isSameCategory(BEVERAGE);
+    }
+
+    //== Getter (Only permit to use Dto/Mapper) ==//
+    public EnumMap<Menu, Integer> getMenuOrders() {
+        return menuOrders;
     }
 }

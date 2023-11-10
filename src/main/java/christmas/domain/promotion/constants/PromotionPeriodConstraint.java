@@ -1,4 +1,4 @@
-package christmas.domain.promotion;
+package christmas.domain.promotion.constants;
 
 public enum PromotionPeriodConstraint {
     PROMOTION_YEAR(2023),

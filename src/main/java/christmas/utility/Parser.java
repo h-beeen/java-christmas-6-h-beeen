@@ -1,6 +1,6 @@
 package christmas.utility;
 
-import christmas.domain.menu.Menu;
+import christmas.domain.menu.constants.Menu;
 import christmas.exception.BusinessException;
 import christmas.exception.ExceptionHandler;
 
@@ -49,8 +49,7 @@ public class Parser {
                         Parser::extractMenuToKey,
                         Parser::extractQuantityToValue,
                         Parser::validateDuplicate,
-                        Parser::createEnumMap
-                ));
+                        Parser::createEnumMap));
     }
 
     private static Function<String, String[]> splitMenuOrdersInputByHyphen() {

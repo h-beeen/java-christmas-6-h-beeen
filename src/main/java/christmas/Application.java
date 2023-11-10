@@ -10,7 +10,8 @@ public class Application {
     public static void main(String[] args) {
         VisitingDate visitingDate = DateController.requestVisitingDate();
         MenuOrders menuOrders = OrderController.requestOrder();
-
+        
+        OrderController.responseMenuOrders(menuOrders);
         PromotionController.applyPromotions(visitingDate, menuOrders);
     }
 }
