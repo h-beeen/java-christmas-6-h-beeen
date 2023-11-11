@@ -14,8 +14,8 @@ public class AppliedPromotions {
             VisitDay visitDay,
             Orders orders
     ) {
-        PromotionContext promotionContext = PromotionContext.getInstance();
-        this.promotions = promotionContext.applyAvailablePromotion(visitDay, orders);
+        PromotionContext promotionContext = PromotionContext.create(visitDay, orders);
+        this.promotions = promotionContext.applyPromotions(visitDay, orders);
     }
 
     public static AppliedPromotions create(

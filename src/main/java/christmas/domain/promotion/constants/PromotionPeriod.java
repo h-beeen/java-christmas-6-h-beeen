@@ -23,6 +23,6 @@ public enum PromotionPeriod {
     }
 
     public boolean isInPromotionPeriod(VisitDay visitDay) {
-        return visitDay.isInPromotionPeriod(startDate, endDate);
+        return visitDay.isInPeriod(startDate, endDate);
     }
 }

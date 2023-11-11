@@ -9,6 +9,4 @@ import java.util.Map.Entry;
 public interface PromotionStrategy {
 
     Entry<Promotion, Integer> apply(VisitDay visitDay, Orders order);
-
-    boolean canApplicable(VisitDay visitDay, Orders order);
 }

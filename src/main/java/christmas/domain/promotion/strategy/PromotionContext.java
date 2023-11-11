@@ -11,36 +11,30 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class PromotionContext {
-    private static final PromotionContext multiplePromotionContext = new PromotionContext();
     private final List<PromotionStrategy> promotionStrategies;
 
-    private PromotionContext() {
+    private PromotionContext(VisitDay visitDay, Orders orders) {
         this.promotionStrategies = Arrays.stream(Promotion.values())
-                .map(Promotion::getDiscountStrategy)
+                .filter(promotion -> promotion.isinPromotionPeriod(visitDay))
+                .filter(promotion -> promotion.isApplicable(visitDay, orders))
+                .map(Promotion::getPromotionStrategy)
                 .toList();
     }
 
-    public static PromotionContext getInstance() {
-        return multiplePromotionContext;
-    }
-
-    public EnumMap<Promotion, Integer> applyAvailablePromotion(
+    public static PromotionContext create(
             VisitDay visitDay,
-            Orders order
+            Orders orders
     ) {
-        List<Entry<Promotion, Integer>> list = generateAppliedPromotionResults(visitDay, order);
-        return convertPromotionResults(list);
+        return new PromotionContext(visitDay, orders);
     }
 
-    private List<Entry<Promotion, Integer>> generateAppliedPromotionResults(VisitDay visitDay, Orders order) {
-        return promotionStrategies.stream()
-                .filter(strategy -> strategy.canApplicable(visitDay, order))
-                .map(strategy -> strategy.apply(visitDay, order))
-                .toList();
-    }
-
-    private EnumMap<Promotion, Integer> convertPromotionResults(List<Entry<Promotion, Integer>> list) {
-        return list.stream()
+    public EnumMap<Promotion, Integer> applyPromotions(
+            VisitDay visitDay,
+            Orders orders
+    ) {
+        return promotionStrategies
+                .stream()
+                .map(strategy -> strategy.apply(visitDay, orders))
                 .collect(Collectors.toMap(
                         Entry::getKey,
                         Entry::getValue,

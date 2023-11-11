@@ -12,9 +12,6 @@ import static christmas.domain.promotion.constants.Promotion.CHRISTMAS_D_DAY_DIS
 public class ChristmasDiscountStrategy implements PromotionStrategy {
     private static final ChristmasDiscountStrategy christmasDiscountStrategy = new ChristmasDiscountStrategy();
 
-    private ChristmasDiscountStrategy() {
-    }
-
     public static ChristmasDiscountStrategy getInstance() {
         return christmasDiscountStrategy;
     }
@@ -26,13 +23,5 @@ public class ChristmasDiscountStrategy implements PromotionStrategy {
     ) {
         int discountAmount = visitDay.multiplyDate(100) + 900;
         return new SimpleEntry<>(CHRISTMAS_D_DAY_DISCOUNT, discountAmount);
-    }
-
-    @Override
-    public boolean canApplicable(
-            VisitDay visitDay,
-            Orders order
-    ) {
-        return CHRISTMAS_D_DAY_DISCOUNT.isApplicablePromotion(visitDay);
     }
 }

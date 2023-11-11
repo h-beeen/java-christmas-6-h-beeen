@@ -1,38 +1,53 @@
 package christmas.domain.promotion.constants;
 
+import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.strategy.ChristmasDiscountStrategy;
 import christmas.domain.promotion.strategy.PromotionStrategy;
 
+import java.util.function.BiPredicate;
+
+import static christmas.domain.order.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
 import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
-import static christmas.domain.promotion.constants.PromotionType.DISCOUNT;
 
 public enum Promotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             ChristmasDiscountStrategy.getInstance(),
             UNTIL_CHRISTMAS,
-            DISCOUNT
+            (visitDay, orders) -> UNTIL_CHRISTMAS.isInPromotionPeriod(visitDay)
     );
 
-    private final PromotionStrategy discountStrategy;
+    private final PromotionStrategy promotionStrategy;
     private final PromotionPeriod promotionPeriod;
-    private final PromotionType promotionType;
+    private final BiPredicate<VisitDay, Orders> isApplicable;
 
     Promotion(
-            PromotionStrategy discountStrategy,
+            PromotionStrategy promotionStrategy,
             PromotionPeriod promotionPeriod,
-            PromotionType promotionType
+            BiPredicate<VisitDay, Orders> isApplicable
     ) {
-        this.discountStrategy = discountStrategy;
+        this.promotionStrategy = promotionStrategy;
         this.promotionPeriod = promotionPeriod;
-        this.promotionType = promotionType;
+        this.isApplicable = isApplicable;
     }
 
-    public boolean isApplicablePromotion(VisitDay visitDay) {
+    private boolean hasApplicableTotalOriginPrice(Orders orders) {
+        return orders.calculateTotalOriginPrice() > MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE.getValue();
+    }
+
+    public boolean isinPromotionPeriod(VisitDay visitDay) {
         return promotionPeriod.isInPromotionPeriod(visitDay);
     }
 
-    public PromotionStrategy getDiscountStrategy() {
-        return discountStrategy;
+    public boolean isApplicable(
+            VisitDay visitDay,
+            Orders orders
+    ) {
+        return hasApplicableTotalOriginPrice(orders)
+                && isApplicable.test(visitDay, orders);
+    }
+
+    public PromotionStrategy getPromotionStrategy() {
+        return promotionStrategy;
     }
 }

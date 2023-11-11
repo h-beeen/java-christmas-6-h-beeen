@@ -25,7 +25,7 @@ public class VisitDay {
         return LocalDate.of(PROMOTION_YEAR.getValue(), PROMOTION_MONTH.getValue(), visit);
     }
 
-    public boolean isInPromotionPeriod(
+    public boolean isInPeriod(
             LocalDate startDate,
             LocalDate endDate
     ) {
