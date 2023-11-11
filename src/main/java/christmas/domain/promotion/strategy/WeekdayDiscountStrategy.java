@@ -9,16 +9,14 @@ import java.util.Map.Entry;
 
 import static christmas.domain.promotion.constants.Promotion.CHRISTMAS_D_DAY_DISCOUNT;
 
-public class ChristmasDiscountStrategy implements PromotionStrategy {
-    private static final ChristmasDiscountStrategy CHRISTMAS_DISCOUNT_STRATEGY = new ChristmasDiscountStrategy();
-    private static final int DAILY_BONUS = 100;
-    private static final int FIXED_BONUS = 900;
+public class WeekdayDiscountStrategy implements PromotionStrategy {
+    private static final WeekdayDiscountStrategy WEEKDAY_DISCOUNT_STRATEGY = new WeekdayDiscountStrategy();
 
-    private ChristmasDiscountStrategy() {
+    private WeekdayDiscountStrategy() {
     }
 
-    public static ChristmasDiscountStrategy getInstance() {
-        return CHRISTMAS_DISCOUNT_STRATEGY;
+    public static WeekdayDiscountStrategy getInstance() {
+        return WEEKDAY_DISCOUNT_STRATEGY;
     }
 
     @Override
@@ -26,8 +24,6 @@ public class ChristmasDiscountStrategy implements PromotionStrategy {
             VisitDay visitDay,
             Orders order
     ) {
-        int discountAmount = visitDay.multiplyDate(DAILY_BONUS) + FIXED_BONUS;
-
         return new SimpleEntry<>(CHRISTMAS_D_DAY_DISCOUNT, discountAmount);
     }
 }

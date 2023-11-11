@@ -6,13 +6,13 @@ import christmas.domain.order.VisitDay;
 import java.time.LocalDate;
 
 public final class VisitDayMapper implements ResponseMapper<VisitDay, VisitDayResponse> {
-    private static final VisitDayMapper visitDayMapper = new VisitDayMapper();
+    private static final VisitDayMapper VISIT_DAY_MAPPER = new VisitDayMapper();
 
     private VisitDayMapper() {
     }
 
     public static VisitDayMapper getInstance() {
-        return visitDayMapper;
+        return VISIT_DAY_MAPPER;
     }
 
     @Override

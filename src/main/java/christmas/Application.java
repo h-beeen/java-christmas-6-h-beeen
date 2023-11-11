@@ -15,7 +15,6 @@ public class Application {
         OrderController.responseOrdersResult(orders);
 
         AppliedPromotions appliedPromotion = AppliedPromotions.create(visitDay, orders);
-        //todo appliedPromotion 기준 혜택 내역 생성
 
         Console.close();
     }

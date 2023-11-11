@@ -14,7 +14,7 @@ import java.util.EnumMap;
 import static christmas.view.constants.ResponseMessage.*;
 
 public class OrderController {
-    private static final OrderResponseMapper orderMenuResponseMapper = OrderResponseMapper.getInstance();
+    private static final OrderResponseMapper ORDER_RESPONSE_MAPPER = OrderResponseMapper.getInstance();
 
     private OrderController() {
     }
@@ -31,7 +31,7 @@ public class OrderController {
     }
 
     public static void responseOrdersResult(Orders orders) {
-        OrderResponse orderResponse = orderMenuResponseMapper.toResponse(orders);
+        OrderResponse orderResponse = ORDER_RESPONSE_MAPPER.toResponse(orders);
 
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_MENU_ORDERS_RESULT);

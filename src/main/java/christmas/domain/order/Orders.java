@@ -5,7 +5,6 @@ import christmas.domain.order.constants.Menu;
 import java.util.EnumMap;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
 
 import static christmas.domain.order.constants.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.EXCEED_ORDER_QUANTITY_LIMIT;
@@ -32,12 +31,9 @@ public class Orders {
     public int calculateTotalOriginPrice() {
         return menus.entrySet()
                 .stream()
-                .mapToInt(calculateOriginPrice())
+                .mapToInt(entry ->
+                        entry.getKey().calculatePrice(entry.getValue()))
                 .sum();
-    }
-
-    private ToIntFunction<Entry<Menu, Integer>> calculateOriginPrice() {
-        return entry -> entry.getKey().calculatePrice(entry.getValue());
     }
 
     private boolean isExceedMaximumQuantity(EnumMap<Menu, Integer> menus) {
@@ -45,6 +41,7 @@ public class Orders {
                 .stream()
                 .mapToInt(quantity -> quantity)
                 .sum();
+        
         return totalOrdersQuantity > ORDERS_MAXIMUM_RANGE;
     }
 

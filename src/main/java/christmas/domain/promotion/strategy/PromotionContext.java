@@ -32,8 +32,7 @@ public class PromotionContext {
             VisitDay visitDay,
             Orders orders
     ) {
-        return promotionStrategies
-                .stream()
+        return promotionStrategies.stream()
                 .map(strategy -> strategy.apply(visitDay, orders))
                 .collect(Collectors.toMap(
                         Entry::getKey,

@@ -12,7 +12,7 @@ import static christmas.view.constants.ResponseMessage.REQUEST_VISITING_DAY;
 import static christmas.view.constants.ResponseMessage.WELCOME_MESSAGE;
 
 public class VisitDayController {
-    private static final VisitDayMapper visitDayMapper = VisitDayMapper.getInstance();
+    private static final VisitDayMapper VISIT_DAY_MAPPER = VisitDayMapper.getInstance();
 
     public static VisitDay requestVisitDay() {
         OutputWriter.printMessageResponse(WELCOME_MESSAGE);
@@ -21,7 +21,7 @@ public class VisitDayController {
     }
 
     public static void responseVisitDay(VisitDay visitDay) {
-        VisitDayResponse response = visitDayMapper.toResponse(visitDay);
+        VisitDayResponse response = VISIT_DAY_MAPPER.toResponse(visitDay);
         OutputWriter.printVisitDayResponse(response);
     }
 

@@ -5,30 +5,29 @@ import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.strategy.ChristmasDiscountStrategy;
 import christmas.domain.promotion.strategy.PromotionStrategy;
 
-import java.util.function.BiPredicate;
-
 import static christmas.domain.order.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
 import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
+import static christmas.domain.promotion.constants.PromotionType.DISCOUNT;
 
 public enum Promotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             ChristmasDiscountStrategy.getInstance(),
             UNTIL_CHRISTMAS,
-            (visitDay, orders) -> UNTIL_CHRISTMAS.isInPromotionPeriod(visitDay)
+            DISCOUNT
     );
 
     private final PromotionStrategy promotionStrategy;
     private final PromotionPeriod promotionPeriod;
-    private final BiPredicate<VisitDay, Orders> isApplicable;
+    private final PromotionType promotionType;
 
     Promotion(
             PromotionStrategy promotionStrategy,
             PromotionPeriod promotionPeriod,
-            BiPredicate<VisitDay, Orders> isApplicable
+            PromotionType promotionType
     ) {
         this.promotionStrategy = promotionStrategy;
         this.promotionPeriod = promotionPeriod;
-        this.isApplicable = isApplicable;
+        this.promotionType = promotionType;
     }
 
     private boolean hasApplicableTotalOriginPrice(Orders orders) {
@@ -44,7 +43,7 @@ public enum Promotion {
             Orders orders
     ) {
         return hasApplicableTotalOriginPrice(orders)
-                && isApplicable.test(visitDay, orders);
+                && promotionPeriod.isInPromotionPeriod(visitDay);
     }
 
     public PromotionStrategy getPromotionStrategy() {
