@@ -1,6 +1,6 @@
 package christmas.domain.promotion.strategy;
 
-import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.constants.Promotion;
 
@@ -22,7 +22,7 @@ public class ChristmasDiscountStrategy implements PromotionStrategy {
     @Override
     public Entry<Promotion, Integer> apply(
             VisitDay visitDay,
-            Order order
+            Orders order
     ) {
         int discountAmount = visitDay.multiplyDate(100) + 900;
         return new SimpleEntry<>(CHRISTMAS_D_DAY_DISCOUNT, discountAmount);
@@ -31,7 +31,7 @@ public class ChristmasDiscountStrategy implements PromotionStrategy {
     @Override
     public boolean canApplicable(
             VisitDay visitDay,
-            Order order
+            Orders order
     ) {
         return CHRISTMAS_D_DAY_DISCOUNT.isApplicablePromotion(visitDay);
     }

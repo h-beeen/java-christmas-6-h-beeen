@@ -2,7 +2,7 @@ package christmas.controller;
 
 import christmas.controller.dto.OrderResponse;
 import christmas.controller.mapper.OrderResponseMapper;
-import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.domain.order.constants.Menu;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
@@ -19,27 +19,29 @@ public class OrderController {
     private OrderController() {
     }
 
-    public static Order requestOrder() {
-        OutputWriter.printMessageResponse(REQUEST_MENU_ORDER);
+    public static Orders requestOrders() {
+        OutputWriter.printMessageResponse(REQUEST_MENU_ORDERS);
         return ExceptionHandler.retryOnBusinessException(OrderController::createMenuOrdersFromInput);
     }
 
-    private static Order createMenuOrdersFromInput() {
+    private static Orders createMenuOrdersFromInput() {
         String orderInput = InputReader.readInput();
-        EnumMap<Menu, Integer> parsedOrder = Parser.parseMenuOrdersInputByDelimiter(orderInput);
-        return Order.create(parsedOrder);
+        EnumMap<Menu, Integer> parsedOrders = Parser.parseMenuOrdersInputByDelimiter(orderInput);
+        return Orders.create(parsedOrders);
     }
 
-    public static void responseOrderResult(Order order) {
-        OrderResponse orderResponse = orderMenuResponseMapper.toResponse(order);
+    public static void responseOrdersResult(Orders orders) {
+        OrderResponse orderResponse = orderMenuResponseMapper.toResponse(orders);
 
         OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_MENU_ORDER_RESULT);
+        OutputWriter.printMessageResponse(RESPONSE_MENU_ORDERS_RESULT);
         OutputWriter.printMenuOrdersResponse(orderResponse);
+
+        responseTotalOriginPriceResult(orders);
     }
 
-    public static void responseTotalOriginPriceResult(Order order) {
-        int totalOriginPrice = order.calculateTotalOriginPrice();
+    private static void responseTotalOriginPriceResult(Orders orders) {
+        int totalOriginPrice = orders.calculateTotalOriginPrice();
 
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT);

@@ -1,6 +1,6 @@
 package christmas.domain.promotion.strategy;
 
-import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.constants.Promotion;
 
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 public interface PromotionStrategy {
 
-    Entry<Promotion, Integer> apply(VisitDay visitDay, Order order);
+    Entry<Promotion, Integer> apply(VisitDay visitDay, Orders order);
 
-    boolean canApplicable(VisitDay visitDay, Order order);
+    boolean canApplicable(VisitDay visitDay, Orders order);
 }

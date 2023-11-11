@@ -26,7 +26,7 @@ public class OutputWriter {
         orderResponse
                 .orderMenus()
                 .forEach((menuName, orderQuantity) ->
-                        println(ORDER_RESULT.generateFormat(menuName, orderQuantity)));
+                        println(ORDERS_RESULT.generateFormat(menuName, orderQuantity)));
     }
 
     public static void printTotalOriginPriceResponse(final int originPrice) {

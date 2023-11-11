@@ -1,14 +1,14 @@
 package christmas.controller.mapper;
 
 import christmas.controller.dto.OrderResponse;
-import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.domain.order.constants.Menu;
 
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public final class OrderResponseMapper implements ResponseMapper<Order, OrderResponse> {
+public final class OrderResponseMapper implements ResponseMapper<Orders, OrderResponse> {
     public static final OrderResponseMapper orderMenuResponseMapper = new OrderResponseMapper();
 
     private OrderResponseMapper() {
@@ -19,7 +19,7 @@ public final class OrderResponseMapper implements ResponseMapper<Order, OrderRes
     }
 
     @Override
-    public OrderResponse toResponse(Order order) {
+    public OrderResponse toResponse(Orders order) {
         Map<String, Integer> orderResponse = order
                 .getMenus()
                 .entrySet()

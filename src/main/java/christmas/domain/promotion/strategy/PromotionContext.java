@@ -1,6 +1,6 @@
 package christmas.domain.promotion.strategy;
 
-import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.constants.Promotion;
 
@@ -24,22 +24,22 @@ public class PromotionContext {
         return multiplePromotionContext;
     }
 
-    public EnumMap<Promotion, Integer> applyPromotion(
+    public EnumMap<Promotion, Integer> applyAvailablePromotion(
             VisitDay visitDay,
-            Order order
+            Orders order
     ) {
-        List<Entry<Promotion, Integer>> list = generateAppliedPromotionResult(visitDay, order);
-        return convertResultToEnumMap(list);
+        List<Entry<Promotion, Integer>> list = generateAppliedPromotionResults(visitDay, order);
+        return convertPromotionResults(list);
     }
 
-    private List<Entry<Promotion, Integer>> generateAppliedPromotionResult(VisitDay visitDay, Order order) {
+    private List<Entry<Promotion, Integer>> generateAppliedPromotionResults(VisitDay visitDay, Orders order) {
         return promotionStrategies.stream()
                 .filter(strategy -> strategy.canApplicable(visitDay, order))
                 .map(strategy -> strategy.apply(visitDay, order))
                 .toList();
     }
 
-    private EnumMap<Promotion, Integer> convertResultToEnumMap(List<Entry<Promotion, Integer>> list) {
+    private EnumMap<Promotion, Integer> convertPromotionResults(List<Entry<Promotion, Integer>> list) {
         return list.stream()
                 .collect(Collectors.toMap(
                         Entry::getKey,

@@ -9,23 +9,23 @@ import java.util.function.ToIntFunction;
 
 import static christmas.domain.order.constants.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.EXCEED_ORDER_QUANTITY_LIMIT;
-import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
+import static christmas.exception.ErrorCode.ORDERS_ONLY_CONTAIN_BEVERAGES;
 
-public class Order {
-    private static final int ORDER_QUANTITY_LIMIT = 20;
+public class Orders {
+    private static final int ORDERS_MAXIMUM_RANGE = 20;
     private final EnumMap<Menu, Integer> menus;
 
     //== Constructor ==//
-    private Order(EnumMap<Menu, Integer> menus) {
-        ONLY_ORDER_BEVERAGES.validate(() -> isAllBeverages(menus));
+    private Orders(EnumMap<Menu, Integer> menus) {
+        ORDERS_ONLY_CONTAIN_BEVERAGES.validate(() -> hasOnlyBeverages(menus));
         EXCEED_ORDER_QUANTITY_LIMIT.validate(() -> isExceedMaximumQuantity(menus));
 
         this.menus = menus;
     }
 
     //== Static Factory Method ==//
-    public static Order create(EnumMap<Menu, Integer> menus) {
-        return new Order(menus);
+    public static Orders create(EnumMap<Menu, Integer> menus) {
+        return new Orders(menus);
     }
 
     //== Utility Method ==//
@@ -41,16 +41,16 @@ public class Order {
     }
 
     private boolean isExceedMaximumQuantity(EnumMap<Menu, Integer> menus) {
-        int totalOrderQuantity = menus.values()
+        int totalOrdersQuantity = menus.values()
                 .stream()
                 .mapToInt(quantity -> quantity)
                 .sum();
-        return totalOrderQuantity > ORDER_QUANTITY_LIMIT;
+        return totalOrdersQuantity > ORDERS_MAXIMUM_RANGE;
     }
 
 
     //== Validation Method ==//
-    private boolean isAllBeverages(EnumMap<Menu, Integer> menus) {
+    private boolean hasOnlyBeverages(EnumMap<Menu, Integer> menus) {
         return menus.entrySet()
                 .stream()
                 .allMatch(isBeverage());

@@ -3,21 +3,19 @@ package christmas;
 import camp.nextstep.edu.missionutils.Console;
 import christmas.controller.OrderController;
 import christmas.controller.VisitDayController;
-import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.AppliedPromotion;
+import christmas.domain.promotion.AppliedPromotions;
 
 public class Application {
     public static void main(String[] args) {
         VisitDay visitDay = VisitDayController.requestVisitDay();
-
-        Order order = OrderController.requestOrder();
-
+        Orders orders = OrderController.requestOrders();
         VisitDayController.responseVisitDay(visitDay);
-        OrderController.responseOrderResult(order);
-        OrderController.responseTotalOriginPriceResult(order);
+        OrderController.responseOrdersResult(orders);
 
-        AppliedPromotion appliedPromotion = AppliedPromotion.create(visitDay, order);
+        AppliedPromotions appliedPromotion = AppliedPromotions.create(visitDay, orders);
+        //todo appliedPromotion 기준 혜택 내역 생성
 
         Console.close();
     }
