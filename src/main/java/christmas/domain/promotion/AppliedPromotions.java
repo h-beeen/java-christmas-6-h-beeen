@@ -24,4 +24,8 @@ public class AppliedPromotions {
     ) {
         return new AppliedPromotions(visitDay, order);
     }
+
+    public EnumMap<Promotion, Integer> getPromotions() {
+        return promotions;
+    }
 }

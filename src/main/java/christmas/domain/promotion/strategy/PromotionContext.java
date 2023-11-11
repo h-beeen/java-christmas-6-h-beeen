@@ -15,7 +15,7 @@ public class PromotionContext {
 
     private PromotionContext(VisitDay visitDay, Orders orders) {
         this.promotionStrategies = Arrays.stream(Promotion.values())
-                .filter(promotion -> promotion.isinPromotionPeriod(visitDay))
+                .filter(promotion -> promotion.isPromotionPeriod(visitDay))
                 .filter(promotion -> promotion.isApplicable(visitDay, orders))
                 .map(Promotion::getPromotionStrategy)
                 .toList();

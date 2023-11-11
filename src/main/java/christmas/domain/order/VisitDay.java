@@ -8,6 +8,8 @@ import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_MONTH
 import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_YEAR;
 
 public class VisitDay {
+    private static final int THURSDAY_VALUE = 4;
+    private static final int SUNDAY_VALUE = 7;
     private final LocalDate visitDay;
 
     //== Constructor ==//
@@ -25,15 +27,25 @@ public class VisitDay {
         return LocalDate.of(PROMOTION_YEAR.getValue(), PROMOTION_MONTH.getValue(), visit);
     }
 
-    public boolean isInPeriod(
+    public Integer multiplyDate(final int valueToMultiply) {
+        return visitDay.getDayOfMonth() * valueToMultiply;
+    }
+
+    //== Validation Method ==//
+    public boolean containPeriod(
             LocalDate startDate,
             LocalDate endDate
     ) {
         return !visitDay.isBefore(startDate) && !visitDay.isAfter(endDate);
     }
 
-    public Integer multiplyDate(final int valueToMultiply) {
-        return visitDay.getDayOfMonth() * valueToMultiply;
+    public boolean isWeekday() {
+        return visitDay.getDayOfWeek().getValue() <= THURSDAY_VALUE
+                || visitDay.getDayOfWeek().getValue() == SUNDAY_VALUE;
+    }
+
+    public boolean isWeekend() {
+        return !isWeekday();
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//

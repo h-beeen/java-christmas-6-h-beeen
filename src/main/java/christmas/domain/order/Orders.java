@@ -1,6 +1,7 @@
 package christmas.domain.order;
 
 import christmas.domain.order.constants.Menu;
+import christmas.domain.order.constants.MenuCategory;
 
 import java.util.EnumMap;
 import java.util.Map.Entry;
@@ -31,18 +32,17 @@ public class Orders {
     public int calculateTotalOriginPrice() {
         return menus.entrySet()
                 .stream()
-                .mapToInt(entry ->
-                        entry.getKey().calculatePrice(entry.getValue()))
+                .mapToInt(entry -> entry.getKey()
+                        .calculatePrice(entry.getValue()))
                 .sum();
     }
 
-    private boolean isExceedMaximumQuantity(EnumMap<Menu, Integer> menus) {
-        int totalOrdersQuantity = menus.values()
+    public int countOrdersByMenuType(MenuCategory menuCategory) {
+        return menus.keySet()
                 .stream()
-                .mapToInt(quantity -> quantity)
+                .filter(integer -> integer.isSameCategory(menuCategory))
+                .mapToInt(menus::get)
                 .sum();
-        
-        return totalOrdersQuantity > ORDERS_MAXIMUM_RANGE;
     }
 
 
@@ -51,6 +51,15 @@ public class Orders {
         return menus.entrySet()
                 .stream()
                 .allMatch(isBeverage());
+    }
+
+    private boolean isExceedMaximumQuantity(EnumMap<Menu, Integer> menus) {
+        int totalOrdersQuantity = menus.values()
+                .stream()
+                .mapToInt(quantity -> quantity)
+                .sum();
+
+        return totalOrdersQuantity > ORDERS_MAXIMUM_RANGE;
     }
 
     private Predicate<Entry<Menu, Integer>> isBeverage() {

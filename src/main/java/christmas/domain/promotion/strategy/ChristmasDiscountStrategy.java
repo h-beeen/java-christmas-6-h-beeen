@@ -26,7 +26,7 @@ public class ChristmasDiscountStrategy implements PromotionStrategy {
             VisitDay visitDay,
             Orders order
     ) {
-        int discountAmount = visitDay.multiplyDate(DAILY_BONUS) + FIXED_BONUS;
+        final int discountAmount = visitDay.multiplyDate(DAILY_BONUS) + FIXED_BONUS;
 
         return new SimpleEntry<>(CHRISTMAS_D_DAY_DISCOUNT, discountAmount);
     }
