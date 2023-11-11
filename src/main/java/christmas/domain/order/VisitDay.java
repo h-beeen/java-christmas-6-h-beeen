@@ -39,13 +39,13 @@ public class VisitDay {
         return !visitDay.isBefore(startDate) && !visitDay.isAfter(endDate);
     }
 
-    public boolean isWeekday() {
-        return visitDay.getDayOfWeek().getValue() <= THURSDAY_VALUE
-                || visitDay.getDayOfWeek().getValue() == SUNDAY_VALUE;
+    public boolean isWeekend() {
+        return visitDay.getDayOfWeek().getValue() > THURSDAY_VALUE
+                && visitDay.getDayOfWeek().getValue() < SUNDAY_VALUE;
     }
 
-    public boolean isWeekend() {
-        return !isWeekday();
+    public boolean isWeekday() {
+        return !isWeekend();
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//

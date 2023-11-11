@@ -1,9 +1,9 @@
 package christmas.domain.order.constants;
 
 public enum PlannerConstraint {
-    PROMOTION_YEAR(2023),
+    PROMOTION_YEAR(2_023),
     PROMOTION_MONTH(12),
-    MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE(10000);
+    MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE(10_000);
 
     private final int value;
 

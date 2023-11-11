@@ -10,15 +10,14 @@ import java.util.Map.Entry;
 import static christmas.domain.promotion.constants.Promotion.CHRISTMAS_D_DAY_DISCOUNT;
 
 public class ChristmasDiscountStrategy implements PromotionStrategy {
-    private static final ChristmasDiscountStrategy CHRISTMAS_DISCOUNT_STRATEGY = new ChristmasDiscountStrategy();
     private static final int DAILY_BONUS = 100;
     private static final int FIXED_BONUS = 900;
 
     private ChristmasDiscountStrategy() {
     }
 
-    public static ChristmasDiscountStrategy getInstance() {
-        return CHRISTMAS_DISCOUNT_STRATEGY;
+    public static ChristmasDiscountStrategy create() {
+        return new ChristmasDiscountStrategy();
     }
 
     @Override

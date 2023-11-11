@@ -11,14 +11,13 @@ import static christmas.domain.order.constants.MenuCategory.DESSERT;
 import static christmas.domain.promotion.constants.Promotion.WEEKDAY_DISCOUNT;
 
 public class WeekdayDiscountStrategy implements PromotionStrategy {
-    private static final WeekdayDiscountStrategy WEEKDAY_DISCOUNT_STRATEGY = new WeekdayDiscountStrategy();
-    private static final int DISCOUNT_PER_DESSERT = 2023;
+    private static final int DISCOUNT_PER_DESSERT = 2_023;
 
     private WeekdayDiscountStrategy() {
     }
 
-    public static WeekdayDiscountStrategy getInstance() {
-        return WEEKDAY_DISCOUNT_STRATEGY;
+    public static WeekdayDiscountStrategy create() {
+        return new WeekdayDiscountStrategy();
     }
 
     @Override

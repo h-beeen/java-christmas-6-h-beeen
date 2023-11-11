@@ -11,8 +11,7 @@ import christmas.view.OutputWriter;
 
 import java.util.EnumMap;
 
-import static christmas.domain.promotion.constants.Promotion.CHRISTMAS_D_DAY_DISCOUNT;
-import static christmas.domain.promotion.constants.Promotion.WEEKDAY_DISCOUNT;
+import static christmas.domain.promotion.constants.Promotion.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,6 +24,7 @@ public class Application {
         EnumMap<Promotion, Integer> promotions = appliedPromotion.getPromotions();
         OutputWriter.println("디데이 : " + promotions.get(CHRISTMAS_D_DAY_DISCOUNT));
         OutputWriter.println("평일 : " + promotions.get(WEEKDAY_DISCOUNT));
+        OutputWriter.println("주말 : " + promotions.get(WEEKEND_DISCOUNT));
 
         Console.close();
     }

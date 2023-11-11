@@ -5,6 +5,7 @@ import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.strategy.ChristmasDiscountStrategy;
 import christmas.domain.promotion.strategy.PromotionStrategy;
 import christmas.domain.promotion.strategy.WeekdayDiscountStrategy;
+import christmas.domain.promotion.strategy.WeekendDiscountStrategy;
 
 import java.util.function.BiPredicate;
 
@@ -14,14 +15,19 @@ import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTM
 
 public enum Promotion {
     CHRISTMAS_D_DAY_DISCOUNT(
-            ChristmasDiscountStrategy.getInstance(),
+            ChristmasDiscountStrategy.create(),
             UNTIL_CHRISTMAS,
             (visitDay, orders) -> true
     ),
     WEEKDAY_DISCOUNT(
-            WeekdayDiscountStrategy.getInstance(),
+            WeekdayDiscountStrategy.create(),
             MONTHLY_DECEMBER,
             (visitDay, orders) -> visitDay.isWeekday()
+    ),
+    WEEKEND_DISCOUNT(
+            WeekendDiscountStrategy.create(),
+            MONTHLY_DECEMBER,
+            (visitDay, orders) -> visitDay.isWeekend()
     );
 
     private final PromotionStrategy promotionStrategy;
