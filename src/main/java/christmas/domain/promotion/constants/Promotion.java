@@ -2,10 +2,7 @@ package christmas.domain.promotion.constants;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.strategy.ChristmasDiscountStrategy;
-import christmas.domain.promotion.strategy.PromotionStrategy;
-import christmas.domain.promotion.strategy.WeekdayDiscountStrategy;
-import christmas.domain.promotion.strategy.WeekendDiscountStrategy;
+import christmas.domain.promotion.strategy.*;
 
 import java.util.function.BiPredicate;
 
@@ -28,6 +25,11 @@ public enum Promotion {
             WeekendDiscountStrategy.create(),
             MONTHLY_DECEMBER,
             (visitDay, orders) -> visitDay.isWeekend()
+    ),
+    SPECIAL_DISCOUNT(
+            SpecialDiscountStrategy.create(),
+            MONTHLY_DECEMBER,
+            (visitDay, orders) -> visitDay.isSpecialDay()
     );
 
     private final PromotionStrategy promotionStrategy;

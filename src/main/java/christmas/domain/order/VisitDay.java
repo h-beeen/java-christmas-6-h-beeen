@@ -1,8 +1,10 @@
 package christmas.domain.order;
 
+import christmas.domain.promotion.constants.SpecialPromotion;
 import christmas.exception.ExceptionHandler;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_MONTH;
 import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_YEAR;
@@ -46,6 +48,13 @@ public class VisitDay {
 
     public boolean isWeekday() {
         return !isWeekend();
+    }
+
+    public boolean isSpecialDay() {
+        return Arrays.stream(SpecialPromotion.values())
+                .map(value -> value.isContainDay(visitDay))
+                .findFirst()
+                .ifPresent();
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//
