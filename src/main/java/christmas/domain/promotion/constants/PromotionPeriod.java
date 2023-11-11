@@ -1,6 +1,6 @@
 package christmas.domain.promotion.constants;
 
-import christmas.domain.order.VisitingDate;
+import christmas.domain.order.VisitDay;
 
 import java.time.LocalDate;
 
@@ -22,7 +22,7 @@ public enum PromotionPeriod {
         this.endDate = endDate;
     }
 
-    public boolean isInPromotionPeriod(VisitingDate visitingDate) {
-        return visitingDate.isInPromotionPeriod(startDate, endDate);
+    public boolean isInPromotionPeriod(VisitDay visitDay) {
+        return visitDay.isInPromotionPeriod(startDate, endDate);
     }
 }

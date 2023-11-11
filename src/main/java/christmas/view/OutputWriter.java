@@ -1,10 +1,10 @@
 package christmas.view;
 
 import christmas.controller.dto.OrderResponse;
+import christmas.controller.dto.VisitDayResponse;
 import christmas.view.constants.ResponseMessage;
 
-import static christmas.view.constants.ResponseFormat.ORDER_RESULT;
-import static christmas.view.constants.ResponseFormat.TOTAL_ORIGIN_PRICE_RESULT;
+import static christmas.view.constants.ResponseFormat.*;
 
 public class OutputWriter {
     private OutputWriter() {
@@ -18,7 +18,7 @@ public class OutputWriter {
         System.out.println();
     }
 
-    public static void printResponseMessage(ResponseMessage responseMessage) {
+    public static void printMessageResponse(ResponseMessage responseMessage) {
         System.out.println(responseMessage.getMessage());
     }
 
@@ -29,7 +29,11 @@ public class OutputWriter {
                         println(ORDER_RESULT.generateFormat(menuName, orderQuantity)));
     }
 
-    public static void printTotalOriginPrice(final int originPrice) {
+    public static void printTotalOriginPriceResponse(final int originPrice) {
         println(TOTAL_ORIGIN_PRICE_RESULT.generateFormat(originPrice));
+    }
+
+    public static void printVisitDayResponse(VisitDayResponse visitDayResponse) {
+        println(PROMOTION_PREVIEW.generateFormat(visitDayResponse.month(), visitDayResponse.date()));
     }
 }

@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.order.Order;
-import christmas.domain.order.VisitingDate;
+import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.MultiplePromotionContext;
 import christmas.domain.promotion.constants.Promotion;
 
@@ -12,10 +12,10 @@ public class PromotionController {
     }
 
     public static EnumMap<Promotion, Integer> applyPromotions(
-            VisitingDate visitingDate,
+            VisitDay visitDay,
             Order order
     ) {
         MultiplePromotionContext promotionContext = MultiplePromotionContext.getInstance();
-        return promotionContext.applyPromotion(visitingDate, order);
+        return promotionContext.applyPromotion(visitDay, order);
     }
 }

@@ -20,7 +20,7 @@ public class OrderController {
     }
 
     public static Order requestOrder() {
-        OutputWriter.printResponseMessage(REQUEST_MENU_ORDER);
+        OutputWriter.printMessageResponse(REQUEST_MENU_ORDER);
         return ExceptionHandler.retryOnBusinessException(OrderController::createMenuOrdersFromInput);
     }
 
@@ -34,17 +34,15 @@ public class OrderController {
         OrderResponse orderResponse = orderMenuResponseMapper.toResponse(order);
 
         OutputWriter.printNewLine();
-        OutputWriter.printResponseMessage(RESPONSE_MENU_ORDER_RESULT);
+        OutputWriter.printMessageResponse(RESPONSE_MENU_ORDER_RESULT);
         OutputWriter.printMenuOrdersResponse(orderResponse);
-
-
     }
 
     public static void responseTotalOriginPriceResult(Order order) {
         int totalOriginPrice = order.calculateTotalOriginPrice();
 
         OutputWriter.printNewLine();
-        OutputWriter.printResponseMessage(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT);
-        OutputWriter.printTotalOriginPrice(totalOriginPrice);
+        OutputWriter.printMessageResponse(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT);
+        OutputWriter.printTotalOriginPriceResponse(totalOriginPrice);
     }
 }

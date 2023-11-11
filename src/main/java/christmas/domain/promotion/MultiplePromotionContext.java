@@ -1,13 +1,14 @@
 package christmas.domain.promotion;
 
 import christmas.domain.order.Order;
-import christmas.domain.order.VisitingDate;
+import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.constants.Promotion;
 
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class MultiplePromotionContext {
     private static final MultiplePromotionContext multiplePromotionContext = new MultiplePromotionContext();
@@ -24,20 +25,26 @@ public class MultiplePromotionContext {
     }
 
     public EnumMap<Promotion, Integer> applyPromotion(
-            VisitingDate visitingDate,
+            VisitDay visitDay,
             Order order
     ) {
-        List<Entry<Promotion, Integer>> list = promotionStrategies.stream()
-                .filter(strategy -> strategy.canApplicable(visitingDate, order))
-                .map(strategy -> strategy.apply(visitingDate, order))
-                .toList();
+        List<Entry<Promotion, Integer>> list = generateAppliedPromotionResult(visitDay, order);
+        return convertResultToEnumMap(list);
+    }
 
-        EnumMap<Promotion, Integer> ret = new EnumMap<>(Promotion.class);
-        list.forEach(key -> {
-            Promotion key1 = key.getKey();
-            Integer value = key.getValue();
-            ret.put(key1, value);
-        });
-        return ret;
+    private List<Entry<Promotion, Integer>> generateAppliedPromotionResult(VisitDay visitDay, Order order) {
+        return promotionStrategies.stream()
+                .filter(strategy -> strategy.canApplicable(visitDay, order))
+                .map(strategy -> strategy.apply(visitDay, order))
+                .toList();
+    }
+
+    private EnumMap<Promotion, Integer> convertResultToEnumMap(List<Entry<Promotion, Integer>> list) {
+        return list.stream()
+                .collect(Collectors.toMap(
+                        Entry::getKey,
+                        Entry::getValue,
+                        (previous, next) -> next, // In case of duplicate keys, choose the latter value
+                        () -> new EnumMap<>(Promotion.class)));
     }
 }

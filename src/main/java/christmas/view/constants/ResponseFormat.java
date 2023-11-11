@@ -2,7 +2,8 @@ package christmas.view.constants;
 
 public enum ResponseFormat {
     ORDER_RESULT("%s %d개"),
-    TOTAL_ORIGIN_PRICE_RESULT("%,d원");
+    TOTAL_ORIGIN_PRICE_RESULT("%,d원"),
+    PROMOTION_PREVIEW("%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
 
 
     private final String format;

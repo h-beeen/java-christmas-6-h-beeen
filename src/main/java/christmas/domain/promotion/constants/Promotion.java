@@ -1,6 +1,6 @@
 package christmas.domain.promotion.constants;
 
-import christmas.domain.order.VisitingDate;
+import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.PromotionStrategy;
 import christmas.domain.promotion.discount.ChristmasDiscountStrategy;
 
@@ -28,8 +28,8 @@ public enum Promotion {
         this.promotionType = promotionType;
     }
 
-    public boolean isApplicablePromotion(VisitingDate visitingDate) {
-        return promotionPeriod.isInPromotionPeriod(visitingDate);
+    public boolean isApplicablePromotion(VisitDay visitDay) {
+        return promotionPeriod.isInPromotionPeriod(visitDay);
     }
 
     public PromotionStrategy getDiscountStrategy() {
