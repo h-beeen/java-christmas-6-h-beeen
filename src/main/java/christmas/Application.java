@@ -6,6 +6,9 @@ import christmas.controller.OrderController;
 import christmas.controller.PromotionController;
 import christmas.domain.order.Order;
 import christmas.domain.order.VisitingDate;
+import christmas.domain.promotion.constants.Promotion;
+
+import java.util.EnumMap;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,8 +18,8 @@ public class Application {
         OrderController.responseOrderResult(order);
         OrderController.responseTotalOriginPriceResult(order);
 
-        PromotionController.applyPromotions(visitingDate, order);
-
+        EnumMap<Promotion, Integer> promotionIntegerEnumMap = PromotionController.applyPromotions(visitingDate, order);
+        System.out.println("promotionIntegerEnumMap = " + promotionIntegerEnumMap.get(Promotion.CHRISTMAS_D_DAY_DISCOUNT));
         Console.close();
     }
 }

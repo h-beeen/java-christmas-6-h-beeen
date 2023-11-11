@@ -12,7 +12,7 @@ public class VisitingDate {
 
     //== Constructor ==//
     private VisitingDate(final int visitingDate) {
-        this.visitingDate = ExceptionHandler.tryOnSpecificException(() -> convertLocalDate(visitingDate));
+        this.visitingDate = ExceptionHandler.tryOnFormatException(() -> convertLocalDate(visitingDate));
     }
 
     //== Static Factory Method ==//
@@ -25,10 +25,14 @@ public class VisitingDate {
         return LocalDate.of(PROMOTION_YEAR.getValue(), PROMOTION_MONTH.getValue(), visitingDate);
     }
 
-    public boolean isInEventPeriod(
+    public boolean isInPromotionPeriod(
             LocalDate startDate,
             LocalDate endDate
     ) {
         return !visitingDate.isBefore(startDate) && !visitingDate.isAfter(endDate);
+    }
+
+    public Integer multiplyDate(final int valueToMultiply) {
+        return visitingDate.getDayOfMonth() * valueToMultiply;
     }
 }

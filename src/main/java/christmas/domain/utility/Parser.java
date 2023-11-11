@@ -24,7 +24,7 @@ public class Parser {
 
     //== Business Logic ==//
     public static int parseDateInput(String dateInput) {
-        return ExceptionHandler.tryOnSpecificException(() -> Integer.parseInt(dateInput));
+        return ExceptionHandler.tryOnFormatException(() -> Integer.parseInt(dateInput));
     }
 
     public static EnumMap<Menu, Integer> parseMenuOrdersInputByDelimiter(String orderInput) {
@@ -61,7 +61,7 @@ public class Parser {
     }
 
     private static int extractQuantityToValue(String[] parts) {
-        return ExceptionHandler.tryOnSpecificException(() -> Integer.parseInt(parts[1]));
+        return ExceptionHandler.tryOnFormatException(() -> Integer.parseInt(parts[1]));
     }
 
     private static EnumMap<Menu, Integer> createEnumMap() {

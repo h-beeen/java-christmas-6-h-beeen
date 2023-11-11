@@ -33,6 +33,8 @@
         - 추상화(applyPromotion) - applyDiscount(), canApplicableDiscount()
         - 추상화(applyPromotion) - presentGift(), canPresentableGift
 
+- 총 주문 10000원 이하일때??? 예외처리 어떻게 할까 고민해보기
+
 - DailyDiscount (12/1 ~ 12/25)
 - WeekdayDiscount 평일 할인 (일,월,화,수,목) 디저트 메뉴당 2,023원 할인
 - WeekendDiscount 주말 할인 (금, 토) 메인 메뉴 1개당 2,023원 할인

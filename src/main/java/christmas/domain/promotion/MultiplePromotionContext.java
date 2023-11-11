@@ -2,29 +2,26 @@ package christmas.domain.promotion;
 
 import christmas.domain.order.Order;
 import christmas.domain.order.VisitingDate;
-import christmas.domain.promotion.constants.PromotionTable;
+import christmas.domain.promotion.constants.Promotion;
+import christmas.domain.promotion.discount.ChristmasDiscountStrategy;
 
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Map.Entry;
 
 public class MultiplePromotionContext {
-    private static final MultiplePromotionContext multiplePromotionContext = new MultiplePromotionContext();
     private final List<PromotionStrategy> promotionStrategies;
 
-    private MultiplePromotionContext() {
-        this.promotionStrategies = Stream.of(PromotionTable.values())
-                .map(PromotionTable::getDiscountStrategy)
-                .toList();
+    public MultiplePromotionContext() {
+        this.promotionStrategies = List.of(ChristmasDiscountStrategy.getInstance());
     }
 
-    public static MultiplePromotionContext getInstance() {
-        return multiplePromotionContext;
-    }
-
-    public int applyDiscount(
+    public List<Entry<Promotion, Integer>> applyPromotion(
             VisitingDate visitingDate,
             Order order
     ) {
-        
+        return promotionStrategies.stream()
+                .filter(strategy -> strategy.canApplicable(visitingDate, order))
+                .map(strategy -> strategy.apply(visitingDate, order))
+                .toList();
     }
 }

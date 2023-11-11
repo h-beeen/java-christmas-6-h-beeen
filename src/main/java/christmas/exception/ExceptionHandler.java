@@ -21,7 +21,7 @@ public class ExceptionHandler {
         }
     }
 
-    public static <T> T tryOnSpecificException(Supplier<T> supplier) {
+    public static <T> T tryOnFormatException(Supplier<T> supplier) {
         try {
             return supplier.get();
         } catch (DateTimeException | NumberFormatException exception) {
