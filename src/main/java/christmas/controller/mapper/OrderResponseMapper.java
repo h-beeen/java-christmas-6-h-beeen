@@ -1,24 +1,24 @@
 package christmas.controller.mapper;
 
-import christmas.domain.menu.MenuOrders;
+import christmas.domain.menu.Order;
 import christmas.domain.menu.constants.Menu;
-import christmas.dto.MenuOrdersResponse;
+import christmas.dto.OrderResponse;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public final class OrderMenuResponseMapper implements Mapper<MenuOrders, MenuOrdersResponse> {
-    public static final OrderMenuResponseMapper orderMenuResponseMapper = new OrderMenuResponseMapper();
+public final class OrderResponseMapper implements ResponseMapper<Order, OrderResponse> {
+    public static final OrderResponseMapper orderMenuResponseMapper = new OrderResponseMapper();
 
-    private OrderMenuResponseMapper() {
+    private OrderResponseMapper() {
     }
 
-    public static OrderMenuResponseMapper getInstance() {
+    public static OrderResponseMapper getInstance() {
         return orderMenuResponseMapper;
     }
 
     @Override
-    public MenuOrdersResponse toResponse(MenuOrders menuOrders) {
+    public OrderResponse toResponse(Order menuOrders) {
         Map<String, Integer> menuOrdersResponse = menuOrders
                 .getMenuOrders()
                 .entrySet()
@@ -27,7 +27,7 @@ public final class OrderMenuResponseMapper implements Mapper<MenuOrders, MenuOrd
                         this::getName,
                         Map.Entry::getValue));
 
-        return new MenuOrdersResponse(menuOrdersResponse);
+        return new OrderResponse(menuOrdersResponse);
     }
 
     private String getName(Map.Entry<Menu, Integer> entry) {

@@ -4,8 +4,8 @@ import christmas.exception.ExceptionHandler;
 
 import java.time.LocalDate;
 
-import static christmas.domain.promotion.constants.PromotionPeriodConstraint.PROMOTION_MONTH;
-import static christmas.domain.promotion.constants.PromotionPeriodConstraint.PROMOTION_YEAR;
+import static christmas.domain.constants.PlannerConstraint.PROMOTION_MONTH;
+import static christmas.domain.constants.PlannerConstraint.PROMOTION_YEAR;
 
 public class VisitingDate {
     private final LocalDate visitingDate;

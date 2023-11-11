@@ -11,12 +11,12 @@ import static christmas.domain.menu.constants.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.EXCEED_ORDER_QUANTITY_LIMIT;
 import static christmas.exception.ErrorCode.ONLY_ORDER_BEVERAGES;
 
-public class MenuOrders {
+public class Order {
     private static final int ORDER_QUANTITY_LIMIT = 20;
     private final EnumMap<Menu, Integer> menuOrders;
 
     //== Constructor ==//
-    private MenuOrders(EnumMap<Menu, Integer> menuOrders) {
+    private Order(EnumMap<Menu, Integer> menuOrders) {
         ONLY_ORDER_BEVERAGES.validate(() -> isAllBeverages(menuOrders));
         EXCEED_ORDER_QUANTITY_LIMIT.validate(() -> isExceedMaximumQuantity(menuOrders));
 
@@ -24,8 +24,8 @@ public class MenuOrders {
     }
 
     //== Static Factory Method ==//
-    public static MenuOrders create(EnumMap<Menu, Integer> menuOrders) {
-        return new MenuOrders(menuOrders);
+    public static Order create(EnumMap<Menu, Integer> menuOrders) {
+        return new Order(menuOrders);
     }
 
     //== Utility Method ==//
@@ -60,7 +60,7 @@ public class MenuOrders {
         return entry -> entry.getKey().isSameCategory(BEVERAGE);
     }
 
-    //== Getter (Only permit to use Dto/Mapper) ==//
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
     public EnumMap<Menu, Integer> getMenuOrders() {
         return menuOrders;
     }

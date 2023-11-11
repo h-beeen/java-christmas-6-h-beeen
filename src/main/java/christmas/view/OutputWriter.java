@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.dto.MenuOrdersResponse;
+import christmas.dto.OrderResponse;
 import christmas.view.constants.ResponseMessage;
 
 import static christmas.view.constants.ResponseFormat.ORDER_MENUS_RESULT;
@@ -22,7 +22,7 @@ public class OutputWriter {
         System.out.println(responseMessage.getMessage());
     }
 
-    public static void printMenuOrdersResponse(MenuOrdersResponse menuOrdersResponse) {
+    public static void printMenuOrdersResponse(OrderResponse menuOrdersResponse) {
         menuOrdersResponse
                 .menuOrders()
                 .forEach((menuName, orderQuantity) ->

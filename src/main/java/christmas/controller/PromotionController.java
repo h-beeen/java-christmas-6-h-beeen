@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.VisitingDate;
-import christmas.domain.menu.MenuOrders;
+import christmas.domain.menu.Order;
 
 public class PromotionController {
     private PromotionController() {
@@ -9,7 +9,7 @@ public class PromotionController {
 
     public static void applyPromotions(
             VisitingDate visitingDate,
-            MenuOrders menuOrders
+            Order menuOrders
     ) {
         //todo Apply Promotion Factory
     }

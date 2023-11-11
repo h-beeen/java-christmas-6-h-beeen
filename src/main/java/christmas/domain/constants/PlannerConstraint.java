@@ -1,12 +1,12 @@
-package christmas.domain.promotion.constants;
+package christmas.domain.constants;
 
-public enum PromotionPeriodConstraint {
+public enum PlannerConstraint {
     PROMOTION_YEAR(2023),
     PROMOTION_MONTH(12);
 
     private final int value;
 
-    PromotionPeriodConstraint(int value) {
+    PlannerConstraint(int value) {
         this.value = value;
     }
 

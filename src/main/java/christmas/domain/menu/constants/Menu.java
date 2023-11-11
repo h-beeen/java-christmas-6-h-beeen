@@ -60,7 +60,7 @@ public enum Menu {
         return Objects.deepEquals(menuCategory, category);
     }
 
-    //== Getter (Only permit to use Dto/Mapper) ==//
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
     public String getName() {
         return name;
     }
