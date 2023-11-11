@@ -1,11 +1,11 @@
 package christmas.controller;
 
+import christmas.controller.dto.OrderResponse;
 import christmas.controller.mapper.OrderResponseMapper;
-import christmas.domain.menu.Order;
-import christmas.domain.menu.constants.Menu;
-import christmas.dto.OrderResponse;
+import christmas.domain.order.Order;
+import christmas.domain.order.constants.Menu;
+import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
-import christmas.utility.Parser;
 import christmas.view.InputReader;
 import christmas.view.OutputWriter;
 
@@ -25,23 +25,23 @@ public class OrderController {
     }
 
     private static Order createMenuOrdersFromInput() {
-        String menuOrdersInput = InputReader.readInput();
-        EnumMap<Menu, Integer> parsedMenuOrders = Parser.parseMenuOrdersInputByDelimiter(menuOrdersInput);
-        return Order.create(parsedMenuOrders);
+        String orderInput = InputReader.readInput();
+        EnumMap<Menu, Integer> parsedOrder = Parser.parseMenuOrdersInputByDelimiter(orderInput);
+        return Order.create(parsedOrder);
     }
 
-    public static void responseMenuOrderResult(Order menuOrders) {
-        OrderResponse menuOrdersResponse = orderMenuResponseMapper.toResponse(menuOrders);
+    public static void responseOrderResult(Order order) {
+        OrderResponse orderResponse = orderMenuResponseMapper.toResponse(order);
 
         OutputWriter.printNewLine();
         OutputWriter.printResponseMessage(RESPONSE_MENU_ORDER_RESULT);
-        OutputWriter.printMenuOrdersResponse(menuOrdersResponse);
+        OutputWriter.printMenuOrdersResponse(orderResponse);
 
 
     }
 
-    public static void responseTotalOriginPriceResult(Order menuOrders) {
-        int totalOriginPrice = menuOrders.calculateTotalOriginPrice();
+    public static void responseTotalOriginPriceResult(Order order) {
+        int totalOriginPrice = order.calculateTotalOriginPrice();
 
         OutputWriter.printNewLine();
         OutputWriter.printResponseMessage(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT);

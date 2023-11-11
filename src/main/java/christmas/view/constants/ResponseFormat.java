@@ -1,7 +1,7 @@
 package christmas.view.constants;
 
 public enum ResponseFormat {
-    ORDER_MENUS_RESULT("%s %d개"),
+    ORDER_RESULT("%s %d개"),
     TOTAL_ORIGIN_PRICE_RESULT("%,d원");
 
 

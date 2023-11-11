@@ -1,11 +1,11 @@
-package christmas.domain;
+package christmas.domain.order;
 
 import christmas.exception.ExceptionHandler;
 
 import java.time.LocalDate;
 
-import static christmas.domain.constants.PlannerConstraint.PROMOTION_MONTH;
-import static christmas.domain.constants.PlannerConstraint.PROMOTION_YEAR;
+import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_MONTH;
+import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_YEAR;
 
 public class VisitingDate {
     private final LocalDate visitingDate;

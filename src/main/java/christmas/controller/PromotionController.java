@@ -1,7 +1,8 @@
 package christmas.controller;
 
-import christmas.domain.VisitingDate;
-import christmas.domain.menu.Order;
+import christmas.domain.order.Order;
+import christmas.domain.order.VisitingDate;
+import christmas.domain.promotion.discount.MultipleDiscountContext;
 
 public class PromotionController {
     private PromotionController() {
@@ -9,8 +10,8 @@ public class PromotionController {
 
     public static void applyPromotions(
             VisitingDate visitingDate,
-            Order menuOrders
+            Order order
     ) {
-        //todo Apply Promotion Factory
+        MultipleDiscountContext.applyDiscount(visitingDate, order);
     }
 }

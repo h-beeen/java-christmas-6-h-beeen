@@ -1,6 +1,6 @@
 package christmas.view.constants;
 
-import static christmas.domain.constants.PlannerConstraint.PROMOTION_MONTH;
+import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_MONTH;
 
 public enum ResponseMessage {
     //== REQUEST MESSAGE ==//

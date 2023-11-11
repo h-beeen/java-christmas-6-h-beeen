@@ -1,4 +1,4 @@
-package christmas.domain.constants;
+package christmas.domain.order.constants;
 
 public enum PlannerConstraint {
     PROMOTION_YEAR(2023),

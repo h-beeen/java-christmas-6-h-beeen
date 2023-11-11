@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 import christmas.controller.DateController;
 import christmas.controller.OrderController;
 import christmas.controller.PromotionController;
-import christmas.domain.VisitingDate;
-import christmas.domain.menu.Order;
+import christmas.domain.order.Order;
+import christmas.domain.order.VisitingDate;
 
 public class Application {
     public static void main(String[] args) {
         VisitingDate visitingDate = DateController.requestVisitingDate();
-        Order menuOrders = OrderController.requestOrder();
+        Order order = OrderController.requestOrder();
 
-        OrderController.responseMenuOrderResult(menuOrders);
-        OrderController.responseTotalOriginPriceResult(menuOrders);
+        OrderController.responseOrderResult(order);
+        OrderController.responseTotalOriginPriceResult(order);
 
-        PromotionController.applyPromotions(visitingDate, menuOrders);
+        PromotionController.applyPromotions(visitingDate, order);
 
         Console.close();
     }

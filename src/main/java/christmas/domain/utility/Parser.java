@@ -1,6 +1,6 @@
-package christmas.utility;
+package christmas.domain.utility;
 
-import christmas.domain.menu.constants.Menu;
+import christmas.domain.order.constants.Menu;
 import christmas.exception.BusinessException;
 import christmas.exception.ExceptionHandler;
 
@@ -27,17 +27,17 @@ public class Parser {
         return ExceptionHandler.tryOnSpecificException(() -> Integer.parseInt(dateInput));
     }
 
-    public static EnumMap<Menu, Integer> parseMenuOrdersInputByDelimiter(String menuOrderInput) {
-        INVALID_ORDER.validate(() -> isEndsWithDelimiter(menuOrderInput));
-        INVALID_ORDER.validate(() -> hasWhitespace(menuOrderInput));
+    public static EnumMap<Menu, Integer> parseMenuOrdersInputByDelimiter(String orderInput) {
+        INVALID_ORDER.validate(() -> isEndsWithDelimiter(orderInput));
+        INVALID_ORDER.validate(() -> hasWhitespace(orderInput));
 
-        List<String> parsedByDelimiterMenuOrders = Arrays.asList(splitByDelimiter(menuOrderInput));
+        List<String> parsedByDelimiterMenuOrders = Arrays.asList(splitByDelimiter(orderInput));
 
         return parseMenuOrdersInputByHyphen(parsedByDelimiterMenuOrders);
     }
 
-    private static String[] splitByDelimiter(String menuOrdersInput) {
-        return menuOrdersInput.split(DELIMITER);
+    private static String[] splitByDelimiter(String orderInput) {
+        return orderInput.split(DELIMITER);
     }
 
     private static EnumMap<Menu, Integer> parseMenuOrdersInputByHyphen(List<String> parsedByDelimiterMenuOrders) {

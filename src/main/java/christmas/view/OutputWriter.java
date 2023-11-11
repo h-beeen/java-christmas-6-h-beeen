@@ -1,9 +1,9 @@
 package christmas.view;
 
-import christmas.dto.OrderResponse;
+import christmas.controller.dto.OrderResponse;
 import christmas.view.constants.ResponseMessage;
 
-import static christmas.view.constants.ResponseFormat.ORDER_MENUS_RESULT;
+import static christmas.view.constants.ResponseFormat.ORDER_RESULT;
 import static christmas.view.constants.ResponseFormat.TOTAL_ORIGIN_PRICE_RESULT;
 
 public class OutputWriter {
@@ -22,11 +22,11 @@ public class OutputWriter {
         System.out.println(responseMessage.getMessage());
     }
 
-    public static void printMenuOrdersResponse(OrderResponse menuOrdersResponse) {
-        menuOrdersResponse
-                .menuOrders()
+    public static void printMenuOrdersResponse(OrderResponse orderResponse) {
+        orderResponse
+                .orderMenus()
                 .forEach((menuName, orderQuantity) ->
-                        println(ORDER_MENUS_RESULT.generateFormat(menuName, orderQuantity)));
+                        println(ORDER_RESULT.generateFormat(menuName, orderQuantity)));
     }
 
     public static void printTotalOriginPrice(final int originPrice) {
