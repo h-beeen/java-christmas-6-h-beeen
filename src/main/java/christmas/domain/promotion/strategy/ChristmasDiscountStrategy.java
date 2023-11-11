@@ -1,8 +1,7 @@
-package christmas.domain.promotion.discount;
+package christmas.domain.promotion.strategy;
 
 import christmas.domain.order.Order;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.PromotionStrategy;
 import christmas.domain.promotion.constants.Promotion;
 
 import java.util.AbstractMap.SimpleEntry;
@@ -36,6 +35,4 @@ public class ChristmasDiscountStrategy implements PromotionStrategy {
     ) {
         return CHRISTMAS_D_DAY_DISCOUNT.isApplicablePromotion(visitDay);
     }
-
-
 }

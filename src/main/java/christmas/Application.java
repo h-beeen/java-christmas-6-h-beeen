@@ -2,13 +2,10 @@ package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.controller.OrderController;
-import christmas.controller.PromotionController;
 import christmas.controller.VisitDayController;
 import christmas.domain.order.Order;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.constants.Promotion;
-
-import java.util.EnumMap;
+import christmas.domain.promotion.AppliedPromotion;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,8 +17,8 @@ public class Application {
         OrderController.responseOrderResult(order);
         OrderController.responseTotalOriginPriceResult(order);
 
-        EnumMap<Promotion, Integer> appliedPromotions = PromotionController.applyPromotions(visitDay, order);
-        
+        AppliedPromotion appliedPromotion = AppliedPromotion.create(visitDay, order);
+
         Console.close();
     }
 }

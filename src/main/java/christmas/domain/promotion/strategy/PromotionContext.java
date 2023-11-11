@@ -1,4 +1,4 @@
-package christmas.domain.promotion;
+package christmas.domain.promotion.strategy;
 
 import christmas.domain.order.Order;
 import christmas.domain.order.VisitDay;
@@ -10,17 +10,17 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public class MultiplePromotionContext {
-    private static final MultiplePromotionContext multiplePromotionContext = new MultiplePromotionContext();
+public class PromotionContext {
+    private static final PromotionContext multiplePromotionContext = new PromotionContext();
     private final List<PromotionStrategy> promotionStrategies;
 
-    private MultiplePromotionContext() {
+    private PromotionContext() {
         this.promotionStrategies = Arrays.stream(Promotion.values())
                 .map(Promotion::getDiscountStrategy)
                 .toList();
     }
 
-    public static MultiplePromotionContext getInstance() {
+    public static PromotionContext getInstance() {
         return multiplePromotionContext;
     }
 

@@ -1,8 +1,8 @@
 package christmas.domain.promotion.constants;
 
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.PromotionStrategy;
-import christmas.domain.promotion.discount.ChristmasDiscountStrategy;
+import christmas.domain.promotion.strategy.ChristmasDiscountStrategy;
+import christmas.domain.promotion.strategy.PromotionStrategy;
 
 import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
 import static christmas.domain.promotion.constants.PromotionType.DISCOUNT;
