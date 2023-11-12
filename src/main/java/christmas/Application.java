@@ -13,6 +13,7 @@ import christmas.domain.promotion.promotion.discount.AppliedDiscountPromotions;
 import christmas.domain.promotion.promotion.gift.AppliedGiftPromotions;
 import christmas.view.OutputWriter;
 
+import static christmas.view.constants.ResponseFormat.PRICE_RESULT;
 import static christmas.view.constants.ResponseMessage.*;
 
 public class Application {
@@ -43,15 +44,12 @@ public class Application {
 
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_TOTAL_BENEFIT_RESPONSE);
-        OutputWriter.println(discountResponse.discountTotalPrice() + "원");
+        OutputWriter.printTotalBenefitResponse(discountResponse, giftResponse);
 
         OutputWriter.printNewLine();
-        OutputWriter.println("<할인 후 예상 결제 금액>");
-        OutputWriter.println(orders.calculateTotalOriginPrice() - discountResponse.discountTotalPrice() + "원");
+        OutputWriter.printMessageResponse(RESPONSE_EXPECT_TOTAL_BENEFIT);
+        OutputWriter.println(PRICE_RESULT.generateFormat(orders.calculateTotalOriginPrice() - discountResponse.discountTotalPrice()));
 
-        // 총혜택내역, 할인 후 예상 결제금액 포맷팅
-        // 총혜택내역에 샴페인 가격 더해져야함
-        // 혜택내역 -> 샴페인 갯수 -> 가격
         Console.close();
     }
 }

@@ -31,11 +31,11 @@ public class OutputWriter {
         orderResponse
                 .orderMenus()
                 .forEach((menuName, orderQuantity) ->
-                        println(ORDERS_RESULT.generateFormat(menuName, orderQuantity)));
+                        println(PRODUCT_QUANTITY_RESULT.generateFormat(menuName, orderQuantity)));
     }
 
     public static void printTotalOriginPriceResponse(final int originPrice) {
-        println(TOTAL_ORIGIN_PRICE_RESULT.generateFormat(originPrice));
+        println(PRICE_RESULT.generateFormat(originPrice));
     }
 
     public static void printVisitDayResponse(VisitDayResponse visitDayResponse) {
@@ -46,27 +46,35 @@ public class OutputWriter {
             DiscountResponse discountResponse,
             GiftResponse giftResponse
     ) {
-        if (discountResponse.discountResult().size() == 0 && giftResponse.giftQuantityResult().size() == 0) {
+        if (discountResponse.discountResult().size() == 0 && giftResponse.giftTotalPrice() == 0) {
             OutputWriter.println("없음");
             return;
         }
         discountResponse.discountResult()
                 .forEach((key, value) ->
                         OutputWriter.println(BENEFIT_RESULT.generateFormat(key, value)));
-        printGiftResponse(giftResponse);
-    }
-
-    public static void printGiftResponse(GiftResponse giftResponse) {
-        giftResponse.giftQuantityResult()
-                .forEach((key, value) ->
-                        OutputWriter.println(ORDERS_RESULT.generateFormat(key, value)));
+        if (giftResponse.giftTotalPrice() != 0) {
+            OutputWriter.println(GIFT_RESULT.generateFormat(giftResponse.giftTotalPrice()));
+        }
     }
 
     public static void printGiftQuantityResponse(GiftResponse giftResponse) {
         Map<String, Integer> giftQuantityResult = giftResponse.giftQuantityResult();
+
         if (giftQuantityResult.size() == 0) {
             OutputWriter.printMessageResponse(RESPONSE_NONEXISTENCE_RESPONSE);
         }
-        OutputWriter.printGiftResponse(giftResponse);
+        giftResponse.giftQuantityResult()
+                .forEach((giftName, quantity) ->
+                        OutputWriter.println(PRODUCT_QUANTITY_RESULT.generateFormat(giftName, quantity)));
+    }
+
+    public static void printTotalBenefitResponse(DiscountResponse discountResponse, GiftResponse giftResponse) {
+        int totalBenefitPrice = discountResponse.discountTotalPrice() + giftResponse.giftTotalPrice();
+        if (totalBenefitPrice == 0) {
+            OutputWriter.printMessageResponse(RESPONSE_NONEXISTENCE_RESPONSE);
+            return;
+        }
+        OutputWriter.println(MINUS_PRICE_RESULT.generateFormat(totalBenefitPrice));
     }
 }
