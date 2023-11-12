@@ -1,4 +1,4 @@
-package christmas.domain.promotion.promotion;
+package christmas.domain.promotion.promotion.discount;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
@@ -7,11 +7,9 @@ import java.util.function.BiFunction;
 
 import static christmas.domain.order.constants.MenuCategory.DESSERT;
 import static christmas.domain.order.constants.MenuCategory.MAIN_DISH;
-import static christmas.domain.promotion.promotion.PromotionCondition.*;
-import static christmas.domain.promotion.promotion.constants.PromotionType.DISCOUNT;
-import static christmas.domain.promotion.promotion.constants.PromotionType.GIFT;
+import static christmas.domain.promotion.promotion.discount.DiscountPromotionCondition.*;
 
-public enum Promotion {
+public enum DiscountPromotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             "크리스마스 디데이 할인",
             CHRISTMAS_D_DAY_PROMOTION_CONDITION,
@@ -31,20 +29,15 @@ public enum Promotion {
             "특별 할인",
             SPECIAL_PROMOTION_CONDITION,
             (visitDay, orders) -> 1000
-    ),
-    CHAMPAGNE_GIFT(
-            "샴페인",
-            CHAMPAGNE_GIFT_CONDITION,
-            (visitDay, orders) -> 1
     );
 
     private final String promotionName;
-    private final PromotionCondition promotionCondition;
+    private final DiscountPromotionCondition promotionCondition;
     private final BiFunction<VisitDay, Orders, Integer> promotionFunction;
 
-    Promotion(
+    DiscountPromotion(
             String promotionName,
-            PromotionCondition promotionCondition,
+            DiscountPromotionCondition promotionCondition,
             BiFunction<VisitDay, Orders, Integer> promotionFunction
     ) {
         this.promotionName = promotionName;
@@ -69,14 +62,6 @@ public enum Promotion {
             Orders orders
     ) {
         return promotionCondition.isApplicable(visitDay, orders);
-    }
-
-    public boolean isDiscountType() {
-        return promotionCondition.isSameType(DISCOUNT);
-    }
-
-    public boolean isGiftType() {
-        return promotionCondition.isSameType(GIFT);
     }
 
     public String getPromotionName() {

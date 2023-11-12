@@ -1,4 +1,4 @@
-package christmas.domain.promotion.promotion;
+package christmas.domain.promotion.promotion.discount;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
@@ -8,26 +8,29 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PromotionContext {
-    private final List<Promotion> applicablePromotions;
+public class DiscountContext {
+    private final List<DiscountPromotion> applicablePromotions;
 
-    private PromotionContext(VisitDay visitDay, Orders orders) {
-        this.applicablePromotions = Arrays.stream(Promotion.values())
+    private DiscountContext(
+            VisitDay visitDay,
+            Orders orders
+    ) {
+        this.applicablePromotions = Arrays.stream(DiscountPromotion.values())
                 .filter(promotion -> promotion.isPromotionPeriod(visitDay))
                 .filter(promotion -> promotion.isApplicable(visitDay, orders))
                 .toList();
     }
 
     //== Static Factory Method ==//
-    public static PromotionContext create(
+    public static DiscountContext create(
             VisitDay visitDay,
             Orders orders
     ) {
-        return new PromotionContext(visitDay, orders);
+        return new DiscountContext(visitDay, orders);
     }
 
     //== Utility Method ==//
-    public EnumMap<Promotion, Integer> applyPromotions(
+    public EnumMap<DiscountPromotion, Integer> applyPromotions(
             VisitDay visitDay,
             Orders orders
     ) {
@@ -36,6 +39,6 @@ public class PromotionContext {
                         promotion -> promotion,
                         promotion -> promotion.applyPromotion(visitDay, orders),
                         (previous, next) -> next,
-                        () -> new EnumMap<>(Promotion.class)));
+                        () -> new EnumMap<>(DiscountPromotion.class)));
     }
 }

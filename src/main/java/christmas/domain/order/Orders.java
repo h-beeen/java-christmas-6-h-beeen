@@ -13,7 +13,7 @@ import static christmas.exception.ErrorCode.ORDERS_ONLY_CONTAIN_BEVERAGES;
 
 public class Orders {
     private static final int ORDERS_MAXIMUM_RANGE = 20;
-    
+
     private final EnumMap<Menu, Integer> menus;
 
     //== Constructor ==//
@@ -63,6 +63,12 @@ public class Orders {
 
     private Predicate<Entry<Menu, Integer>> isBeverage() {
         return entry -> entry.getKey().isSameCategory(BEVERAGE);
+    }
+
+    public boolean hasMenuCategory(MenuCategory category) {
+        return menus.keySet()
+                .stream()
+                .anyMatch(key -> key.isSameCategory(category));
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//
