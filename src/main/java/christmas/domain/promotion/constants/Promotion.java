@@ -4,62 +4,46 @@ import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.strategy.*;
 
-import java.util.function.BiPredicate;
-
-import static christmas.domain.order.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
-import static christmas.domain.promotion.constants.PromotionPeriod.MONTHLY_DECEMBER;
-import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
+import static christmas.domain.promotion.constants.PromotionCondition.*;
 
 public enum Promotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             ChristmasDiscountStrategy.create(),
-            UNTIL_CHRISTMAS,
-            (visitDay, orders) -> true
+            CHRISTMAS_D_DAY_DISCOUNT_CONDITION
     ),
     WEEKDAY_DISCOUNT(
             WeekdayDiscountStrategy.create(),
-            MONTHLY_DECEMBER,
-            (visitDay, orders) -> visitDay.isWeekday()
+            WEEKDAY_DISCOUNT_CONDITION
     ),
     WEEKEND_DISCOUNT(
             WeekendDiscountStrategy.create(),
-            MONTHLY_DECEMBER,
-            (visitDay, orders) -> visitDay.isWeekend()
+            WEEKEND_DISCOUNT_CONDITION
     ),
     SPECIAL_DISCOUNT(
             SpecialDiscountStrategy.create(),
-            MONTHLY_DECEMBER,
-            (visitDay, orders) -> visitDay.isSpecialDay()
+            SPECIAL_DISCOUNT_CONDITION
     );
 
     private final PromotionStrategy promotionStrategy;
-    private final PromotionPeriod promotionPeriod;
-    private final BiPredicate<VisitDay, Orders> isApplicable;
+    private final PromotionCondition promotionCondition;
 
     Promotion(
             PromotionStrategy promotionStrategy,
-            PromotionPeriod promotionPeriod,
-            BiPredicate<VisitDay, Orders> isApplicable
+            PromotionCondition promotionCondition
     ) {
         this.promotionStrategy = promotionStrategy;
-        this.promotionPeriod = promotionPeriod;
-        this.isApplicable = isApplicable;
-    }
-
-    private boolean hasApplicableTotalOriginPrice(Orders orders) {
-        return orders.calculateTotalOriginPrice() > MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE.getValue();
+        this.promotionCondition = promotionCondition;
     }
 
     public boolean isPromotionPeriod(VisitDay visitDay) {
-        return promotionPeriod.isPromotionPeriod(visitDay);
+        return promotionCondition.isPromotionPeriod(visitDay);
     }
 
     public boolean isApplicable(
             VisitDay visitDay,
             Orders orders
     ) {
-        return hasApplicableTotalOriginPrice(orders)
-                && isApplicable.test(visitDay, orders);
+        return promotionCondition.isApplicable(visitDay, orders);
     }
 
     public PromotionStrategy getPromotionStrategy() {
