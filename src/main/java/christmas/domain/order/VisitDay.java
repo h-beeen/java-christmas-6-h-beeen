@@ -12,6 +12,7 @@ import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_YEAR;
 public class VisitDay {
     private static final int THURSDAY_VALUE = 4;
     private static final int SUNDAY_VALUE = 7;
+
     private final LocalDate visitDay;
 
     //== Constructor ==//
@@ -52,9 +53,7 @@ public class VisitDay {
 
     public boolean isSpecialDay() {
         return Arrays.stream(SpecialPromotion.values())
-                .map(value -> value.isContainDay(visitDay))
-                .findFirst()
-                .ifPresent();
+                .anyMatch(value -> value.hasSpecialDay(visitDay));
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//

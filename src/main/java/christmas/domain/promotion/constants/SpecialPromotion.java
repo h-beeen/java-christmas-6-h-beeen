@@ -19,7 +19,7 @@ public enum SpecialPromotion {
         this.specialPromotionDates = specialPromotionDates;
     }
 
-    public boolean isContainDay(LocalDate visitDay) {
+    public boolean hasSpecialDay(LocalDate visitDay) {
         return specialPromotionDates.stream()
                 .anyMatch(specialDate -> specialDate.isEqual(visitDay));
     }

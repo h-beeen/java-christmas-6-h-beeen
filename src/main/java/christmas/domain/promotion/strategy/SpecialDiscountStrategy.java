@@ -7,10 +7,10 @@ import christmas.domain.promotion.constants.Promotion;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 
-import static christmas.domain.promotion.constants.Promotion.WEEKEND_DISCOUNT;
+import static christmas.domain.promotion.constants.Promotion.SPECIAL_DISCOUNT;
 
 public class SpecialDiscountStrategy implements PromotionStrategy {
-    private static final int DISCOUNT_PER_TOTAL_PRICE = 2_023;
+    private static final int DISCOUNT_PER_TOTAL_PRICE = 1_000;
 
     private SpecialDiscountStrategy() {
     }
@@ -24,6 +24,6 @@ public class SpecialDiscountStrategy implements PromotionStrategy {
             VisitDay visitDay,
             Orders orders
     ) {
-        return new SimpleEntry<>(WEEKEND_DISCOUNT, DISCOUNT_PER_TOTAL_PRICE);
+        return new SimpleEntry<>(SPECIAL_DISCOUNT, DISCOUNT_PER_TOTAL_PRICE);
     }
 }

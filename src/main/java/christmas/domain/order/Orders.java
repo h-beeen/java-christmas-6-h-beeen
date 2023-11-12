@@ -32,8 +32,7 @@ public class Orders {
     public int calculateTotalOriginPrice() {
         return menus.entrySet()
                 .stream()
-                .mapToInt(entry -> entry.getKey()
-                        .calculatePrice(entry.getValue()))
+                .mapToInt(entry -> entry.getKey().calculatePrice(entry.getValue()))
                 .sum();
     }
 
