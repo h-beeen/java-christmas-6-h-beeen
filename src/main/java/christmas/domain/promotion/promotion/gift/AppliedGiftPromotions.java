@@ -1,7 +1,7 @@
 package christmas.domain.promotion.promotion.gift;
 
-import christmas.domain.customer.Orders;
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.Orders;
+import christmas.domain.consumer.VisitDay;
 
 import java.util.EnumMap;
 
@@ -23,10 +23,15 @@ public class AppliedGiftPromotions {
         return new AppliedGiftPromotions(visitDay, orders);
     }
 
+
     public int getGiftTotalPriceResult() {
         return promotions.entrySet()
                 .stream()
                 .mapToInt(entry -> entry.getKey().getGiftPrice() * entry.getValue())
                 .sum();
+    }
+
+    public EnumMap<GiftPromotion, Integer> getPromotions() {
+        return promotions;
     }
 }

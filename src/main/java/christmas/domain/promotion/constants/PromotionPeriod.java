@@ -1,6 +1,6 @@
 package christmas.domain.promotion.constants;
 
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.VisitDay;
 
 import java.time.LocalDate;
 

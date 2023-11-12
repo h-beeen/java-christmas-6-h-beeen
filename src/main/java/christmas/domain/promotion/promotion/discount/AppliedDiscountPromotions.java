@@ -1,11 +1,9 @@
 package christmas.domain.promotion.promotion.discount;
 
-import christmas.domain.customer.Orders;
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.Orders;
+import christmas.domain.consumer.VisitDay;
 
 import java.util.EnumMap;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 public class AppliedDiscountPromotions {
     private final EnumMap<DiscountPromotion, Integer> promotions;
@@ -28,20 +26,7 @@ public class AppliedDiscountPromotions {
         return new AppliedDiscountPromotions(visitDay, order);
     }
 
-    public int calculateTotalDiscountBenefit() {
-        return promotions.values()
-                .stream()
-                .mapToInt(benefit -> benefit)
-                .sum();
-    }
-
-    public EnumMap<DiscountPromotion, Integer> getResult() {
-        return promotions.entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        Entry::getKey,
-                        Entry::getValue,
-                        (previous, next) -> next,
-                        () -> new EnumMap<>(DiscountPromotion.class)));
+    public EnumMap<DiscountPromotion, Integer> getPromotions() {
+        return promotions;
     }
 }

@@ -1,13 +1,13 @@
 package christmas.domain.promotion.promotion.discount;
 
-import christmas.domain.customer.Orders;
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.Orders;
+import christmas.domain.consumer.VisitDay;
 import christmas.domain.promotion.promotion.constants.PromotionCondition;
 
 import java.util.function.BiFunction;
 
-import static christmas.domain.customer.constants.MenuCategory.DESSERT;
-import static christmas.domain.customer.constants.MenuCategory.MAIN_DISH;
+import static christmas.domain.consumer.constants.MenuCategory.DESSERT;
+import static christmas.domain.consumer.constants.MenuCategory.MAIN_DISH;
 import static christmas.domain.promotion.promotion.constants.PromotionCondition.*;
 
 public enum DiscountPromotion {

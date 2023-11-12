@@ -1,11 +1,15 @@
 package christmas.view;
 
-import christmas.controller.dto.DiscountResultResponse;
+import christmas.controller.dto.DiscountResponse;
+import christmas.controller.dto.GiftResponse;
 import christmas.controller.dto.OrderResponse;
 import christmas.controller.dto.VisitDayResponse;
 import christmas.view.constants.ResponseMessage;
 
+import java.util.Map;
+
 import static christmas.view.constants.ResponseFormat.*;
+import static christmas.view.constants.ResponseMessage.RESPONSE_NONEXISTENCE_RESPONSE;
 
 public class OutputWriter {
     private OutputWriter() {
@@ -38,9 +42,31 @@ public class OutputWriter {
         println(PROMOTION_PREVIEW.generateFormat(visitDayResponse.month(), visitDayResponse.date()));
     }
 
-    public static void printBenefitResponse(DiscountResultResponse giftResponse) {
-        giftResponse.discountResult()
+    public static void printBenefitResponse(
+            DiscountResponse discountResponse,
+            GiftResponse giftResponse
+    ) {
+        if (discountResponse.discountResult().size() == 0 && giftResponse.giftQuantityResult().size() == 0) {
+            OutputWriter.println("없음");
+            return;
+        }
+        discountResponse.discountResult()
                 .forEach((key, value) ->
                         OutputWriter.println(BENEFIT_RESULT.generateFormat(key, value)));
+        printGiftResponse(giftResponse);
+    }
+
+    public static void printGiftResponse(GiftResponse giftResponse) {
+        giftResponse.giftQuantityResult()
+                .forEach((key, value) ->
+                        OutputWriter.println(ORDERS_RESULT.generateFormat(key, value)));
+    }
+
+    public static void printGiftQuantityResponse(GiftResponse giftResponse) {
+        Map<String, Integer> giftQuantityResult = giftResponse.giftQuantityResult();
+        if (giftQuantityResult.size() == 0) {
+            OutputWriter.printMessageResponse(RESPONSE_NONEXISTENCE_RESPONSE);
+        }
+        OutputWriter.printGiftResponse(giftResponse);
     }
 }

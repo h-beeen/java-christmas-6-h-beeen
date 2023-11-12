@@ -1,15 +1,15 @@
 package christmas.domain.promotion.promotion.constants;
 
-import christmas.domain.customer.Orders;
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.Orders;
+import christmas.domain.consumer.VisitDay;
 import christmas.domain.promotion.constants.PromotionPeriod;
 
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-import static christmas.domain.customer.constants.MenuCategory.DESSERT;
-import static christmas.domain.customer.constants.MenuCategory.MAIN_DISH;
-import static christmas.domain.customer.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
+import static christmas.domain.consumer.constants.MenuCategory.DESSERT;
+import static christmas.domain.consumer.constants.MenuCategory.MAIN_DISH;
+import static christmas.domain.consumer.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
 import static christmas.domain.promotion.constants.PromotionPeriod.MONTHLY_DECEMBER;
 import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
 

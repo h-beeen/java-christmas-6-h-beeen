@@ -1,7 +1,7 @@
 package christmas.controller.mapper;
 
 import christmas.controller.dto.OrderResponse;
-import christmas.domain.customer.Orders;
+import christmas.domain.consumer.Orders;
 
 import java.util.Map;
 import java.util.Map.Entry;

@@ -2,8 +2,8 @@ package christmas.controller;
 
 import christmas.controller.dto.OrderResponse;
 import christmas.controller.mapper.OrderResponseMapper;
-import christmas.domain.customer.Orders;
-import christmas.domain.customer.constants.Menu;
+import christmas.domain.consumer.Orders;
+import christmas.domain.consumer.constants.Menu;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
 import christmas.view.InputReader;

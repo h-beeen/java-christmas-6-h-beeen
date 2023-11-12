@@ -1,7 +1,7 @@
 package christmas.controller.mapper;
 
 import christmas.controller.dto.VisitDayResponse;
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.VisitDay;
 
 import java.time.LocalDate;
 

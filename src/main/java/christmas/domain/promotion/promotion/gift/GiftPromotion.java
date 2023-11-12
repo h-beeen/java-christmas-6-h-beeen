@@ -1,11 +1,11 @@
 package christmas.domain.promotion.promotion.gift;
 
-import christmas.domain.customer.Orders;
-import christmas.domain.customer.VisitDay;
-import christmas.domain.customer.constants.Menu;
+import christmas.domain.consumer.Orders;
+import christmas.domain.consumer.VisitDay;
+import christmas.domain.consumer.constants.Menu;
 import christmas.domain.promotion.promotion.constants.PromotionCondition;
 
-import static christmas.domain.customer.constants.Menu.CHAMPAGNE;
+import static christmas.domain.consumer.constants.Menu.CHAMPAGNE;
 import static christmas.domain.promotion.promotion.constants.PromotionCondition.CHAMPAGNE_GIFT_CONDITION;
 
 public enum GiftPromotion {
@@ -35,6 +35,10 @@ public enum GiftPromotion {
 
     public boolean isApplicable(VisitDay visitDay, Orders orders) {
         return promotionCondition.isApplicable(visitDay, orders);
+    }
+
+    public String getGiftName() {
+        return menu.getName();
     }
 
     public int getGiftPrice() {

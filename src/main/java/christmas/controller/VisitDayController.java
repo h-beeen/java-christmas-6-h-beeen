@@ -2,7 +2,7 @@ package christmas.controller;
 
 import christmas.controller.dto.VisitDayResponse;
 import christmas.controller.mapper.VisitDayMapper;
-import christmas.domain.customer.VisitDay;
+import christmas.domain.consumer.VisitDay;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
 import christmas.view.InputReader;
