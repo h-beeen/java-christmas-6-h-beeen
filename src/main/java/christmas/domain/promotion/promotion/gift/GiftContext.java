@@ -2,6 +2,7 @@ package christmas.domain.promotion.promotion.gift;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
+import christmas.domain.promotion.promotion.constants.Badge;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -13,19 +14,21 @@ public class GiftContext {
 
     private GiftContext(
             VisitDay visitDay,
-            Orders orders
+            Orders orders,
+            Badge badge
     ) {
         this.applicablePromotions = Arrays.stream(GiftPromotion.values())
                 .filter(promotion -> promotion.isPromotionPeriod(visitDay))
-                .filter(promotion -> promotion.isApplicable(visitDay, orders))
+                .filter(promotion -> promotion.isApplicable(visitDay, orders, badge))
                 .toList();
     }
 
     public static GiftContext create(
             VisitDay visitDay,
-            Orders orders
+            Orders orders,
+            Badge badge
     ) {
-        return new GiftContext(visitDay, orders);
+        return new GiftContext(visitDay, orders, badge);
     }
 
     public EnumMap<GiftPromotion, Integer> getResult() {

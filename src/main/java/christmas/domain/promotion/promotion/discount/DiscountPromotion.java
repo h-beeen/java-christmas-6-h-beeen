@@ -2,6 +2,7 @@ package christmas.domain.promotion.promotion.discount;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
+import christmas.domain.promotion.promotion.constants.Badge;
 import christmas.domain.promotion.promotion.constants.PromotionCondition;
 
 import java.util.function.BiFunction;
@@ -62,7 +63,11 @@ public enum DiscountPromotion {
         return promotionName;
     }
 
-    public boolean isApplicable(VisitDay visitDay, Orders orders) {
-        return promotionCondition.isApplicable(visitDay, orders);
+    public boolean isApplicable(
+            VisitDay visitDay,
+            Orders orders,
+            Badge badge
+    ) {
+        return promotionCondition.isApplicable(visitDay, orders, badge);
     }
 }

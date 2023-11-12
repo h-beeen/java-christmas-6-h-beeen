@@ -42,23 +42,26 @@ public enum PromotionCondition {
 
     private final PromotionPeriod promotionPeriod;
     private final BiPredicate<VisitDay, Orders> applicableFunction;
-    private final Predicate<Badge> requireBadge;
+    private final Predicate<Badge> badgeFunction;
 
     PromotionCondition(
             PromotionPeriod promotionPeriod,
             BiPredicate<VisitDay, Orders> applicableFunction,
-            Predicate<Badge> requireBadge
+            Predicate<Badge> badgeFunction
     ) {
         this.promotionPeriod = promotionPeriod;
         this.applicableFunction = applicableFunction;
-        this.requireBadge = requireBadge;
+        this.badgeFunction = badgeFunction;
     }
 
     public boolean isApplicable(
             VisitDay visitDay,
-            Orders orders
+            Orders orders,
+            Badge badge
     ) {
-        return hasApplicableTotalOriginPrice(orders) && applicableFunction.test(visitDay, orders);
+        return hasApplicableTotalOriginPrice(orders)
+                && applicableFunction.test(visitDay, orders)
+                && badgeFunction.test(badge);
     }
 
     public boolean isPromotionPeriod(VisitDay visitDay) {

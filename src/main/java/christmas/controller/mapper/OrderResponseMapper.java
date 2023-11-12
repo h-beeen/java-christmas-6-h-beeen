@@ -18,7 +18,7 @@ public final class OrderResponseMapper implements ResponseMapper<Orders, OrderRe
     }
 
     @Override
-    public OrderResponse toResponse(Orders order) {
+    public OrderResponse from(Orders order) {
         Map<String, Integer> orderResponse = order
                 .getMenus()
                 .entrySet()

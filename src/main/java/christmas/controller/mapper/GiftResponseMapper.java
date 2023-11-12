@@ -17,7 +17,7 @@ public final class GiftResponseMapper implements ResponseMapper<AppliedGiftPromo
     }
 
     @Override
-    public GiftResponse toResponse(AppliedGiftPromotions appliedGiftPromotions) {
+    public GiftResponse from(AppliedGiftPromotions appliedGiftPromotions) {
         Map<String, Integer> discountResult = appliedGiftPromotions.getPromotions()
                 .entrySet()
                 .stream()

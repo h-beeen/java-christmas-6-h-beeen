@@ -2,6 +2,7 @@ package christmas.domain.promotion.promotion.discount;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
+import christmas.domain.promotion.promotion.constants.Badge;
 
 import java.util.EnumMap;
 
@@ -11,19 +12,20 @@ public class AppliedDiscountPromotions {
     //== Constructor ==//
     private AppliedDiscountPromotions(
             VisitDay visitDay,
-            Orders orders
-
+            Orders orders,
+            Badge badge
     ) {
-        DiscountContext promotionContext = DiscountContext.create(visitDay, orders);
+        DiscountContext promotionContext = DiscountContext.create(visitDay, orders, badge);
         this.promotions = promotionContext.applyPromotions(visitDay, orders);
     }
 
     //== Static Factory Method ==//
     public static AppliedDiscountPromotions create(
             VisitDay visitDay,
-            Orders order
+            Orders order,
+            Badge badge
     ) {
-        return new AppliedDiscountPromotions(visitDay, order);
+        return new AppliedDiscountPromotions(visitDay, order, badge);
     }
 
     public EnumMap<DiscountPromotion, Integer> getPromotions() {

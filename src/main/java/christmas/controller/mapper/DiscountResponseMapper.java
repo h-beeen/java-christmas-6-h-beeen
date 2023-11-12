@@ -20,7 +20,7 @@ public final class DiscountResponseMapper implements ResponseMapper<AppliedDisco
     }
 
     @Override
-    public DiscountResponse toResponse(AppliedDiscountPromotions appliedPromotions) {
+    public DiscountResponse from(AppliedDiscountPromotions appliedPromotions) {
         EnumMap<DiscountPromotion, Integer> result =
                 appliedPromotions.getPromotions()
                         .entrySet()

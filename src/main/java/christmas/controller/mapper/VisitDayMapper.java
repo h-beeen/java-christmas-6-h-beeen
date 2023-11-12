@@ -16,7 +16,7 @@ public final class VisitDayMapper implements ResponseMapper<VisitDay, VisitDayRe
     }
 
     @Override
-    public VisitDayResponse toResponse(VisitDay date) {
+    public VisitDayResponse from(VisitDay date) {
         LocalDate visitDay = date.getVisitDay();
         return new VisitDayResponse(visitDay.getMonthValue(), visitDay.getDayOfMonth());
     }

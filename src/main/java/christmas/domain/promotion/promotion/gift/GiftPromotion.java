@@ -3,6 +3,7 @@ package christmas.domain.promotion.promotion.gift;
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
 import christmas.domain.consumer.constants.Menu;
+import christmas.domain.promotion.promotion.constants.Badge;
 import christmas.domain.promotion.promotion.constants.PromotionCondition;
 
 import static christmas.domain.consumer.constants.Menu.CHAMPAGNE;
@@ -33,8 +34,12 @@ public enum GiftPromotion {
         return promotionCondition.isPromotionPeriod(visitDay);
     }
 
-    public boolean isApplicable(VisitDay visitDay, Orders orders) {
-        return promotionCondition.isApplicable(visitDay, orders);
+    public boolean isApplicable(
+            VisitDay visitDay,
+            Orders orders,
+            Badge badge
+    ) {
+        return promotionCondition.isApplicable(visitDay, orders, badge);
     }
 
     public String getGiftName() {

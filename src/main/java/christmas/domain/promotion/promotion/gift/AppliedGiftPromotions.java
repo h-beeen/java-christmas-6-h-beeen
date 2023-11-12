@@ -2,6 +2,7 @@ package christmas.domain.promotion.promotion.gift;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
+import christmas.domain.promotion.promotion.constants.Badge;
 
 import java.util.EnumMap;
 
@@ -10,17 +11,19 @@ public class AppliedGiftPromotions {
 
     private AppliedGiftPromotions(
             VisitDay visitDay,
-            Orders orders
+            Orders orders,
+            Badge badge
     ) {
-        GiftContext giftContext = GiftContext.create(visitDay, orders);
+        GiftContext giftContext = GiftContext.create(visitDay, orders, badge);
         this.promotions = giftContext.getResult();
     }
 
     public static AppliedGiftPromotions create(
             VisitDay visitDay,
-            Orders orders
+            Orders orders,
+            Badge badge
     ) {
-        return new AppliedGiftPromotions(visitDay, orders);
+        return new AppliedGiftPromotions(visitDay, orders, badge);
     }
 
 

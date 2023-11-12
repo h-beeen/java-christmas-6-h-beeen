@@ -31,7 +31,7 @@ public class OrderController {
     }
 
     public static void responseOrdersResult(Orders orders) {
-        OrderResponse orderResponse = ORDER_RESPONSE_MAPPER.toResponse(orders);
+        OrderResponse orderResponse = ORDER_RESPONSE_MAPPER.from(orders);
 
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_MENU_ORDERS_RESULT);

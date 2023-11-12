@@ -21,7 +21,7 @@ public class VisitDayController {
     }
 
     public static void responseVisitDay(VisitDay visitDay) {
-        VisitDayResponse response = VISIT_DAY_MAPPER.toResponse(visitDay);
+        VisitDayResponse response = VISIT_DAY_MAPPER.from(visitDay);
         OutputWriter.printVisitDayResponse(response);
     }
 
