@@ -20,9 +20,9 @@ public enum ResponseMessage {
     RESPONSE_NONEXISTENCE_RESPONSE("없음"),
     RESPONSE_MENU_ORDERS_RESULT("<주문 메뉴>"),
     RESPONSE_TOTAL_ORIGIN_PRICE_RESULT("<할인 전 총주문 금액>"),
-    RESPONSE_GIFT_RESULT("<증정 내역>"),
+    RESPONSE_GIFT_RESULT("<증정 메뉴>"),
     RESPONSE_BENEFIT_RESPONSE("<혜택 내역>"),
-    RESPONSE_TOTAL_BENEFIT_RESULT("<총혜택 내역>"),
+    RESPONSE_TOTAL_BENEFIT_RESULT("<총혜택 금액>"),
     RESPONSE_EXPECT_PAYMENT_RESULT("<할인 후 예상 결제 금액>"),
     RESPONSE_BADGE_RESULT(
             String.format(
