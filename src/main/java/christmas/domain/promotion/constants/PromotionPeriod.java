@@ -1,4 +1,4 @@
-package christmas.domain.promotion.strategy.constants;
+package christmas.domain.promotion.constants;
 
 import christmas.domain.order.VisitDay;
 

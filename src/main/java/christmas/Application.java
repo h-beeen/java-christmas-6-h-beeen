@@ -5,8 +5,8 @@ import christmas.controller.OrderController;
 import christmas.controller.VisitDayController;
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.AppliedPromotions;
-import christmas.domain.promotion.strategy.constants.Promotion;
+import christmas.domain.promotion.discount.AppliedDiscountPromotions;
+import christmas.domain.promotion.discount.DiscountPromotion;
 
 import java.util.EnumMap;
 
@@ -17,9 +17,8 @@ public class Application {
         VisitDayController.responseVisitDay(visitDay);
         OrderController.responseOrdersResult(orders);
 
-        AppliedPromotions appliedPromotion = AppliedPromotions.create(visitDay, orders);
-        EnumMap<Promotion, Integer> promotions = appliedPromotion.getPromotions();
-
+        AppliedDiscountPromotions appliedPromotion = AppliedDiscountPromotions.create(visitDay, orders);
+        EnumMap<DiscountPromotion, Integer> promotions = appliedPromotion.getPromotions();
 
         promotions.forEach((key, value) -> System.out.println(key.name() + " : " + value));
 

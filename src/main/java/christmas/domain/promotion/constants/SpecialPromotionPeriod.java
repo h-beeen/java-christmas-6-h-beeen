@@ -1,9 +1,9 @@
-package christmas.domain.promotion.strategy.constants;
+package christmas.domain.promotion.constants;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public enum SpecialPromotion {
+public enum SpecialPromotionPeriod {
     STAR(List.of(
             LocalDate.of(2023, 12, 3),
             LocalDate.of(2023, 12, 10),
@@ -15,7 +15,7 @@ public enum SpecialPromotion {
 
     private final List<LocalDate> specialPromotionDates;
 
-    SpecialPromotion(List<LocalDate> specialPromotionDates) {
+    SpecialPromotionPeriod(List<LocalDate> specialPromotionDates) {
         this.specialPromotionDates = specialPromotionDates;
     }
 

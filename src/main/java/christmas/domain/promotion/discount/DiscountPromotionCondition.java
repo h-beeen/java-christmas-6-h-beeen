@@ -1,15 +1,16 @@
-package christmas.domain.promotion.strategy.constants;
+package christmas.domain.promotion.discount;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
+import christmas.domain.promotion.constants.PromotionPeriod;
 
 import java.util.function.Predicate;
 
 import static christmas.domain.order.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
-import static christmas.domain.promotion.strategy.constants.PromotionPeriod.MONTHLY_DECEMBER;
-import static christmas.domain.promotion.strategy.constants.PromotionPeriod.UNTIL_CHRISTMAS;
+import static christmas.domain.promotion.constants.PromotionPeriod.MONTHLY_DECEMBER;
+import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
 
-public enum PromotionCondition {
+public enum DiscountPromotionCondition {
     CHRISTMAS_D_DAY_PROMOTION_CONDITION(
             UNTIL_CHRISTMAS,
             always -> true
@@ -30,7 +31,7 @@ public enum PromotionCondition {
     private final PromotionPeriod promotionPeriod;
     private final Predicate<VisitDay> isApplicable;
 
-    PromotionCondition(
+    DiscountPromotionCondition(
             PromotionPeriod promotionPeriod,
             Predicate<VisitDay> isApplicable
     ) {

@@ -1,6 +1,6 @@
 package christmas.domain.order;
 
-import christmas.domain.promotion.strategy.constants.SpecialPromotion;
+import christmas.domain.promotion.constants.SpecialPromotionPeriod;
 import christmas.exception.ExceptionHandler;
 
 import java.time.LocalDate;
@@ -39,7 +39,7 @@ public class VisitDay {
             LocalDate startDate,
             LocalDate endDate
     ) {
-        return !visitDay.isBefore(startDate) && !visitDay.isAfter(endDate);
+        return !(visitDay.isBefore(startDate) && visitDay.isAfter(endDate));
     }
 
     public boolean isWeekend() {
@@ -52,7 +52,7 @@ public class VisitDay {
     }
 
     public boolean isSpecialDay() {
-        return Arrays.stream(SpecialPromotion.values())
+        return Arrays.stream(SpecialPromotionPeriod.values())
                 .anyMatch(value -> value.hasSpecialDay(visitDay));
     }
 
