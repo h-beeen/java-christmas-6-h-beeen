@@ -29,9 +29,9 @@ public class AppliedGiftPromotions {
 
 
     public int getTotalGiftPrice() {
-        return promotions.entrySet()
+        return promotions.keySet()
                 .stream()
-                .mapToInt(entry -> entry.getKey().getGiftPrice() * entry.getValue())
+                .mapToInt(GiftPromotion::calculateGiftPrice)
                 .sum();
     }
 

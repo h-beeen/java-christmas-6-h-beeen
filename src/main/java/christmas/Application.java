@@ -14,6 +14,7 @@ public class Application {
 
         VisitDayController.responseVisitDay(visitDay);
         OrderController.responseOrdersResult(orders);
+        OrderController.responseTotalOriginPriceResult(orders);
         PromotionController.responseAppliedBenefitResult(visitDay, orders);
 
         Console.close();

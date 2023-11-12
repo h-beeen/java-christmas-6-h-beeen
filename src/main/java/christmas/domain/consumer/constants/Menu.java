@@ -46,7 +46,7 @@ public enum Menu {
     //== Utility Method ==//
     public static Menu findMenuByName(String name) {
         return Arrays.stream(values())
-                .filter(menu -> menu.name.equals(name))
+                .filter(menu -> menu.isSameName(name))
                 .findFirst()
                 .orElseThrow(() -> BusinessException.from(INVALID_ORDER));
     }
@@ -58,6 +58,10 @@ public enum Menu {
     //== Validation Method ==//
     public boolean isSameCategory(MenuCategory menuCategory) {
         return Objects.deepEquals(menuCategory, category);
+    }
+
+    private boolean isSameName(String comparableName) {
+        return name.equals(comparableName);
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//

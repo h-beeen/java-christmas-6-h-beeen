@@ -4,8 +4,6 @@ import christmas.domain.consumer.constants.Menu;
 import christmas.domain.consumer.constants.MenuCategory;
 
 import java.util.EnumMap;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
 
 import static christmas.domain.consumer.constants.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.EXCEED_ORDER_QUANTITY_LIMIT;
@@ -47,9 +45,9 @@ public class Orders {
 
     //== Validation Method ==//
     private boolean hasOnlyBeverages(EnumMap<Menu, Integer> menus) {
-        return menus.entrySet()
+        return menus.keySet()
                 .stream()
-                .allMatch(isBeverage());
+                .allMatch(this::isBeverage);
     }
 
     private boolean isExceedMaximumQuantity(EnumMap<Menu, Integer> menus) {
@@ -67,8 +65,8 @@ public class Orders {
                 .anyMatch(key -> key.isSameCategory(category));
     }
 
-    private Predicate<Entry<Menu, Integer>> isBeverage() {
-        return entry -> entry.getKey().isSameCategory(BEVERAGE);
+    private boolean isBeverage(Menu menu) {
+        return menu.isSameCategory(BEVERAGE);
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//

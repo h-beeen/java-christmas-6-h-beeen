@@ -15,7 +15,7 @@ public record GiftResponse(
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        entry -> entry.getKey().getName(),
+                        entry -> entry.getKey().getMenuName(),
                         Entry::getValue)
                 );
 

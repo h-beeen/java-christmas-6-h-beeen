@@ -42,8 +42,12 @@ public enum GiftPromotion {
         return promotionCondition.isApplicable(visitDay, orders, badge);
     }
 
-    public String getName() {
+    public String getMenuName() {
         return menu.getName();
+    }
+
+    public int calculateGiftPrice() {
+        return menu.getPrice() * quantity;
     }
 
     public int getGiftPrice() {

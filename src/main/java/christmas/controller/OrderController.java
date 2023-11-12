@@ -33,11 +33,9 @@ public class OrderController {
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_MENU_ORDERS_RESULT);
         OutputWriter.printMenuOrdersResponse(orderResponse);
-
-        responseTotalOriginPriceResult(orders);
     }
 
-    private static void responseTotalOriginPriceResult(Orders orders) {
+    public static void responseTotalOriginPriceResult(Orders orders) {
         final int totalOriginPrice = orders.calculateTotalOriginPrice();
 
         OutputWriter.printNewLine();
