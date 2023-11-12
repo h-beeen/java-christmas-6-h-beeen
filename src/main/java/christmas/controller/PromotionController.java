@@ -24,27 +24,51 @@ public class PromotionController {
             Orders orders
     ) {
         Badge defaultBadge = DEFAULT;
-
         AppliedDiscountPromotions appliedDiscountPromotions = AppliedDiscountPromotions.create(visitDay, orders, defaultBadge);
         AppliedGiftPromotions appliedGiftPromotions = AppliedGiftPromotions.create(visitDay, orders, defaultBadge);
+
+        final int totalOriginPrice = orders.calculateTotalOriginPrice();
+        final int totalDiscountAmount = appliedDiscountPromotions.getdiscountTotalPrice(totalOriginalPrice);
 
         DiscountResponse discountResponse = DISCOUNT_RESPONSE_MAPPER.from(appliedDiscountPromotions);
         GiftResponse giftResponse = GIFT_RESPONSE_MAPPER.from(appliedGiftPromotions);
 
-        OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_GIFT_RESPONSE);
-        OutputWriter.printGiftQuantityResponse(giftResponse);
+        responseGiftResult(giftResponse);
+        responseBenefitResult(discountResponse, giftResponse);
+        responseTotalBenefitResult(discountResponse, giftResponse);
+        responseExpectPaymentResult(orders, discountResponse);
+    }
 
+    private static void responseGiftResult(GiftResponse giftResponse) {
+        OutputWriter.printNewLine();
+        OutputWriter.printMessageResponse(RESPONSE_GIFT_RESULT);
+        OutputWriter.printGiftQuantityResponse(giftResponse);
+    }
+
+    private static void responseBenefitResult(
+            DiscountResponse discountResponse,
+            GiftResponse giftResponse
+    ) {
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_BENEFIT_RESPONSE);
         OutputWriter.printBenefitResponse(discountResponse, giftResponse);
+    }
 
+    private static void responseTotalBenefitResult(
+            DiscountResponse discountResponse,
+            GiftResponse giftResponse
+    ) {
         OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_TOTAL_BENEFIT_RESPONSE);
+        OutputWriter.printMessageResponse(RESPONSE_TOTAL_BENEFIT_RESULT);
         OutputWriter.printTotalBenefitResponse(discountResponse, giftResponse);
+    }
 
+    private static void responseExpectPaymentResult(
+            Orders orders,
+            DiscountResponse discountResponse
+    ) {
         OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_EXPECT_TOTAL_BENEFIT);
-        OutputWriter.println(PRICE_RESULT.generateFormat(orders.calculateTotalOriginPrice() - discountResponse.discountTotalPrice()));
+        OutputWriter.printMessageResponse(RESPONSE_EXPECT_PAYMENT_RESULT);
+        OutputWriter.println(PRICE_RESULT.generateFormat()); // 최종 결제금액
     }
 }

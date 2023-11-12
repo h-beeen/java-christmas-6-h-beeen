@@ -27,7 +27,7 @@ public class AppliedGiftPromotions {
     }
 
 
-    public int getGiftTotalPriceResult() {
+    public int getTotalGiftPrice() {
         return promotions.entrySet()
                 .stream()
                 .mapToInt(entry -> entry.getKey().getGiftPrice() * entry.getValue())

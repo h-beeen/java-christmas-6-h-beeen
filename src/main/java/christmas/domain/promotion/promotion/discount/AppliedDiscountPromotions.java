@@ -28,6 +28,14 @@ public class AppliedDiscountPromotions {
         return new AppliedDiscountPromotions(visitDay, order, badge);
     }
 
+    //== Utility Method ==//
+    public int getTotalDiscountAmount() {
+        return promotions.values()
+                .stream()
+                .mapToInt(discountAmount -> discountAmount)
+                .sum();
+    }
+
     public EnumMap<DiscountPromotion, Integer> getPromotions() {
         return promotions;
     }

@@ -4,6 +4,6 @@ import java.util.Map;
 
 public record DiscountResponse(
         Map<String, Integer> discountResult,
-        int discountTotalPrice
+        int totalDiscountAmount
 ) {
 }

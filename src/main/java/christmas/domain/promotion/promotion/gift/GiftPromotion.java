@@ -42,7 +42,7 @@ public enum GiftPromotion {
         return promotionCondition.isApplicable(visitDay, orders, badge);
     }
 
-    public String getGiftName() {
+    public String getName() {
         return menu.getName();
     }
 

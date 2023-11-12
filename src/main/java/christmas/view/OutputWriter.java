@@ -70,7 +70,7 @@ public class OutputWriter {
     }
 
     public static void printTotalBenefitResponse(DiscountResponse discountResponse, GiftResponse giftResponse) {
-        int totalBenefitPrice = discountResponse.discountTotalPrice() + giftResponse.giftTotalPrice();
+        int totalBenefitPrice = discountResponse.totalDiscountAmount() + giftResponse.giftTotalPrice();
         if (totalBenefitPrice == 0) {
             OutputWriter.printMessageResponse(RESPONSE_NONEXISTENCE_RESPONSE);
             return;

@@ -9,7 +9,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public final class DiscountResponseMapper implements ResponseMapper<AppliedDiscountPromotions, DiscountResponse> {
+public final class DiscountResponseMapper
+        implements ResponseMapper<AppliedDiscountPromotions, DiscountResponse>, PromotionResponseMapper {
     public static final DiscountResponseMapper BENEFIT_RESPONSE_MAPPER = new DiscountResponseMapper();
 
     private DiscountResponseMapper() {
@@ -21,17 +22,9 @@ public final class DiscountResponseMapper implements ResponseMapper<AppliedDisco
 
     @Override
     public DiscountResponse from(AppliedDiscountPromotions appliedPromotions) {
-        EnumMap<DiscountPromotion, Integer> result =
-                appliedPromotions.getPromotions()
-                        .entrySet()
-                        .stream()
-                        .collect(Collectors.toMap(
-                                Entry::getKey,
-                                Entry::getValue,
-                                (previous, next) -> next,
-                                () -> new EnumMap<>(DiscountPromotion.class)));
+        EnumMap<DiscountPromotion, Integer> promotions = appliedPromotions.getPromotions();
 
-        Map<String, Integer> giftPromotionResponse = result.entrySet()
+        Map<String, Integer> discountResult = promotions.entrySet()
                 .stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey().getPromotionName(),
@@ -39,11 +32,7 @@ public final class DiscountResponseMapper implements ResponseMapper<AppliedDisco
                         (prev, next) -> next)
                 );
 
-        int totalPrice = result.values()
-                .stream()
-                .mapToInt(benefit -> benefit)
-                .sum();
-
-        return new DiscountResponse(giftPromotionResponse, totalPrice);
+        final int totalDiscountAmount = appliedPromotions.getTotalDiscountAmount();
+        return new DiscountResponse(discountResult, totalDiscountAmount);
     }
 }
