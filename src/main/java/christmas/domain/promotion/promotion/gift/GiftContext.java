@@ -28,7 +28,7 @@ public class GiftContext {
         return new GiftContext(visitDay, orders);
     }
 
-    public EnumMap<GiftPromotion, Integer> generateQuantityResult(Orders orders) {
+    public EnumMap<GiftPromotion, Integer> generateQuantityResult() {
         return applicablePromotions.stream()
                 .collect(Collectors.toMap(
                         promotion -> promotion,
@@ -37,7 +37,7 @@ public class GiftContext {
                         () -> new EnumMap<>(GiftPromotion.class)));
     }
 
-    public EnumMap<GiftPromotion, Integer> generatePriceResult(Orders orders) {
+    public EnumMap<GiftPromotion, Integer> generatePriceResult() {
         return applicablePromotions.stream()
                 .collect(Collectors.toMap(
                         promotion -> promotion,

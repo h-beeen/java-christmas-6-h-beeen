@@ -5,21 +5,21 @@ import christmas.domain.order.VisitDay;
 
 import java.util.EnumMap;
 
-public class AppliedGiftPromotions {
-    private final EnumMap<GiftPromotion, Integer> promotions;
+public class GiftQuantities {
+    private final EnumMap<GiftPromotion, Integer> giftQuantities;
 
-    private AppliedGiftPromotions(
+    private GiftQuantities(
             VisitDay visitDay,
             Orders orders
     ) {
         GiftContext giftContext = GiftContext.create(visitDay, orders);
-        this.promotions = giftContext.generatePriceResult();
+        this.giftQuantities = giftContext.generateQuantityResult();
     }
 
-    public static AppliedGiftPromotions create(
+    public static GiftQuantities create(
             VisitDay visitDay,
             Orders orders
     ) {
-        return new AppliedGiftPromotions(visitDay, orders);
+        return new GiftQuantities(visitDay, orders);
     }
 }

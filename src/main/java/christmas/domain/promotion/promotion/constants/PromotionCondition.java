@@ -5,6 +5,7 @@ import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.constants.PromotionPeriod;
 
 import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import static christmas.domain.order.constants.MenuCategory.DESSERT;
 import static christmas.domain.order.constants.MenuCategory.MAIN_DISH;
@@ -15,41 +16,49 @@ import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTM
 public enum PromotionCondition {
     CHRISTMAS_D_DAY_PROMOTION_CONDITION(
             UNTIL_CHRISTMAS,
-            (visitDay, orders) -> true
+            (visitDay, orders) -> true,
+            always -> true
     ),
     WEEKDAY_PROMOTION_CONDITION(
             MONTHLY_DECEMBER,
-            (visitDay, orders) -> visitDay.isWeekday() && orders.hasMenuCategory(DESSERT)
+            (visitDay, orders) -> visitDay.isWeekday() && orders.hasMenuCategory(DESSERT),
+            always -> true
     ),
     WEEKEND_PROMOTION_CONDITION(
             MONTHLY_DECEMBER,
-            (visitDay, orders) -> visitDay.isWeekend() && orders.hasMenuCategory(MAIN_DISH)
+            (visitDay, orders) -> visitDay.isWeekend() && orders.hasMenuCategory(MAIN_DISH),
+            always -> true
     ),
     SPECIAL_PROMOTION_CONDITION(
             MONTHLY_DECEMBER,
-            (visitDay, orders) -> visitDay.isSpecialDay()
+            (visitDay, orders) -> visitDay.isSpecialDay(),
+            always -> true
     ),
     CHAMPAGNE_GIFT_CONDITION(
             MONTHLY_DECEMBER,
-            (visitDay, orders) -> orders.calculateTotalOriginPrice() >= 120_000
+            (visitDay, orders) -> orders.calculateTotalOriginPrice() >= 120_000,
+            always -> true
     );
 
     private final PromotionPeriod promotionPeriod;
-    private final BiPredicate<VisitDay, Orders> isApplicable;
+    private final BiPredicate<VisitDay, Orders> applicableFunction;
+    private final Predicate<Badge> requireBadge;
 
     PromotionCondition(
             PromotionPeriod promotionPeriod,
-            BiPredicate<VisitDay, Orders> isApplicable
+            BiPredicate<VisitDay, Orders> applicableFunction,
+            Predicate<Badge> requireBadge
     ) {
         this.promotionPeriod = promotionPeriod;
-        this.isApplicable = isApplicable;
+        this.applicableFunction = applicableFunction;
+        this.requireBadge = requireBadge;
     }
 
     public boolean isApplicable(
             VisitDay visitDay,
             Orders orders
     ) {
-        return hasApplicableTotalOriginPrice(orders) && isApplicable.test(visitDay, orders);
+        return hasApplicableTotalOriginPrice(orders) && applicableFunction.test(visitDay, orders);
     }
 
     public boolean isPromotionPeriod(VisitDay visitDay) {

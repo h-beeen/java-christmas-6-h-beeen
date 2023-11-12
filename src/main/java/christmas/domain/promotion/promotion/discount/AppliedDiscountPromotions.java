@@ -14,6 +14,7 @@ public class AppliedDiscountPromotions {
     private AppliedDiscountPromotions(
             VisitDay visitDay,
             Orders orders
+
     ) {
         DiscountContext promotionContext = DiscountContext.create(visitDay, orders);
         this.promotions = promotionContext.applyPromotions(visitDay, orders);
