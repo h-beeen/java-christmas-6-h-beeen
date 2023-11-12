@@ -1,8 +1,9 @@
-package christmas.domain.promotion.promotion.gift;
+package christmas.domain.promotion.gift;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
-import christmas.domain.promotion.promotion.constants.Badge;
+import christmas.domain.promotion.badge.BadgePromotion;
+import christmas.domain.promotion.discount.AppliedDiscountPromotions;
 
 import java.util.EnumMap;
 
@@ -12,7 +13,7 @@ public class AppliedGiftPromotions {
     private AppliedGiftPromotions(
             VisitDay visitDay,
             Orders orders,
-            Badge badge
+            BadgePromotion badge
     ) {
         GiftContext giftContext = GiftContext.create(visitDay, orders, badge);
         this.promotions = giftContext.getResult();
@@ -21,7 +22,7 @@ public class AppliedGiftPromotions {
     public static AppliedGiftPromotions create(
             VisitDay visitDay,
             Orders orders,
-            Badge badge
+            BadgePromotion badge
     ) {
         return new AppliedGiftPromotions(visitDay, orders, badge);
     }
@@ -32,6 +33,10 @@ public class AppliedGiftPromotions {
                 .stream()
                 .mapToInt(entry -> entry.getKey().getGiftPrice() * entry.getValue())
                 .sum();
+    }
+
+    public int getTotalBenefit(AppliedDiscountPromotions discountPromotions) {
+        return discountPromotions.getTotalDiscountAmount() + getTotalGiftPrice();
     }
 
     public EnumMap<GiftPromotion, Integer> getPromotions() {

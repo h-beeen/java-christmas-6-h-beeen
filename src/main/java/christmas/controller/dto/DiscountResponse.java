@@ -1,7 +1,7 @@
 package christmas.controller.dto;
 
-import christmas.domain.promotion.promotion.discount.AppliedDiscountPromotions;
-import christmas.domain.promotion.promotion.discount.DiscountPromotion;
+import christmas.domain.promotion.discount.AppliedDiscountPromotions;
+import christmas.domain.promotion.discount.DiscountPromotion;
 
 import java.util.EnumMap;
 import java.util.Map;

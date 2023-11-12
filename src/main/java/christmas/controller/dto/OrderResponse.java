@@ -16,7 +16,8 @@ public record OrderResponse(
                 .stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey().getName(),
-                        Entry::getValue));
+                        Entry::getValue)
+                );
 
         return new OrderResponse(orderResponse);
     }

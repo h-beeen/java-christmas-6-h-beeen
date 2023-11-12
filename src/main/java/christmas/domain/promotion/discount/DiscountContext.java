@@ -1,8 +1,8 @@
-package christmas.domain.promotion.promotion.discount;
+package christmas.domain.promotion.discount;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
-import christmas.domain.promotion.promotion.constants.Badge;
+import christmas.domain.promotion.badge.BadgePromotion;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -15,7 +15,7 @@ public class DiscountContext {
     private DiscountContext(
             VisitDay visitDay,
             Orders orders,
-            Badge badge
+            BadgePromotion badge
     ) {
         this.applicablePromotions = Arrays.stream(DiscountPromotion.values())
                 .filter(promotion -> promotion.isPromotionPeriod(visitDay))
@@ -27,7 +27,7 @@ public class DiscountContext {
     public static DiscountContext create(
             VisitDay visitDay,
             Orders orders,
-            Badge badge
+            BadgePromotion badge
     ) {
         return new DiscountContext(visitDay, orders, badge);
     }

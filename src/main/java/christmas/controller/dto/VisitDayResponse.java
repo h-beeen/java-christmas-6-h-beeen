@@ -10,6 +10,7 @@ public record VisitDayResponse(
 ) {
     public static VisitDayResponse from(VisitDay date) {
         LocalDate visitDay = date.getVisitDay();
+        
         return new VisitDayResponse(visitDay.getMonthValue(), visitDay.getDayOfMonth());
     }
 }

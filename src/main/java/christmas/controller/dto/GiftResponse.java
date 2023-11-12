@@ -1,6 +1,6 @@
 package christmas.controller.dto;
 
-import christmas.domain.promotion.promotion.gift.AppliedGiftPromotions;
+import christmas.domain.promotion.gift.AppliedGiftPromotions;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -16,7 +16,8 @@ public record GiftResponse(
                 .stream()
                 .collect(Collectors.toMap(
                         entry -> entry.getKey().getName(),
-                        Entry::getValue));
+                        Entry::getValue)
+                );
 
         final int giftTotalPriceResult = appliedGiftPromotions.getTotalGiftPrice();
         return new GiftResponse(discountResult, giftTotalPriceResult);

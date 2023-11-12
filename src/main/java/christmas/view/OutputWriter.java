@@ -69,12 +69,11 @@ public class OutputWriter {
                         OutputWriter.println(PRODUCT_QUANTITY_RESULT.generateFormat(giftName, quantity)));
     }
 
-    public static void printTotalBenefitResponse(DiscountResponse discountResponse, GiftResponse giftResponse) {
-        int totalBenefitPrice = discountResponse.totalDiscountAmount() + giftResponse.giftTotalPrice();
-        if (totalBenefitPrice == 0) {
+    public static void printTotalBenefitResponse(final int totalBenefit) {
+        if (totalBenefit == 0) {
             OutputWriter.printMessageResponse(RESPONSE_NONEXISTENCE_RESPONSE);
             return;
         }
-        OutputWriter.println(MINUS_PRICE_RESULT.generateFormat(totalBenefitPrice));
+        OutputWriter.println(MINUS_PRICE_RESULT.generateFormat(totalBenefit));
     }
 }

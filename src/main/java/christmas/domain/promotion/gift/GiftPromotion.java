@@ -1,13 +1,13 @@
-package christmas.domain.promotion.promotion.gift;
+package christmas.domain.promotion.gift;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
 import christmas.domain.consumer.constants.Menu;
-import christmas.domain.promotion.promotion.constants.Badge;
-import christmas.domain.promotion.promotion.constants.PromotionCondition;
+import christmas.domain.promotion.badge.BadgePromotion;
+import christmas.domain.promotion.constants.PromotionCondition;
 
 import static christmas.domain.consumer.constants.Menu.CHAMPAGNE;
-import static christmas.domain.promotion.promotion.constants.PromotionCondition.CHAMPAGNE_GIFT_CONDITION;
+import static christmas.domain.promotion.constants.PromotionCondition.CHAMPAGNE_GIFT_CONDITION;
 
 public enum GiftPromotion {
     GIFT_CHAMPAGNE(
@@ -37,7 +37,7 @@ public enum GiftPromotion {
     public boolean isApplicable(
             VisitDay visitDay,
             Orders orders,
-            Badge badge
+            BadgePromotion badge
     ) {
         return promotionCondition.isApplicable(visitDay, orders, badge);
     }

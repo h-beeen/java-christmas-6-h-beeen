@@ -1,8 +1,8 @@
-package christmas.domain.promotion.promotion.discount;
+package christmas.domain.promotion.discount;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
-import christmas.domain.promotion.promotion.constants.Badge;
+import christmas.domain.promotion.badge.BadgePromotion;
 
 import java.util.EnumMap;
 
@@ -13,7 +13,7 @@ public class AppliedDiscountPromotions {
     private AppliedDiscountPromotions(
             VisitDay visitDay,
             Orders orders,
-            Badge badge
+            BadgePromotion badge
     ) {
         DiscountContext promotionContext = DiscountContext.create(visitDay, orders, badge);
         this.promotions = promotionContext.applyPromotions(visitDay, orders);
@@ -23,7 +23,7 @@ public class AppliedDiscountPromotions {
     public static AppliedDiscountPromotions create(
             VisitDay visitDay,
             Orders order,
-            Badge badge
+            BadgePromotion badge
     ) {
         return new AppliedDiscountPromotions(visitDay, order, badge);
     }
