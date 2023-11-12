@@ -5,10 +5,8 @@ import christmas.controller.OrderController;
 import christmas.controller.VisitDayController;
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.promotion.post.AppliedPostPromotions;
-import christmas.domain.promotion.promotion.post.PostPromotion;
-import christmas.domain.promotion.promotion.pre.AppliedPrePromotions;
-import christmas.domain.promotion.promotion.pre.PrePromotion;
+import christmas.domain.promotion.promotion.AppliedPromotions;
+import christmas.domain.promotion.promotion.Promotion;
 
 import java.util.EnumMap;
 
@@ -19,15 +17,20 @@ public class Application {
         VisitDayController.responseVisitDay(visitDay);
         OrderController.responseOrdersResult(orders);
 
-        AppliedPrePromotions appliedPrePromotion = AppliedPrePromotions.create(visitDay, orders);
-        AppliedPostPromotions appliedPostPromotion = AppliedPostPromotions.create(appliedPrePromotion);
+        AppliedPromotions appliedPromotion = AppliedPromotions.create(visitDay, orders);
 
-        EnumMap<PrePromotion, Integer> prePromotions = appliedPrePromotion.getPrePromotions();
-        EnumMap<PostPromotion, Integer> postPromotions = appliedPostPromotion.getPostPromotions();
-        System.out.println("prePromotions = " + appliedPrePromotion.calculateTotalDiscountBenefit());
+        //todo 증정메뉴 출력
+        //todo 혜택내역 출력
+        //todo 총혜택금액 출력
+        //todo 할인 후 예상 결제금액 출력
+        //todo 이벤트 배지 출력
 
-        prePromotions.forEach((key, value) -> System.out.println(key.name() + " : " + value));
-        postPromotions.forEach((key, value) -> System.out.println(key.name() + " : " + value));
+        EnumMap<Promotion, Integer> promotions = appliedPromotion.getPromotions();
+        int i = appliedPromotion.calculateTotalDiscountBenefit();
+
+        System.out.println("총 할인 혜택 금액 = " + i);
+
+        promotions.forEach((key, value) -> System.out.println(key.getPromotionName() + " : " + value));
 
         Console.close();
     }

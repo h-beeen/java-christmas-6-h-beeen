@@ -1,4 +1,4 @@
-package christmas.domain.promotion.promotion.pre;
+package christmas.domain.promotion.promotion;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
@@ -6,28 +6,28 @@ import christmas.domain.order.VisitDay;
 import java.util.EnumMap;
 import java.util.Map.Entry;
 
-public class AppliedPrePromotions {
-    private final EnumMap<PrePromotion, Integer> prePromotions;
+public class AppliedPromotions {
+    private final EnumMap<Promotion, Integer> promotions;
 
     //== Constructor ==//
-    private AppliedPrePromotions(
+    private AppliedPromotions(
             VisitDay visitDay,
             Orders orders
     ) {
-        PrePromotionContext promotionContext = PrePromotionContext.create(visitDay, orders);
-        this.prePromotions = promotionContext.applyPrePromotions(visitDay, orders);
+        PRomotionContext promotionContext = PRomotionContext.create(visitDay, orders);
+        this.promotions = promotionContext.applyPromotions(visitDay, orders);
     }
 
     //== Static Factory Method ==//
-    public static AppliedPrePromotions create(
+    public static AppliedPromotions create(
             VisitDay visitDay,
             Orders order
     ) {
-        return new AppliedPrePromotions(visitDay, order);
+        return new AppliedPromotions(visitDay, order);
     }
 
     public int calculateTotalDiscountBenefit() {
-        return prePromotions.entrySet()
+        return promotions.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().isDiscountType())
                 .mapToInt(Entry::getValue)
@@ -35,7 +35,7 @@ public class AppliedPrePromotions {
     }
 
     //== Getter todo 삭제해야 할 Getter (디버깅용) ==//
-    public EnumMap<PrePromotion, Integer> getPrePromotions() {
-        return prePromotions;
+    public EnumMap<Promotion, Integer> getPromotions() {
+        return promotions;
     }
 }

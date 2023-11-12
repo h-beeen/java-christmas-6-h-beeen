@@ -13,6 +13,7 @@ import static christmas.exception.ErrorCode.ORDERS_ONLY_CONTAIN_BEVERAGES;
 
 public class Orders {
     private static final int ORDERS_MAXIMUM_RANGE = 20;
+    
     private final EnumMap<Menu, Integer> menus;
 
     //== Constructor ==//

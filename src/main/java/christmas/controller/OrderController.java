@@ -14,7 +14,7 @@ import java.util.EnumMap;
 import static christmas.view.constants.ResponseMessage.*;
 
 public class OrderController {
-    private static final OrderResponseMapper ORDER_RESPONSE_MAPPER = OrderResponseMapper.getInstance();
+    private static final OrderResponseMapper ORDER_RESPONSE_MAPPER = OrderResponseMapper.create();
 
     private OrderController() {
     }
@@ -41,7 +41,7 @@ public class OrderController {
     }
 
     private static void responseTotalOriginPriceResult(Orders orders) {
-        int totalOriginPrice = orders.calculateTotalOriginPrice();
+        final int totalOriginPrice = orders.calculateTotalOriginPrice();
 
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT);

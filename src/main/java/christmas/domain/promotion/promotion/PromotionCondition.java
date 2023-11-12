@@ -1,4 +1,4 @@
-package christmas.domain.promotion.promotion.pre;
+package christmas.domain.promotion.promotion;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
@@ -13,7 +13,7 @@ import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTM
 import static christmas.domain.promotion.promotion.constants.PromotionType.DISCOUNT;
 import static christmas.domain.promotion.promotion.constants.PromotionType.GIFT;
 
-public enum PrePromotionCondition {
+public enum PromotionCondition {
     CHRISTMAS_D_DAY_PROMOTION_CONDITION(
             UNTIL_CHRISTMAS,
             DISCOUNT,
@@ -44,7 +44,7 @@ public enum PrePromotionCondition {
     private final PromotionType promotionType;
     private final BiPredicate<VisitDay, Orders> isApplicable;
 
-    PrePromotionCondition(
+    PromotionCondition(
             PromotionPeriod promotionPeriod,
             PromotionType promotionType,
             BiPredicate<VisitDay, Orders> isApplicable
