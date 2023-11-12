@@ -10,30 +10,32 @@ import java.util.function.Predicate;
 import static christmas.domain.consumer.constants.MenuCategory.DESSERT;
 import static christmas.domain.consumer.constants.MenuCategory.MAIN_DISH;
 import static christmas.domain.consumer.constants.PlannerConstraint.MINIMUM_APPLICABLE_PURCHASE_TOTAL_PRICE;
+import static christmas.domain.promotion.constants.PromotionPeriod.MONTHLY_DECEMBER;
+import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
 
 public enum PromotionCondition {
     CHRISTMAS_D_DAY_PROMOTION_CONDITION(
-            PromotionPeriod.UNTIL_CHRISTMAS,
+            UNTIL_CHRISTMAS,
             (visitDay, orders) -> true,
             always -> true
     ),
     WEEKDAY_PROMOTION_CONDITION(
-            PromotionPeriod.MONTHLY_DECEMBER,
+            MONTHLY_DECEMBER,
             (visitDay, orders) -> visitDay.isWeekday() && orders.hasMenuCategory(DESSERT),
             always -> true
     ),
     WEEKEND_PROMOTION_CONDITION(
-            PromotionPeriod.MONTHLY_DECEMBER,
+            MONTHLY_DECEMBER,
             (visitDay, orders) -> visitDay.isWeekend() && orders.hasMenuCategory(MAIN_DISH),
             always -> true
     ),
     SPECIAL_PROMOTION_CONDITION(
-            PromotionPeriod.MONTHLY_DECEMBER,
+            MONTHLY_DECEMBER,
             (visitDay, orders) -> visitDay.isSpecialDay(),
             always -> true
     ),
     CHAMPAGNE_GIFT_CONDITION(
-            PromotionPeriod.MONTHLY_DECEMBER,
+            MONTHLY_DECEMBER,
             (visitDay, orders) -> orders.calculateTotalOriginPrice() >= 120_000,
             always -> true
     );

@@ -5,6 +5,10 @@ import christmas.domain.consumer.VisitDay;
 import java.time.LocalDate;
 
 public enum PromotionPeriod {
+    ALWAYS(
+            LocalDate.of(1900, 1, 1),
+            LocalDate.of(2099, 12, 31)
+    ),
     UNTIL_CHRISTMAS(
             LocalDate.of(2023, 12, 1),
             LocalDate.of(2023, 12, 25)

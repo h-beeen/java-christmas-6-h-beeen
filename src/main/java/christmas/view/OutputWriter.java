@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.controller.dto.BadgeResponse;
 import christmas.controller.dto.DiscountResponse;
 import christmas.controller.dto.GiftResponse;
 import christmas.controller.dto.OrderResponse;
@@ -75,5 +76,9 @@ public class OutputWriter {
             return;
         }
         OutputWriter.println(MINUS_PRICE_RESULT.generateFormat(totalBenefit));
+    }
+
+    public static void printBadgeResponse(BadgeResponse badgeResponse) {
+        OutputWriter.println(badgeResponse.badgeName());
     }
 }
