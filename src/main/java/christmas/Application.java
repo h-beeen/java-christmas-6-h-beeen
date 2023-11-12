@@ -5,8 +5,10 @@ import christmas.controller.OrderController;
 import christmas.controller.VisitDayController;
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.discount.AppliedDiscountPromotions;
-import christmas.domain.promotion.discount.DiscountPromotion;
+import christmas.domain.promotion.promotion.post.AppliedPostPromotions;
+import christmas.domain.promotion.promotion.post.PostPromotion;
+import christmas.domain.promotion.promotion.pre.AppliedPrePromotions;
+import christmas.domain.promotion.promotion.pre.PrePromotion;
 
 import java.util.EnumMap;
 
@@ -17,10 +19,15 @@ public class Application {
         VisitDayController.responseVisitDay(visitDay);
         OrderController.responseOrdersResult(orders);
 
-        AppliedDiscountPromotions appliedPromotion = AppliedDiscountPromotions.create(visitDay, orders);
-        EnumMap<DiscountPromotion, Integer> promotions = appliedPromotion.getPromotions();
+        AppliedPrePromotions appliedPrePromotion = AppliedPrePromotions.create(visitDay, orders);
+        AppliedPostPromotions appliedPostPromotion = AppliedPostPromotions.create(appliedPrePromotion);
 
-        promotions.forEach((key, value) -> System.out.println(key.name() + " : " + value));
+        EnumMap<PrePromotion, Integer> prePromotions = appliedPrePromotion.getPrePromotions();
+        EnumMap<PostPromotion, Integer> postPromotions = appliedPostPromotion.getPostPromotions();
+        System.out.println("prePromotions = " + appliedPrePromotion.calculateTotalDiscountBenefit());
+
+        prePromotions.forEach((key, value) -> System.out.println(key.name() + " : " + value));
+        postPromotions.forEach((key, value) -> System.out.println(key.name() + " : " + value));
 
         Console.close();
     }

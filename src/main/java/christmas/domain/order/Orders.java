@@ -39,11 +39,10 @@ public class Orders {
     public int countOrdersByMenuType(MenuCategory menuCategory) {
         return menus.keySet()
                 .stream()
-                .filter(integer -> integer.isSameCategory(menuCategory))
+                .filter(key -> key.isSameCategory(menuCategory))
                 .mapToInt(menus::get)
                 .sum();
     }
-
 
     //== Validation Method ==//
     private boolean hasOnlyBeverages(EnumMap<Menu, Integer> menus) {

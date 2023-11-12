@@ -1,4 +1,4 @@
-package christmas.domain.promotion.discount;
+package christmas.domain.promotion.promotion.pre;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
@@ -7,9 +7,11 @@ import java.util.function.BiFunction;
 
 import static christmas.domain.order.constants.MenuCategory.DESSERT;
 import static christmas.domain.order.constants.MenuCategory.MAIN_DISH;
-import static christmas.domain.promotion.discount.DiscountPromotionCondition.*;
+import static christmas.domain.promotion.promotion.constants.PromotionType.DISCOUNT;
+import static christmas.domain.promotion.promotion.constants.PromotionType.GIFT;
+import static christmas.domain.promotion.promotion.pre.PrePromotionCondition.*;
 
-public enum DiscountPromotion {
+public enum PrePromotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             CHRISTMAS_D_DAY_PROMOTION_CONDITION,
             (visitDay, orders) -> visitDay.multiplyDate(100) + 900
@@ -25,13 +27,16 @@ public enum DiscountPromotion {
     SPECIAL_DISCOUNT(
             SPECIAL_PROMOTION_CONDITION,
             (visitDay, orders) -> 1000
+    ),
+    CHAMPAGNE_GIFT(
+            CHAMPAGNE_GIFT_CONDITION,
+            (visitDay, orders) -> 1
     );
-
-    private final DiscountPromotionCondition promotionCondition;
+    private final PrePromotionCondition promotionCondition;
     private final BiFunction<VisitDay, Orders, Integer> promotionFunction;
 
-    DiscountPromotion(
-            DiscountPromotionCondition promotionCondition,
+    PrePromotion(
+            PrePromotionCondition promotionCondition,
             BiFunction<VisitDay, Orders, Integer> promotionFunction
     ) {
         this.promotionCondition = promotionCondition;
@@ -45,6 +50,7 @@ public enum DiscountPromotion {
         return promotionFunction.apply(visitDay, orders);
     }
 
+    //== Validation Method ==//
     public boolean isPromotionPeriod(VisitDay visitDay) {
         return promotionCondition.isPromotionPeriod(visitDay);
     }
@@ -54,5 +60,13 @@ public enum DiscountPromotion {
             Orders orders
     ) {
         return promotionCondition.isApplicable(visitDay, orders);
+    }
+
+    public boolean isDiscountType() {
+        return promotionCondition.isSameType(DISCOUNT);
+    }
+
+    public boolean isGiftType() {
+        return promotionCondition.isSameType(GIFT);
     }
 }
