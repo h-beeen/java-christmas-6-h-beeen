@@ -1,13 +1,13 @@
-package christmas.domain.order;
+package christmas.domain.customer;
 
-import christmas.domain.order.constants.Menu;
-import christmas.domain.order.constants.MenuCategory;
+import christmas.domain.customer.constants.Menu;
+import christmas.domain.customer.constants.MenuCategory;
 
 import java.util.EnumMap;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
 
-import static christmas.domain.order.constants.MenuCategory.BEVERAGE;
+import static christmas.domain.customer.constants.MenuCategory.BEVERAGE;
 import static christmas.exception.ErrorCode.EXCEED_ORDER_QUANTITY_LIMIT;
 import static christmas.exception.ErrorCode.ORDERS_ONLY_CONTAIN_BEVERAGES;
 

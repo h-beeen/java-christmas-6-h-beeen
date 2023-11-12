@@ -1,7 +1,7 @@
 package christmas.domain.promotion.promotion.discount;
 
-import christmas.domain.order.Orders;
-import christmas.domain.order.VisitDay;
+import christmas.domain.customer.Orders;
+import christmas.domain.customer.VisitDay;
 
 import java.util.EnumMap;
 import java.util.Map.Entry;

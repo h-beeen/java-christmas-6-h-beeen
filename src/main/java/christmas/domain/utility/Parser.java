@@ -1,6 +1,6 @@
 package christmas.domain.utility;
 
-import christmas.domain.order.constants.Menu;
+import christmas.domain.customer.constants.Menu;
 import christmas.exception.BusinessException;
 import christmas.exception.ExceptionHandler;
 

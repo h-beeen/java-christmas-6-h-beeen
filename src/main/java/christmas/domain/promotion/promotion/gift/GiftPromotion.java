@@ -1,11 +1,11 @@
 package christmas.domain.promotion.promotion.gift;
 
-import christmas.domain.order.Orders;
-import christmas.domain.order.VisitDay;
-import christmas.domain.order.constants.Menu;
+import christmas.domain.customer.Orders;
+import christmas.domain.customer.VisitDay;
+import christmas.domain.customer.constants.Menu;
 import christmas.domain.promotion.promotion.constants.PromotionCondition;
 
-import static christmas.domain.order.constants.Menu.CHAMPAGNE;
+import static christmas.domain.customer.constants.Menu.CHAMPAGNE;
 import static christmas.domain.promotion.promotion.constants.PromotionCondition.CHAMPAGNE_GIFT_CONDITION;
 
 public enum GiftPromotion {

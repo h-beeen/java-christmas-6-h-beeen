@@ -1,7 +1,7 @@
 package christmas.domain.promotion.promotion.gift;
 
-import christmas.domain.order.Orders;
-import christmas.domain.order.VisitDay;
+import christmas.domain.customer.Orders;
+import christmas.domain.customer.VisitDay;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -28,20 +28,11 @@ public class GiftContext {
         return new GiftContext(visitDay, orders);
     }
 
-    public EnumMap<GiftPromotion, Integer> generateQuantityResult() {
+    public EnumMap<GiftPromotion, Integer> getResult() {
         return applicablePromotions.stream()
                 .collect(Collectors.toMap(
                         promotion -> promotion,
                         GiftPromotion::getQuantity,
-                        (previous, next) -> next,
-                        () -> new EnumMap<>(GiftPromotion.class)));
-    }
-
-    public EnumMap<GiftPromotion, Integer> generatePriceResult() {
-        return applicablePromotions.stream()
-                .collect(Collectors.toMap(
-                        promotion -> promotion,
-                        promotion -> promotion.getQuantity() * promotion.getGiftPrice(),
                         (previous, next) -> next,
                         () -> new EnumMap<>(GiftPromotion.class)));
     }

@@ -1,11 +1,11 @@
-package christmas.domain.order.constants;
+package christmas.domain.customer.constants;
 
 import christmas.exception.BusinessException;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-import static christmas.domain.order.constants.MenuCategory.*;
+import static christmas.domain.customer.constants.MenuCategory.*;
 import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public enum Menu {

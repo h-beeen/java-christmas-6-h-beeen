@@ -1,4 +1,4 @@
-package christmas.domain.order;
+package christmas.domain.customer;
 
 import christmas.domain.promotion.constants.SpecialPromotionPeriod;
 import christmas.exception.ExceptionHandler;
@@ -6,8 +6,8 @@ import christmas.exception.ExceptionHandler;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_MONTH;
-import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_YEAR;
+import static christmas.domain.customer.constants.PlannerConstraint.PROMOTION_MONTH;
+import static christmas.domain.customer.constants.PlannerConstraint.PROMOTION_YEAR;
 
 public class VisitDay {
     private static final int THURSDAY_VALUE = 4;

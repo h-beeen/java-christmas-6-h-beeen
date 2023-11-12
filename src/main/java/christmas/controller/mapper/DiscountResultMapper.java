@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public final class BenefitResponseMapper implements ResponseMapper<AppliedDiscountPromotions, DiscountResultResponse> {
-    public static final BenefitResponseMapper BENEFIT_RESPONSE_MAPPER = new BenefitResponseMapper();
+public final class DiscountResultMapper implements ResponseMapper<AppliedDiscountPromotions, DiscountResultResponse> {
+    public static final DiscountResultMapper BENEFIT_RESPONSE_MAPPER = new DiscountResultMapper();
 
-    private BenefitResponseMapper() {
+    private DiscountResultMapper() {
     }
 
-    public static BenefitResponseMapper getInstance() {
+    public static DiscountResultMapper getInstance() {
         return BENEFIT_RESPONSE_MAPPER;
     }
 

@@ -1,7 +1,7 @@
 package christmas.domain.promotion.promotion.gift;
 
-import christmas.domain.order.Orders;
-import christmas.domain.order.VisitDay;
+import christmas.domain.customer.Orders;
+import christmas.domain.customer.VisitDay;
 
 import java.util.EnumMap;
 
@@ -13,7 +13,7 @@ public class AppliedGiftPromotions {
             Orders orders
     ) {
         GiftContext giftContext = GiftContext.create(visitDay, orders);
-        this.promotions = giftContext.generatePriceResult();
+        this.promotions = giftContext.getResult();
     }
 
     public static AppliedGiftPromotions create(
@@ -21,5 +21,12 @@ public class AppliedGiftPromotions {
             Orders orders
     ) {
         return new AppliedGiftPromotions(visitDay, orders);
+    }
+
+    public int getGiftTotalPriceResult() {
+        return promotions.entrySet()
+                .stream()
+                .mapToInt(entry -> entry.getKey().getGiftPrice() * entry.getValue())
+                .sum();
     }
 }

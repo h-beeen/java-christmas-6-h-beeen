@@ -1,6 +1,6 @@
 package christmas.view.constants;
 
-import static christmas.domain.order.constants.PlannerConstraint.PROMOTION_MONTH;
+import static christmas.domain.customer.constants.PlannerConstraint.PROMOTION_MONTH;
 
 public enum ResponseMessage {
     //== REQUEST MESSAGE ==//
@@ -17,7 +17,9 @@ public enum ResponseMessage {
 
     RESPONSE_MENU_ORDERS_RESULT("<주문 메뉴>"),
     RESPONSE_TOTAL_ORIGIN_PRICE_RESULT("<할인 전 총주문 금액>"),
-    RESPONSE_GIFT_MENU_RESPONSE("<증정 메뉴>");
+    RESPONSE_BENEFIT_RESPONSE("<혜택 내역>"),
+    RESPONSE_GIFT_RESPONSE("<증정 내역>"),
+    RESPONSE_NONEXISTENCE_RESPONSE("없음");
 
     private final String message;
 
