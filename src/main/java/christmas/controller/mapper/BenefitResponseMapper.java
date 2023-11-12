@@ -1,6 +1,6 @@
 package christmas.controller.mapper;
 
-import christmas.controller.dto.BenefitResponse;
+import christmas.controller.dto.DiscountResultResponse;
 import christmas.domain.promotion.promotion.discount.AppliedDiscountPromotions;
 import christmas.domain.promotion.promotion.discount.DiscountPromotion;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public final class BenefitResponseMapper implements ResponseMapper<AppliedDiscountPromotions, BenefitResponse> {
+public final class BenefitResponseMapper implements ResponseMapper<AppliedDiscountPromotions, DiscountResultResponse> {
     public static final BenefitResponseMapper BENEFIT_RESPONSE_MAPPER = new BenefitResponseMapper();
 
     private BenefitResponseMapper() {
@@ -20,7 +20,7 @@ public final class BenefitResponseMapper implements ResponseMapper<AppliedDiscou
     }
 
     @Override
-    public BenefitResponse toResponse(AppliedDiscountPromotions appliedPromotions) {
+    public DiscountResultResponse toResponse(AppliedDiscountPromotions appliedPromotions) {
         EnumMap<DiscountPromotion, Integer> result = appliedPromotions.getResult();
 
         Map<String, Integer> giftPromotionResponse = result.entrySet()
@@ -31,6 +31,6 @@ public final class BenefitResponseMapper implements ResponseMapper<AppliedDiscou
                         (prev, next) -> next)
                 );
 
-        return new BenefitResponse(giftPromotionResponse);
+        return new DiscountResultResponse(giftPromotionResponse);
     }
 }

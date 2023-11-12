@@ -14,21 +14,10 @@ public class Application {
         Orders orders = OrderController.requestOrders();
         VisitDayController.responseVisitDay(visitDay);
         OrderController.responseOrdersResult(orders);
-        AppliedDiscountPromotions appliedPromotion = AppliedDiscountPromotions.create(visitDay, orders);
-        PromotionController.responseGiftResponse(appliedPromotion);
 
-//        //todo 증정메뉴 출력
-//        //todo 혜택내역 출력
-//        //todo 총혜택금액 출력
-//        //todo 할인 후 예상 결제금액 출력
-//        //todo 이벤트 배지 출력
-//
-//        EnumMap<DiscountPromotion, Integer> promotions = appliedPromotion.getPromotions();
-//        int i = appliedPromotion.calculateTotalDiscountBenefit();
-//
-//        System.out.println("총 할인 혜택 금액 = " + i);
-//
-//        promotions.forEach((key, value) -> System.out.println(key.getPromotionName() + " : " + value));
+        AppliedDiscountPromotions appliedPromotion = AppliedDiscountPromotions.create(visitDay, orders);
+        GiftPromo
+        PromotionController.responseBenefitResponse(appliedPromotion);
 
         Console.close();
     }

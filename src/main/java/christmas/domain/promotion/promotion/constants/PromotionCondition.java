@@ -1,4 +1,4 @@
-package christmas.domain.promotion.promotion.discount;
+package christmas.domain.promotion.promotion.constants;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
@@ -12,7 +12,7 @@ import static christmas.domain.order.constants.PlannerConstraint.MINIMUM_APPLICA
 import static christmas.domain.promotion.constants.PromotionPeriod.MONTHLY_DECEMBER;
 import static christmas.domain.promotion.constants.PromotionPeriod.UNTIL_CHRISTMAS;
 
-public enum DiscountPromotionCondition {
+public enum PromotionCondition {
     CHRISTMAS_D_DAY_PROMOTION_CONDITION(
             UNTIL_CHRISTMAS,
             (visitDay, orders) -> true
@@ -37,7 +37,7 @@ public enum DiscountPromotionCondition {
     private final PromotionPeriod promotionPeriod;
     private final BiPredicate<VisitDay, Orders> isApplicable;
 
-    DiscountPromotionCondition(
+    PromotionCondition(
             PromotionPeriod promotionPeriod,
             BiPredicate<VisitDay, Orders> isApplicable
     ) {

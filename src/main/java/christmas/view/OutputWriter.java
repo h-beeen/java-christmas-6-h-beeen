@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.controller.dto.BenefitResponse;
+import christmas.controller.dto.DiscountResultResponse;
 import christmas.controller.dto.OrderResponse;
 import christmas.controller.dto.VisitDayResponse;
 import christmas.view.constants.ResponseMessage;
@@ -38,8 +38,8 @@ public class OutputWriter {
         println(PROMOTION_PREVIEW.generateFormat(visitDayResponse.month(), visitDayResponse.date()));
     }
 
-    public static void printGiftResponse(BenefitResponse giftResponse) {
-        giftResponse.benefitResponse()
+    public static void printBenefitResponse(DiscountResultResponse giftResponse) {
+        giftResponse.discountResult()
                 .forEach((key, value) ->
                         OutputWriter.println(BENEFIT_RESULT.generateFormat(key, value)));
     }

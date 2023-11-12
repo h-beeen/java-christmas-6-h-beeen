@@ -61,14 +61,14 @@ public class Orders {
         return totalOrdersQuantity > ORDERS_MAXIMUM_RANGE;
     }
 
-    private Predicate<Entry<Menu, Integer>> isBeverage() {
-        return entry -> entry.getKey().isSameCategory(BEVERAGE);
-    }
-
     public boolean hasMenuCategory(MenuCategory category) {
         return menus.keySet()
                 .stream()
                 .anyMatch(key -> key.isSameCategory(category));
+    }
+
+    private Predicate<Entry<Menu, Integer>> isBeverage() {
+        return entry -> entry.getKey().isSameCategory(BEVERAGE);
     }
 
     //== Getter (Only permit to use Dto/ResponseMapper) ==//

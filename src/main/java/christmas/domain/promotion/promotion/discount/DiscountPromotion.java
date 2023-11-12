@@ -2,14 +2,16 @@ package christmas.domain.promotion.promotion.discount;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
+import christmas.domain.promotion.promotion.Promotion;
+import christmas.domain.promotion.promotion.constants.PromotionCondition;
 
 import java.util.function.BiFunction;
 
 import static christmas.domain.order.constants.MenuCategory.DESSERT;
 import static christmas.domain.order.constants.MenuCategory.MAIN_DISH;
-import static christmas.domain.promotion.promotion.discount.DiscountPromotionCondition.*;
+import static christmas.domain.promotion.promotion.constants.PromotionCondition.*;
 
-public enum DiscountPromotion {
+public enum DiscountPromotion implements Promotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             "크리스마스 디데이 할인",
             CHRISTMAS_D_DAY_PROMOTION_CONDITION,
@@ -32,12 +34,12 @@ public enum DiscountPromotion {
     );
 
     private final String promotionName;
-    private final DiscountPromotionCondition promotionCondition;
+    private final PromotionCondition promotionCondition;
     private final BiFunction<VisitDay, Orders, Integer> promotionFunction;
 
     DiscountPromotion(
             String promotionName,
-            DiscountPromotionCondition promotionCondition,
+            PromotionCondition promotionCondition,
             BiFunction<VisitDay, Orders, Integer> promotionFunction
     ) {
         this.promotionName = promotionName;
@@ -57,14 +59,11 @@ public enum DiscountPromotion {
         return promotionCondition.isPromotionPeriod(visitDay);
     }
 
-    public boolean isApplicable(
-            VisitDay visitDay,
-            Orders orders
-    ) {
-        return promotionCondition.isApplicable(visitDay, orders);
-    }
-
     public String getPromotionName() {
         return promotionName;
+    }
+
+    public boolean isApplicable(VisitDay visitDay, Orders orders) {
+        return promotionCondition.isApplicable(visitDay, orders);
     }
 }
