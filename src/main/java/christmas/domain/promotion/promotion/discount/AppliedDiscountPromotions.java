@@ -36,6 +36,11 @@ public class AppliedDiscountPromotions {
                 .sum();
     }
 
+    public int getExpectedPayment(Orders orders) {
+        final int totalOriginPrice = orders.calculateTotalOriginPrice();
+        return totalOriginPrice - getTotalDiscountAmount();
+    }
+
     public EnumMap<DiscountPromotion, Integer> getPromotions() {
         return promotions;
     }

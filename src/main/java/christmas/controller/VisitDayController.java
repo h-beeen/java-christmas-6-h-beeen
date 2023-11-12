@@ -1,7 +1,6 @@
 package christmas.controller;
 
 import christmas.controller.dto.VisitDayResponse;
-import christmas.controller.mapper.VisitDayMapper;
 import christmas.domain.consumer.VisitDay;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
@@ -12,7 +11,8 @@ import static christmas.view.constants.ResponseMessage.REQUEST_VISITING_DAY;
 import static christmas.view.constants.ResponseMessage.WELCOME_MESSAGE;
 
 public class VisitDayController {
-    private static final VisitDayMapper VISIT_DAY_MAPPER = VisitDayMapper.getInstance();
+    private VisitDayController() {
+    }
 
     public static VisitDay requestVisitDay() {
         OutputWriter.printMessageResponse(WELCOME_MESSAGE);
@@ -21,7 +21,7 @@ public class VisitDayController {
     }
 
     public static void responseVisitDay(VisitDay visitDay) {
-        VisitDayResponse response = VISIT_DAY_MAPPER.from(visitDay);
+        VisitDayResponse response = VisitDayResponse.from(visitDay);
         OutputWriter.printVisitDayResponse(response);
     }
 

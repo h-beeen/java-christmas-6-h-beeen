@@ -2,8 +2,6 @@ package christmas.controller;
 
 import christmas.controller.dto.DiscountResponse;
 import christmas.controller.dto.GiftResponse;
-import christmas.controller.mapper.DiscountResponseMapper;
-import christmas.controller.mapper.GiftResponseMapper;
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
 import christmas.domain.promotion.promotion.constants.Badge;
@@ -16,8 +14,8 @@ import static christmas.view.constants.ResponseFormat.PRICE_RESULT;
 import static christmas.view.constants.ResponseMessage.*;
 
 public class PromotionController {
-    private static final DiscountResponseMapper DISCOUNT_RESPONSE_MAPPER = DiscountResponseMapper.getInstance();
-    private static final GiftResponseMapper GIFT_RESPONSE_MAPPER = GiftResponseMapper.getInstance();
+    private PromotionController() {
+    }
 
     public static void responseAppliedBenefitResult(
             VisitDay visitDay,
@@ -27,16 +25,15 @@ public class PromotionController {
         AppliedDiscountPromotions appliedDiscountPromotions = AppliedDiscountPromotions.create(visitDay, orders, defaultBadge);
         AppliedGiftPromotions appliedGiftPromotions = AppliedGiftPromotions.create(visitDay, orders, defaultBadge);
 
-        final int totalOriginPrice = orders.calculateTotalOriginPrice();
-        final int totalDiscountAmount = appliedDiscountPromotions.getdiscountTotalPrice(totalOriginalPrice);
+        final int totalDiscountAmount = appliedDiscountPromotions.getExpectedPayment(orders);
 
-        DiscountResponse discountResponse = DISCOUNT_RESPONSE_MAPPER.from(appliedDiscountPromotions);
-        GiftResponse giftResponse = GIFT_RESPONSE_MAPPER.from(appliedGiftPromotions);
+        DiscountResponse discountResponse = DiscountResponse.from(appliedDiscountPromotions);
+        GiftResponse giftResponse = GiftResponse.from(appliedGiftPromotions);
 
         responseGiftResult(giftResponse);
         responseBenefitResult(discountResponse, giftResponse);
         responseTotalBenefitResult(discountResponse, giftResponse);
-        responseExpectPaymentResult(orders, discountResponse);
+        responseExpectPaymentResult(totalDiscountAmount);
     }
 
     private static void responseGiftResult(GiftResponse giftResponse) {
@@ -63,12 +60,9 @@ public class PromotionController {
         OutputWriter.printTotalBenefitResponse(discountResponse, giftResponse);
     }
 
-    private static void responseExpectPaymentResult(
-            Orders orders,
-            DiscountResponse discountResponse
-    ) {
+    private static void responseExpectPaymentResult(final int expectPayment) {
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_EXPECT_PAYMENT_RESULT);
-        OutputWriter.println(PRICE_RESULT.generateFormat()); // 최종 결제금액
+        OutputWriter.println(PRICE_RESULT.generateFormat(expectPayment)); // 최종 결제금액
     }
 }

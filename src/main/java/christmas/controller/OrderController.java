@@ -1,7 +1,6 @@
 package christmas.controller;
 
 import christmas.controller.dto.OrderResponse;
-import christmas.controller.mapper.OrderResponseMapper;
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.constants.Menu;
 import christmas.domain.utility.Parser;
@@ -14,8 +13,6 @@ import java.util.EnumMap;
 import static christmas.view.constants.ResponseMessage.*;
 
 public class OrderController {
-    private static final OrderResponseMapper ORDER_RESPONSE_MAPPER = OrderResponseMapper.getInstance();
-
     private OrderController() {
     }
 
@@ -31,7 +28,7 @@ public class OrderController {
     }
 
     public static void responseOrdersResult(Orders orders) {
-        OrderResponse orderResponse = ORDER_RESPONSE_MAPPER.from(orders);
+        OrderResponse orderResponse = OrderResponse.from(orders);
 
         OutputWriter.printNewLine();
         OutputWriter.printMessageResponse(RESPONSE_MENU_ORDERS_RESULT);
