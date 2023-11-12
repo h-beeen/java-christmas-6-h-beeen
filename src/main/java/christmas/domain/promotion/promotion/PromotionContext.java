@@ -8,10 +8,10 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PRomotionContext {
+public class PromotionContext {
     private final List<Promotion> applicablePromotions;
 
-    private PRomotionContext(VisitDay visitDay, Orders orders) {
+    private PromotionContext(VisitDay visitDay, Orders orders) {
         this.applicablePromotions = Arrays.stream(Promotion.values())
                 .filter(promotion -> promotion.isPromotionPeriod(visitDay))
                 .filter(promotion -> promotion.isApplicable(visitDay, orders))
@@ -19,11 +19,11 @@ public class PRomotionContext {
     }
 
     //== Static Factory Method ==//
-    public static PRomotionContext create(
+    public static PromotionContext create(
             VisitDay visitDay,
             Orders orders
     ) {
-        return new PRomotionContext(visitDay, orders);
+        return new PromotionContext(visitDay, orders);
     }
 
     //== Utility Method ==//

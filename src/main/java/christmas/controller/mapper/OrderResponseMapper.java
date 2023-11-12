@@ -2,7 +2,6 @@ package christmas.controller.mapper;
 
 import christmas.controller.dto.OrderResponse;
 import christmas.domain.order.Orders;
-import christmas.domain.order.constants.Menu;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,13 +24,9 @@ public final class OrderResponseMapper implements ResponseMapper<Orders, OrderRe
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        this::getName,
+                        entry -> entry.getKey().getName(),
                         Entry::getValue));
 
         return new OrderResponse(orderResponse);
-    }
-
-    private String getName(Entry<Menu, Integer> entry) {
-        return entry.getKey().getName();
     }
 }

@@ -16,7 +16,8 @@ public enum ResponseMessage {
 
 
     RESPONSE_MENU_ORDERS_RESULT("<주문 메뉴>"),
-    RESPONSE_TOTAL_ORIGIN_PRICE_RESULT("<할인 전 총주문 금액>");
+    RESPONSE_TOTAL_ORIGIN_PRICE_RESULT("<할인 전 총주문 금액>"),
+    RESPONSE_GIFT_MENU_RESPONSE("<증정 메뉴>");
 
     private final String message;
 

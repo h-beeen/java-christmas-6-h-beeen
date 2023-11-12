@@ -5,6 +5,7 @@ import christmas.domain.order.VisitDay;
 
 import java.util.EnumMap;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class AppliedPromotions {
     private final EnumMap<Promotion, Integer> promotions;
@@ -14,7 +15,7 @@ public class AppliedPromotions {
             VisitDay visitDay,
             Orders orders
     ) {
-        PRomotionContext promotionContext = PRomotionContext.create(visitDay, orders);
+        PromotionContext promotionContext = PromotionContext.create(visitDay, orders);
         this.promotions = promotionContext.applyPromotions(visitDay, orders);
     }
 
@@ -32,6 +33,17 @@ public class AppliedPromotions {
                 .filter(entry -> entry.getKey().isDiscountType())
                 .mapToInt(Entry::getValue)
                 .sum();
+    }
+
+    public EnumMap<Promotion, Integer> getGiftPromotions() {
+        return promotions.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().isGiftType())
+                .collect(Collectors.toMap(
+                        Entry::getKey,
+                        Entry::getValue,
+                        (previous, next) -> next,
+                        () -> new EnumMap<>(Promotion.class)));
     }
 
     //== Getter todo 삭제해야 할 Getter (디버깅용) ==//

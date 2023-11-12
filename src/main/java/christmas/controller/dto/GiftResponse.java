@@ -1,7 +1,8 @@
 package christmas.controller.dto;
 
+import java.util.Map;
+
 public record GiftResponse(
-        String giftMenuName,
-        int quantity
+        Map<String, Integer> giftResponse
 ) {
 }

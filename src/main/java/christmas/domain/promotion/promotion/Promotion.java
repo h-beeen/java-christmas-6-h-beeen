@@ -33,7 +33,7 @@ public enum Promotion {
             (visitDay, orders) -> 1000
     ),
     CHAMPAGNE_GIFT(
-            "증정 이벤트",
+            "샴페인",
             CHAMPAGNE_GIFT_CONDITION,
             (visitDay, orders) -> 1
     );
