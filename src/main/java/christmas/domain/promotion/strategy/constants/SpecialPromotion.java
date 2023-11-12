@@ -1,4 +1,4 @@
-package christmas.domain.promotion.constants;
+package christmas.domain.promotion.strategy.constants;
 
 import java.time.LocalDate;
 import java.util.List;

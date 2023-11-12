@@ -1,13 +1,14 @@
-package christmas.domain.promotion.strategy;
+package christmas.domain.promotion.strategy.discount;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.constants.Promotion;
+import christmas.domain.promotion.strategy.PromotionStrategy;
+import christmas.domain.promotion.strategy.constants.Promotion;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 
-import static christmas.domain.promotion.constants.Promotion.CHRISTMAS_D_DAY_DISCOUNT;
+import static christmas.domain.promotion.strategy.constants.Promotion.CHRISTMAS_D_DAY_DISCOUNT;
 
 public class ChristmasDiscountStrategy implements PromotionStrategy {
     private static final int DAILY_BONUS = 100;

@@ -6,7 +6,7 @@ import christmas.controller.VisitDayController;
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
 import christmas.domain.promotion.AppliedPromotions;
-import christmas.domain.promotion.constants.Promotion;
+import christmas.domain.promotion.strategy.constants.Promotion;
 
 import java.util.EnumMap;
 

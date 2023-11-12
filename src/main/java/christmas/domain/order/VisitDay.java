@@ -1,6 +1,6 @@
 package christmas.domain.order;
 
-import christmas.domain.promotion.constants.SpecialPromotion;
+import christmas.domain.promotion.strategy.constants.SpecialPromotion;
 import christmas.exception.ExceptionHandler;
 
 import java.time.LocalDate;

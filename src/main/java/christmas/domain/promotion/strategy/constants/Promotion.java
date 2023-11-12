@@ -1,27 +1,31 @@
-package christmas.domain.promotion.constants;
+package christmas.domain.promotion.strategy.constants;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.strategy.*;
+import christmas.domain.promotion.strategy.PromotionStrategy;
+import christmas.domain.promotion.strategy.discount.ChristmasDiscountStrategy;
+import christmas.domain.promotion.strategy.discount.SpecialDiscountStrategy;
+import christmas.domain.promotion.strategy.discount.WeekdayDiscountStrategy;
+import christmas.domain.promotion.strategy.discount.WeekendDiscountStrategy;
 
-import static christmas.domain.promotion.constants.PromotionCondition.*;
+import static christmas.domain.promotion.strategy.constants.PromotionCondition.*;
 
 public enum Promotion {
     CHRISTMAS_D_DAY_DISCOUNT(
             ChristmasDiscountStrategy.create(),
-            CHRISTMAS_D_DAY_DISCOUNT_CONDITION
+            CHRISTMAS_D_DAY_PROMOTION_CONDITION
     ),
     WEEKDAY_DISCOUNT(
             WeekdayDiscountStrategy.create(),
-            WEEKDAY_DISCOUNT_CONDITION
+            WEEKDAY_PROMOTION_CONDITION
     ),
     WEEKEND_DISCOUNT(
             WeekendDiscountStrategy.create(),
-            WEEKEND_DISCOUNT_CONDITION
+            WEEKEND_PROMOTION_CONDITION
     ),
     SPECIAL_DISCOUNT(
             SpecialDiscountStrategy.create(),
-            SPECIAL_DISCOUNT_CONDITION
+            SPECIAL_PROMOTION_CONDITION
     );
 
     private final PromotionStrategy promotionStrategy;

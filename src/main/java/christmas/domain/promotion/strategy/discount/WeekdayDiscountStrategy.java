@@ -1,14 +1,15 @@
-package christmas.domain.promotion.strategy;
+package christmas.domain.promotion.strategy.discount;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.constants.Promotion;
+import christmas.domain.promotion.strategy.PromotionStrategy;
+import christmas.domain.promotion.strategy.constants.Promotion;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 
 import static christmas.domain.order.constants.MenuCategory.DESSERT;
-import static christmas.domain.promotion.constants.Promotion.WEEKDAY_DISCOUNT;
+import static christmas.domain.promotion.strategy.constants.Promotion.WEEKDAY_DISCOUNT;
 
 public class WeekdayDiscountStrategy implements PromotionStrategy {
     private static final int DISCOUNT_PER_DESSERT = 2_023;

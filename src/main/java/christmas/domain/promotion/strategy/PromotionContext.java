@@ -2,7 +2,7 @@ package christmas.domain.promotion.strategy;
 
 import christmas.domain.order.Orders;
 import christmas.domain.order.VisitDay;
-import christmas.domain.promotion.constants.Promotion;
+import christmas.domain.promotion.strategy.constants.Promotion;
 
 import java.util.Arrays;
 import java.util.EnumMap;
