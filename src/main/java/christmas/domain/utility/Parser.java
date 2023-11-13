@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import static christmas.exception.ErrorCode.INVALID_ORDER;
 
 public class Parser {
+    private static final int POSITIVE_NUMBER_MINIMUM_RANGE = 1;
     private static final String DELIMITER = ",";
     private static final String HYPHEN = "-";
     private static final Pattern REGEX_PATTERN = Pattern.compile("^[가-힣]+-\\d{1,20}$");
@@ -43,13 +44,16 @@ public class Parser {
     private static EnumMap<Menu, Integer> parseMenuOrdersInputByHyphen(List<String> parsedByDelimiterMenuOrders) {
         INVALID_ORDER.validate(() -> isInvalidPattern(parsedByDelimiterMenuOrders));
 
-        return parsedByDelimiterMenuOrders.stream()
+        EnumMap<Menu, Integer> parsedMenuOrders = parsedByDelimiterMenuOrders.stream()
                 .map(splitMenuOrdersInputByHyphen())
                 .collect(Collectors.toMap(
                         Parser::extractMenuToKey,
                         Parser::extractQuantityToValue,
                         Parser::validateDuplicate,
                         Parser::createEnumMap));
+
+        INVALID_ORDER.validate(() -> hasNotPositiveInteger(parsedMenuOrders));
+        return parsedMenuOrders;
     }
 
     private static Function<String, String[]> splitMenuOrdersInputByHyphen() {
@@ -84,6 +88,16 @@ public class Parser {
 
     private static Integer validateDuplicate(Integer existing, Integer replacement) {
         throw BusinessException.from(INVALID_ORDER);
+    }
+
+    private static boolean hasNotPositiveInteger(EnumMap<Menu, Integer> parsedMenuOrders) {
+        return parsedMenuOrders.values()
+                .stream()
+                .anyMatch(Parser::isNotPositiveInteger);
+    }
+
+    private static boolean isNotPositiveInteger(Integer value) {
+        return value < POSITIVE_NUMBER_MINIMUM_RANGE;
     }
 
     /**

@@ -8,7 +8,7 @@ public enum ErrorCode {
     ORDERS_ONLY_CONTAIN_BEVERAGES("음료만 주문할 수 없습니다. 다시 입력해 주세요."),
     EXCEED_ORDER_QUANTITY_LIMIT("최대 주문 갯수를 초과했습니다. 다시 입력해 주세요.");
 
-    private static final String ERROR_PREFIX = "[ERROR] ";
+    public static final String ERROR_PREFIX = "[ERROR] ";
     private final String message;
 
     ErrorCode(String message) {
