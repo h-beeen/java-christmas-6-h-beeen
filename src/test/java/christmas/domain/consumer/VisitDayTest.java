@@ -84,5 +84,43 @@ class VisitDayTest {
                     () -> assertFalse(notContainDay.containPeriod(startDate, endDate))
             );
         }
+
+        @Test
+        @DisplayName("[isWeekend] 해당 날짜가 프로모션 제약 기준 주말이면 true, 아니라면 false를 리턴합니다.")
+        void isWeekend() {
+            // given
+            final var weekend = VisitDay.create(2);
+            final var weekday = VisitDay.create(6);
+            // then
+            assertAll(
+                    () -> assertTrue(weekend.isWeekend()),
+                    () -> assertFalse(weekday.isWeekend())
+            );
+        }
+
+        @Test
+        @DisplayName("[isWeekday] 해당 날짜가 프로모션 제약 기준 주중이면 true, 아니라면 false를 리턴합니다.")
+        void isWeekday() {
+            // given
+            final var weekend = VisitDay.create(2);
+            final var weekday = VisitDay.create(6);
+            // then
+            assertAll(
+                    () -> assertTrue(weekday.isWeekday()),
+                    () -> assertFalse(weekend.isWeekday())
+            );
+        }
+
+        @ParameterizedTest
+        @ValueSource(ints = {
+                3, 10, 17, 24, 25, 31
+        })
+        @DisplayName("[isWeekday] 해당 날짜가 특별 할인(별) 기간이라면 true")
+        void isSpecialDay(int visitDay) {
+            // given
+            final var specialDay = VisitDay.create(visitDay);
+            // then
+            assertTrue(specialDay.isSpecialDay());
+        }
     }
 }
