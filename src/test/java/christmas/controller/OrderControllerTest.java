@@ -45,7 +45,7 @@ class OrderControllerTest {
         @EnumSource(
                 value = OrdersFixture.class,
                 names = {
-                        "INVALID__ONLY_CONTAIN_DRINK",
+                        "INVALID__ONLY_CONTAIN_BEVERAGES",
                         "INVALID__CONTAIN_BLANK",
                         "INVALID__DUPLICATED_MENU",
                         "INVALID__NONEXISTENCE_MENU",

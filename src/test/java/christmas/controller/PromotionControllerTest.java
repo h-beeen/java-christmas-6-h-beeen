@@ -1,7 +1,6 @@
 package christmas.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;
 import christmas.fixture.OrdersFixture;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("[PromotionController] - Controller Layer")
-public class PromotionControllerTest {
+class PromotionControllerTest {
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
     @Nested
@@ -21,8 +20,8 @@ public class PromotionControllerTest {
 
         @Override
         protected void runMain() {
-            VisitDay visitDay = VisitDay.create(15);
-            Orders orders = OrdersFixture.VALID__A.toEntity();
+            final var visitDay = VisitDay.create(15);
+            final var orders = OrdersFixture.VALID__A.toEntity();
             PromotionController.responseAppliedBenefitResult(visitDay, orders);
         }
 
