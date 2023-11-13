@@ -2,7 +2,6 @@ package christmas.controller;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import christmas.domain.consumer.Orders;
-import christmas.exception.ErrorCode;
 import christmas.fixture.OrdersFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static christmas.exception.ErrorCode.ERROR_PREFIX;
 import static christmas.view.constants.ResponseMessage.RESPONSE_MENU_ORDERS_RESULT;
 import static christmas.view.constants.ResponseMessage.RESPONSE_TOTAL_ORIGIN_PRICE_RESULT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -39,8 +38,7 @@ class OrderControllerTest {
         @DisplayName("[Success] 사용자에게 유효한 메뉴 및 갯수 입력을 요청받아 성공한다.")
         void Should_Success_When_ValidOrderRequest(OrdersFixture fixture) {
             // given && when && then
-            assertSimpleTest(() ->
-                    assertDoesNotThrow(() -> run(fixture.getValue())));
+            assertDoesNotThrow(() -> run(fixture.getValue()));
         }
 
         @ParameterizedTest
@@ -59,12 +57,10 @@ class OrderControllerTest {
                 }
         )
         @DisplayName("[Exception] 사용자가 입력한 메뉴 요청이 부적절해 예외를 던진다.")
-        void Should_Restart_When_InvalidOrderRequest(OrdersFixture fixture) {
-            assertSimpleTest(() -> {
-                // given && when && then
-                runException(fixture.getValue());
-                assertThat(output()).contains(ErrorCode.ERROR_PREFIX);
-            });
+        void Should_ThrowException_When_InvalidOrderRequest(OrdersFixture fixture) {
+            // given && when && then
+            runException(fixture.getValue());
+            assertThat(output()).contains(ERROR_PREFIX);
         }
     }
 
@@ -80,16 +76,16 @@ class OrderControllerTest {
         }
 
         @Test
+        @DisplayName("[Success] 주문 내역을 형식에 맞게 출력한다.")
         void Should_Success_When_ValidOrderRequest() {
-            assertSimpleTest(() -> {
-                run();
-                assertThat(output())
-                        .contains(RESPONSE_MENU_ORDERS_RESULT.getMessage())
-                        .contains("양송이수프 1개")
-                        .contains("티본스테이크 2개")
-                        .contains("초코케이크 3개")
-                        .contains("제로콜라 4개");
-            });
+            // given && when && then
+            run();
+            assertThat(output())
+                    .contains(RESPONSE_MENU_ORDERS_RESULT.getMessage())
+                    .contains("양송이수프 1개")
+                    .contains("티본스테이크 2개")
+                    .contains("초코케이크 3개")
+                    .contains("제로콜라 4개");
         }
     }
 
@@ -106,13 +102,13 @@ class OrderControllerTest {
         }
 
         @Test
+        @DisplayName("[Success] 할인 전 총주문 금액을 형식에 맞게 출력한다.")
         void Should_Success_When_ValidOrderRequest() {
-            assertSimpleTest(() -> {
-                run();
-                assertThat(output())
-                        .contains(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT.getMessage())
-                        .contains("173,000원");
-            });
+            // given && when && then
+            run();
+            assertThat(output())
+                    .contains(RESPONSE_TOTAL_ORIGIN_PRICE_RESULT.getMessage())
+                    .contains("173,000원");
         }
     }
 }
