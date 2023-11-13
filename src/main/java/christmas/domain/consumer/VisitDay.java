@@ -17,7 +17,7 @@ public class VisitDay {
 
     //== Constructor ==//
     private VisitDay(final int visitDay) {
-        this.visitDay = ExceptionHandler.tryOnFormatException(() -> convertLocalDate(visitDay));
+        this.visitDay = ExceptionHandler.tryOnDateException(() -> convertLocalDate(visitDay));
     }
 
     //== Static Factory Method ==//
@@ -39,7 +39,7 @@ public class VisitDay {
             LocalDate startDate,
             LocalDate endDate
     ) {
-        return !(visitDay.isBefore(startDate) && visitDay.isAfter(endDate));
+        return !(visitDay.isBefore(startDate) || visitDay.isAfter(endDate));
     }
 
     public boolean isWeekend() {
