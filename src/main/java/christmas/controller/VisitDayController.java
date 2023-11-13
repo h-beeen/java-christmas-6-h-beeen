@@ -5,7 +5,7 @@ import christmas.domain.consumer.VisitDay;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
 import christmas.view.InputReader;
-import christmas.view.OutputWriter;
+import christmas.view.out.VisitDayOutputWriter;
 
 import static christmas.view.constants.ResponseMessage.REQUEST_VISITING_DAY;
 import static christmas.view.constants.ResponseMessage.WELCOME_MESSAGE;
@@ -15,14 +15,14 @@ public class VisitDayController {
     }
 
     public static VisitDay requestVisitDay() {
-        OutputWriter.printMessageResponse(WELCOME_MESSAGE);
-        OutputWriter.printMessageResponse(REQUEST_VISITING_DAY);
+        VisitDayOutputWriter.printMessageResponse(WELCOME_MESSAGE);
+        VisitDayOutputWriter.printMessageResponse(REQUEST_VISITING_DAY);
         return ExceptionHandler.retryOnBusinessException(VisitDayController::createVisitFromInput);
     }
 
     public static void responseVisitDay(VisitDay visitDay) {
         VisitDayResponse response = VisitDayResponse.from(visitDay);
-        OutputWriter.printVisitDayResponse(response);
+        VisitDayOutputWriter.printVisitDayResponse(response);
     }
 
     private static VisitDay createVisitFromInput() {

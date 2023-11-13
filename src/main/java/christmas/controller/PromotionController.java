@@ -9,7 +9,7 @@ import christmas.domain.promotion.badge.BadgeContext;
 import christmas.domain.promotion.badge.BadgePromotion;
 import christmas.domain.promotion.discount.AppliedDiscountPromotions;
 import christmas.domain.promotion.gift.AppliedGiftPromotions;
-import christmas.view.OutputWriter;
+import christmas.view.out.PromotionOutputWriter;
 
 import static christmas.domain.promotion.badge.BadgePromotion.DEFAULT;
 import static christmas.view.constants.ResponseFormat.PRICE_RESULT;
@@ -43,35 +43,35 @@ public class PromotionController {
     }
 
     private static void responseGiftResult(GiftResponse giftResponse) {
-        OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_GIFT_RESULT);
-        OutputWriter.printGiftQuantityResponse(giftResponse);
+        PromotionOutputWriter.printNewLine();
+        PromotionOutputWriter.printMessageResponse(RESPONSE_GIFT_RESULT);
+        PromotionOutputWriter.printGiftQuantityResponse(giftResponse);
     }
 
     private static void responseBenefitResult(
             DiscountResponse discountResponse,
             GiftResponse giftResponse
     ) {
-        OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_BENEFIT_RESPONSE);
-        OutputWriter.printBenefitResponse(discountResponse, giftResponse);
+        PromotionOutputWriter.printNewLine();
+        PromotionOutputWriter.printMessageResponse(RESPONSE_BENEFIT_RESPONSE);
+        PromotionOutputWriter.printBenefitResponse(discountResponse, giftResponse);
     }
 
     private static void responseTotalBenefitResult(final int totalBenefit) {
-        OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_TOTAL_BENEFIT_RESULT);
-        OutputWriter.printTotalBenefitResponse(totalBenefit);
+        PromotionOutputWriter.printNewLine();
+        PromotionOutputWriter.printMessageResponse(RESPONSE_TOTAL_BENEFIT_RESULT);
+        PromotionOutputWriter.printTotalBenefitResponse(totalBenefit);
     }
 
     private static void responseExpectPaymentResult(final int expectPayment) {
-        OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_EXPECT_PAYMENT_RESULT);
-        OutputWriter.println(PRICE_RESULT.generateFormat(expectPayment)); // 최종 결제금액
+        PromotionOutputWriter.printNewLine();
+        PromotionOutputWriter.printMessageResponse(RESPONSE_EXPECT_PAYMENT_RESULT);
+        PromotionOutputWriter.println(PRICE_RESULT.generateFormat(expectPayment)); // 최종 결제금액
     }
 
     private static void responseBadgeResult(BadgeResponse badgeResponse) {
-        OutputWriter.printNewLine();
-        OutputWriter.printMessageResponse(RESPONSE_BADGE_RESULT);
-        OutputWriter.printBadgeResponse(badgeResponse);
+        PromotionOutputWriter.printNewLine();
+        PromotionOutputWriter.printMessageResponse(RESPONSE_BADGE_RESULT);
+        PromotionOutputWriter.printBadgeResponse(badgeResponse);
     }
 }

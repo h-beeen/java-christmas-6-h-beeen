@@ -1,6 +1,6 @@
 package christmas.exception;
 
-import christmas.view.OutputWriter;
+import christmas.view.out.ErrorOutputWriter;
 
 import java.time.DateTimeException;
 import java.util.function.Supplier;
@@ -16,7 +16,7 @@ public class ExceptionHandler {
             try {
                 return supplier.get();
             } catch (BusinessException exception) {
-                OutputWriter.println(exception.getMessage());
+                ErrorOutputWriter.println(exception.getMessage());
             }
         }
     }
