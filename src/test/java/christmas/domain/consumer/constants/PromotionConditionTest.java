@@ -1,4 +1,4 @@
-package christmas.domain.constants;
+package christmas.domain.consumer.constants;
 
 import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.VisitDay;

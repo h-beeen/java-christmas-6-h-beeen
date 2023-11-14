@@ -11,6 +11,7 @@ public enum OrdersFixture {
     VALID__B("타파스-1,바비큐립-1,아이스크림-1,레드와인-1"),
     VALID__C("초코케이크-1,제로콜라-1"),
     VALID__D("아이스크림-1"),
+    VALID__E("아이스크림-2"),
 
     INVALID__ONLY_CONTAIN_BEVERAGES("제로콜라-1,샴페인-2"),
     INVALID__CONTAIN_BLANK("티본 스테이크-1"),

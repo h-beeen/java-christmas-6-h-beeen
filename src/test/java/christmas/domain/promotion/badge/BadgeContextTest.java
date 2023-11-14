@@ -1,7 +1,5 @@
-package christmas.domain.promotion;
+package christmas.domain.promotion.badge;
 
-import christmas.domain.promotion.badge.BadgeContext;
-import christmas.domain.promotion.badge.BadgePromotion;
 import christmas.domain.promotion.discount.AppliedDiscountPromotions;
 import christmas.domain.promotion.gift.AppliedGiftPromotions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +17,7 @@ class BadgeContextTest {
 
     @Nested
     @DisplayName("[applyPromotions] 적용 가능한 이벤트 배지를 적용하고, 적용된 배지를 리턴")
-    class create {
+    class applyPromotions {
 
         @Test
         @DisplayName("[Applicable] 적용 가능한 이벤트 배지가 존재해, 해당 배지를 리턴")

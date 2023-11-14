@@ -1,4 +1,4 @@
-package christmas.domain.promotion;
+package christmas.domain.promotion.badge;
 
 import christmas.domain.consumer.VisitDay;
 import org.junit.jupiter.api.DisplayName;

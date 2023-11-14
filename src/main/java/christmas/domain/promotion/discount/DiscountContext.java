@@ -44,4 +44,9 @@ public class DiscountContext {
                         (previous, next) -> next,
                         () -> new EnumMap<>(DiscountPromotion.class)));
     }
+
+    //== Getter (Only permit to use TestCode) ==//
+    public List<DiscountPromotion> getApplicablePromotions() {
+        return applicablePromotions;
+    }
 }
