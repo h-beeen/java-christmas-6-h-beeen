@@ -47,6 +47,7 @@ public enum DiscountPromotion {
         this.promotionFunction = promotionFunction;
     }
 
+    //== Utility Method ==//
     public Integer applyPromotion(
             VisitDay visitDay,
             Orders orders
@@ -59,15 +60,16 @@ public enum DiscountPromotion {
         return promotionCondition.isPromotionPeriod(visitDay);
     }
 
-    public String getPromotionName() {
-        return promotionName;
-    }
-
     public boolean isApplicable(
             VisitDay visitDay,
             Orders orders,
             BadgePromotion badge
     ) {
         return promotionCondition.isApplicable(visitDay, orders, badge);
+    }
+
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
+    public String getPromotionName() {
+        return promotionName;
     }
 }

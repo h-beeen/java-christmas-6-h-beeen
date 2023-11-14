@@ -57,7 +57,7 @@ class PromotionConditionTest {
                 "WEEKDAY_PROMOTION_CONDITION",
                 "SPECIAL_PROMOTION_CONDITION"
         })
-        @DisplayName("[isApplicable] True Case")
+        @DisplayName("[isApplicable] False Case")
         void Should_ReturnFalse_When_RequestInapplicableCase(PromotionCondition condition) {
             /**
              * Given Fixture Information
