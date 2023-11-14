@@ -22,8 +22,4 @@ public class BusinessException extends IllegalArgumentException {
     public static BusinessException from(ErrorCode errorMessage) {
         return new BusinessException(errorMessage);
     }
-
-    public static BusinessException dynamicInvokeBy(ErrorCode errorMessage) {
-        return new BusinessException(errorMessage);
-    }
 }

@@ -4,6 +4,7 @@ import christmas.controller.dto.VisitDayResponse;
 
 import static christmas.view.constants.ResponseFormat.PROMOTION_PREVIEW;
 
+
 public final class VisitDayOutputWriter extends OutputWriter {
     private VisitDayOutputWriter() {
     }
