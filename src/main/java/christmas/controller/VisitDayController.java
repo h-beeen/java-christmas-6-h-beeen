@@ -4,8 +4,8 @@ import christmas.controller.dto.VisitDayResponse;
 import christmas.domain.consumer.VisitDay;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
-import christmas.view.InputReader;
-import christmas.view.out.VisitDayOutputWriter;
+import christmas.view.input.InputReader;
+import christmas.view.output.VisitDayOutputWriter;
 
 import static christmas.view.constants.ResponseMessage.REQUEST_VISITING_DAY;
 import static christmas.view.constants.ResponseMessage.WELCOME_MESSAGE;

@@ -9,7 +9,7 @@ import christmas.domain.promotion.badge.BadgeContext;
 import christmas.domain.promotion.badge.BadgePromotion;
 import christmas.domain.promotion.discount.AppliedDiscountPromotions;
 import christmas.domain.promotion.gift.AppliedGiftPromotions;
-import christmas.view.out.PromotionOutputWriter;
+import christmas.view.output.PromotionOutputWriter;
 
 import static christmas.domain.promotion.badge.BadgePromotion.DEFAULT;
 import static christmas.view.constants.ResponseFormat.PRICE_RESULT;

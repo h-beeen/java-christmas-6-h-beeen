@@ -5,8 +5,8 @@ import christmas.domain.consumer.Orders;
 import christmas.domain.consumer.constants.Menu;
 import christmas.domain.utility.Parser;
 import christmas.exception.ExceptionHandler;
-import christmas.view.InputReader;
-import christmas.view.out.OrderOutputWriter;
+import christmas.view.input.InputReader;
+import christmas.view.output.OrderOutputWriter;
 
 import java.util.EnumMap;
 

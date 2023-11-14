@@ -1,6 +1,6 @@
 package christmas.exception;
 
-import christmas.view.out.ErrorOutputWriter;
+import christmas.view.output.ErrorOutputWriter;
 
 import java.time.DateTimeException;
 import java.util.function.Supplier;
