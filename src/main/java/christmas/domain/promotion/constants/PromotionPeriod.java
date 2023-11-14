@@ -15,7 +15,7 @@ public enum PromotionPeriod {
     ),
     MONTHLY_DECEMBER(
             LocalDate.of(2023, 12, 1),
-            LocalDate.of(2023, 12, 25)
+            LocalDate.of(2023, 12, 31)
     );
 
     private final LocalDate startDate;
