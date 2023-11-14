@@ -54,7 +54,7 @@
         <th align="center">Description</th>
     </tr>
     <tr>
-        <td rowspan="3"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/2f32b4cd-187c-4b92-a136-2d86cd3341cd" width="20px">&nbsp;&nbsp;controller</b></td>
+        <td rowspan="3"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/2f32b4cd-187c-4b92-a136-2d86cd3341cd" width="18px">&nbsp;&nbsp;controller</b></td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;OrderController</b></td>
         <td>주문 목록 입력 요청 / 결과 출력</td>
     </tr>
@@ -64,12 +64,12 @@
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;VisitDayController</b></td>
-        <td><b>방문 일자 입력 요청 / 결과 출력</b>컨트롤러</td>
+        <td><b>방문 일자 입력 요청 / 결과 출력 </b>컨트롤러</td>
     </tr>
     <tr>
-        <td rowspan="5"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/2f32b4cd-187c-4b92-a136-2d86cd3341cd" width="20px">&nbsp;&nbsp;controller</b><br><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;dto</td>
+        <td rowspan="5"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/2f32b4cd-187c-4b92-a136-2d86cd3341cd" width="18px">&nbsp;&nbsp;controller</b><br>➜&nbsp;&nbsp;dto</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/3ef9d8a2-d4bb-42a1-900f-754799cac3fd" height="32px">&nbsp;&nbsp;BadgeResponse</b></td>
-        <td><b>이벤트 배지</b>DTO</td>
+        <td><b>이벤트 배지</b> DTO</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/3ef9d8a2-d4bb-42a1-900f-754799cac3fd" height="32px">&nbsp;&nbsp;DiscountResponse</b></td>
@@ -81,7 +81,7 @@
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/3ef9d8a2-d4bb-42a1-900f-754799cac3fd" height="32px">&nbsp;&nbsp;OrderResponse</b></td>
-        <td><b>사용자의 주문 메뉴와 갯수를 담는 일급 컬렉션 클래스</b> DTO</td>
+        <td><b>사용자의 주문 메뉴와 갯수</b>를 갖는 DTO</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/3ef9d8a2-d4bb-42a1-900f-754799cac3fd" height="32px">&nbsp;&nbsp;VisitDayResponse</b></td>
@@ -89,135 +89,135 @@
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="2"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;consumer</td>
+        <td rowspan="2"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;consumer</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;Orders</b></td>
-        <td><b>사용자의 주문 메뉴와 갯수</b>를 담는 <b>일급 컬렉션</b> 클래스</td>
+        <td><b>사용자의 주문 메뉴와 갯수</b>를 갖는 <b>일급 컬렉션</b> 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;VisitDay</b></td>
-        <td><b>사용자의 방문월 / 일</b>을 담는 클래스</td>
+        <td><b>사용자가 방문한 날짜</b>를 갖는 클래스</td>
     </tr>
     <tr>
-        <td rowspan="3"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;constants</td>
+        <td rowspan="3"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;constants</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;Menu</b></td>
-        <td><b>주문 가능 메뉴, 가격, 카테고리</b>를 담는 열거형 클래스</td>
+        <td><b>주문 가능 메뉴, 가격, 카테고리</b>를 갖는 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;MenuCategory</b></td>
-        <td><b>메뉴의 카테고리</b>를 담는 열거형 클래스</td>
+        <td><b>메뉴의 카테고리</b>를 갖는 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;PlannerConstraint</b></td>
-        <td>이벤트 진행에 필요한 <b>전역 설정</b>(Contraint) 열거형 클래스</td>
+        <td>이벤트 진행에 필요한 <b>전역 설정</b>(Contraint)을 갖는 열거형 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="2"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;promotion<br><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;badge</td>
+        <td rowspan="2"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;promotion<br>➜&nbsp;&nbsp;badge</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;BadgeContext</b></td>
-        <td>조건에 맞게 <b>배지를 생성</b>하는 클래스</td>
+        <td>조건에 맞게 <b>배지를 생성</b>하는 전략 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;BadgePromotion</b></td>
-        <td><b>배지의 이름, 프로모션 적용 기간, 적용 조건</b>을 담은 열거형 클래스</td>
+        <td><b>배지의 이름, 프로모션 적용 기간, 적용 조건</b>을 갖는 열거형 클래스</td>
     </tr>
     <tr>
-        <td rowspan="3"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;promotion<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;discount</td>
+        <td rowspan="3"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;promotion<br></b>➜&nbsp;&nbsp;discount</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;AppliedDiscountPromotions</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b>조건에 맞게 적용된 할인 프로모션</b>을 갖는 <b>일급 컬렉션</b> 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;DiscountContext</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b>적용 가능한 <b>할인 프로모션을</b>갖는 <b>일급 컬렉션</b> 전략 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;DiscountPromotion</b></td>
-        <td>로또의 PrizeMatchingCount와스</td>
+        <td><b>할인 프로모션의 이름, 조건, 적용 기능</b>을 갖는 열거형 클래스</td>
     </tr>
     <tr>
-        <td rowspan="3"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;promotion<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;gift</td>
+        <td rowspan="3"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;promotion<br></b>➜&nbsp;&nbsp;gift</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;AppliedGiftPromotions</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b>조건에 맞게 적용된 증정 프로모션</b>을 담는 <b>일급 컬렉션</b> 클래스</td>
     </tr>
     <tr>        
-        <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;AppliedGiftPromotions</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;GiftContext</b></td>
+        <td>적용 가능한 <b>증정 프로모션</b>을 갖는 <b>일급 컬렉션</b> 전략 클래스</td>
     </tr>
     <tr>        
-        <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;AppliedGiftPromotions</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;GiftPromotion</b></td>
+        <td><b>증정 프로모션의 이름, 조건, 갯수</b>를 갖는 열거형 클래스</td>
     </tr>
     <tr>
-        <td rowspan="4"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;promotion<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;constants</td>
+        <td rowspan="4"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;promotion<br></b>➜&nbsp;&nbsp;constants</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;PromotionCondition</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b>프로모션의 적용 기간 및 조건, 필요한 배지 정보를</b> 갖는 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;PromotionPeriod</b></td>
-        <td>상품의 매칭 횟수를 갖는 열거형 클래스</td>
+        <td><b>프로모션의 적용 기간에 대한 조건</b>을 상세히 갖는 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;PromotionType</b></td>
-        <td>상품의 매칭 횟수를 갖는 열거형 클래스</td>
+        <td><b>상품의 종류</b>를 갖는 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;SpecialPromotionPeriod</b></td>
-        <td>상품의 매칭 횟수를 갖는 열거형 클래스</td>
+        <td><b>특별 이벤트 적용 기간에 대한 조건</b>을 상세히 갖는 열거형 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="1"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="20px">&nbsp;&nbsp;<b>domain<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;utility</td>
+        <td rowspan="1"><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/f16a8719-281f-4535-a958-c1c62d69cfa2" width="18px">&nbsp;&nbsp;<b>domain<br></b>➜&nbsp;&nbsp;utility</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;Parser</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td><b>유효성 검사를 진행</b>하고, <b>조건에 맞게 날짜/숫자를 파싱</b>하는 기능 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="3"><b><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/1de269e3-5ceb-4e91-b9a9-922e81bc0e6a" width="20px">&nbsp;&nbsp;exception</b></td>
+        <td rowspan="3"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/1de269e3-5ceb-4e91-b9a9-922e81bc0e6a" width="18px">&nbsp;&nbsp;exception</b></td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-lotto-6/assets/112257466/f38b54fc-491f-4249-b277-7c5aec9f024d" height="32px">&nbsp;&nbsp;BusinessException</b></td>
-        <td>전역에서 에러를 핸들링하는 Custom Exception</td>
+        <td><b>전역에서 에러를 핸들링</b>하는 <b>Custom Exception</b></td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;ErrorCode</b></td>
-        <td>예외를 던질 때 사용되는 에러 메세지 열거형 클래스</td>
+        <td><b>에러 메세지, 검증 로직</b>을 갖는 <b>전역 예외</b> 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;ExceptionHandler</b></td>
-        <td>최종 로또 등급/갯수를 갖는 EnumMap 일급 컬렉션 클래스</td>
+        <td>사용자의 <b>이상값 입력</b>에 대한 <b>예외처리 핸들링</b> 클래스</td>
     </tr>
     <tr><td colspan="3"></td></tr>
     <tr>
-        <td rowspan="2"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/ea629f71-ed2c-4277-bc10-d93a0758e377" width="20px">&nbsp;&nbsp;view<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;constants</td>
+        <td rowspan="2"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/ea629f71-ed2c-4277-bc10-d93a0758e377" width="18px">&nbsp;&nbsp;view<br></b>➜&nbsp;&nbsp;constants</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;ResponseFormat</b></td>
-        <td>전체 등급 중, 사용자에게 결과로 출력할 등급을 갖는 열거형 클래스</td>
+        <td>사용자의 입력을 바탕으로 <b>포맷팅이 필요한 출력 조건</b> 열거형 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/b8e837c7-bc6a-4bbc-a4c3-267ec11da553" height="32px">&nbsp;&nbsp;ResponseMessage</b></td>
-        <td>소수와, 정수의 구두점 표시에 대한 제약조건을 갖는 열거형 클래스</td>
+        <td><b>시스템 제약조건을 바탕</b>으로 출력하는 <b>정적 메세지</b> 열거형 클래스</td>
     </tr>
     <tr>
-        <td rowspan="1"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/ea629f71-ed2c-4277-bc10-d93a0758e377" width="20px">&nbsp;&nbsp;view<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;input</td>
+        <td rowspan="1"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/ea629f71-ed2c-4277-bc10-d93a0758e377" width="18px">&nbsp;&nbsp;view<br></b>➜&nbsp;&nbsp;input</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;InputReader</b></td>
-        <td>표준 입력을 담당하는 클래스</td>
+        <td><b>표준 입력</b>을 담당하는 클래스</td>
     </tr>
     <tr>
-        <td rowspan="5"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/ea629f71-ed2c-4277-bc10-d93a0758e377" width="20px">&nbsp;&nbsp;view<br></b><img src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/a7b13c6b-dc98-4571-b8bc-7d50d2ca5b49" width="20px" align="center">&nbsp;&nbsp;output</td>
+        <td rowspan="5"><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/ea629f71-ed2c-4277-bc10-d93a0758e377" width="18px">&nbsp;&nbsp;view<br></b>➜&nbsp;&nbsp;output</td>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;ErrorOutputWriter</b></td>
-        <td>FinalResponse를 활용해 결과를 출력하는 클래스</td>
+        <td>Exception 상황에서 <b>에러메세지 표준 출력</b>을 담당하는 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;OrderOutputWriter</b></td>
-        <td>표준 출력을 담당하는 클래스</td>
+        <td>사용자에게 <b>주문 응답 표준 출력</b>을 담당하는 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;OutputWriter</b></td>
-        <td>표준 출력을 담당하는 클래스</td>
+        <td><b>필수 표준 출력 메소드</b> 구현 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;PromotionOutputWriter</b></td>
-        <td>표준 출력을 담당하는 클래스</td>
+        <td>사용자에게 <b>혜택 응답 표준 출력</b>을 담당하는 클래스</td>
     </tr>
     <tr>
         <td><b><img align="center" src="https://github.com/woowacourse-precourse/java-racingcar-6/assets/112257466/d3866f61-24f0-4bf2-a68c-1eb18596bf2f" height="32px">&nbsp;&nbsp;VisitDayOutputWriter</b></td>
-        <td>LottoNumberResponses를 활용해 결과를 출력하는 클래스</td>
+        <td>사용자에게 <b>방문 월/일 표준 출력</b>을 담당하는 클래스</td>
     </tr>
 </table>
 </div>
