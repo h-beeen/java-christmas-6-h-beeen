@@ -10,7 +10,7 @@ import java.util.Map;
 import static christmas.view.constants.ResponseFormat.*;
 import static christmas.view.constants.ResponseMessage.RESPONSE_NONEXISTENCE_RESPONSE;
 
-public class PromotionOutputWriter extends OutputWriter {
+public final class PromotionOutputWriter extends OutputWriter {
     private PromotionOutputWriter() {
     }
 

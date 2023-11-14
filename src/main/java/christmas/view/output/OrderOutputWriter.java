@@ -5,7 +5,7 @@ import christmas.controller.dto.OrderResponse;
 import static christmas.view.constants.ResponseFormat.PRICE_RESULT;
 import static christmas.view.constants.ResponseFormat.PRODUCT_QUANTITY_RESULT;
 
-public class OrderOutputWriter extends OutputWriter {
+public final class OrderOutputWriter extends OutputWriter {
     private OrderOutputWriter() {
     }
 

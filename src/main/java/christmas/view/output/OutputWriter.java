@@ -2,7 +2,12 @@ package christmas.view.output;
 
 import christmas.view.constants.ResponseMessage;
 
-public abstract class OutputWriter {
+sealed class OutputWriter
+        permits ErrorOutputWriter, OrderOutputWriter, PromotionOutputWriter, VisitDayOutputWriter {
+
+    OutputWriter() {
+    }
+
     public static void println(Object object) {
         System.out.println(object);
     }
