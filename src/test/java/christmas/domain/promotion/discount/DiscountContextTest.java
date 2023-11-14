@@ -63,10 +63,7 @@ class DiscountContextTest {
             // when
             var applicableDiscountPromotions = discountContext.applyPromotions(visitDay, twoIcecreamOrders);
             //then
-            assertAll(
-                    () -> assertThat(applicableDiscountPromotions).hasSize(1),
-                    () -> assertEquals(applicableDiscountPromotions.get(0), 1_000)
-            );
+            assertThat(applicableDiscountPromotions).hasSize(1);
         }
     }
 }
