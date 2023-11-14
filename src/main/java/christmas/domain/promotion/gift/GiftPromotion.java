@@ -30,6 +30,7 @@ public enum GiftPromotion {
         this.quantity = quantity;
     }
 
+    //== Validation Methods ==//
     public boolean isPromotionPeriod(VisitDay visitDay) {
         return promotionCondition.isPromotionPeriod(visitDay);
     }
@@ -42,19 +43,16 @@ public enum GiftPromotion {
         return promotionCondition.isApplicable(visitDay, orders, badge);
     }
 
-    public String getMenuName() {
-        return menu.getName();
-    }
-
     public int calculateGiftPrice() {
         return menu.getPrice() * quantity;
     }
 
-    public int getGiftPrice() {
-        return menu.getPrice();
-    }
-
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getMenuName() {
+        return menu.getName();
     }
 }

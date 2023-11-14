@@ -48,7 +48,7 @@ class DiscountContextTest {
     class applyPromotions {
 
         @Test
-        @DisplayName("[Applicable] 적용 가능한 이벤트 배지가 존재해, 해당 배지를 리턴")
+        @DisplayName("[Success] 적용 가능한 프로모션을 적용하고 프로모션 EnumMap을 리턴")
         void Should_ReturnValidBadge_When_RequestApplicable() {
             /**
              * Given Fixture Information

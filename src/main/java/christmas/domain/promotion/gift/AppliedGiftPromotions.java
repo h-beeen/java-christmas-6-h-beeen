@@ -16,7 +16,7 @@ public class AppliedGiftPromotions {
             BadgePromotion badge
     ) {
         GiftContext giftContext = GiftContext.create(visitDay, orders, badge);
-        this.promotions = giftContext.getResult();
+        this.promotions = giftContext.applyPromotions();
     }
 
     public static AppliedGiftPromotions create(
@@ -26,8 +26,7 @@ public class AppliedGiftPromotions {
     ) {
         return new AppliedGiftPromotions(visitDay, orders, badge);
     }
-
-
+    
     public int getTotalGiftPrice() {
         return promotions.keySet()
                 .stream()

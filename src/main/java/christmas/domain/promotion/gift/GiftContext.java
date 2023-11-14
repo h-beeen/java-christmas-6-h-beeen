@@ -31,7 +31,7 @@ public class GiftContext {
         return new GiftContext(visitDay, orders, badge);
     }
 
-    public EnumMap<GiftPromotion, Integer> getResult() {
+    public EnumMap<GiftPromotion, Integer> applyPromotions() {
         return applicablePromotions.stream()
                 .collect(Collectors.toMap(
                         promotion -> promotion,
