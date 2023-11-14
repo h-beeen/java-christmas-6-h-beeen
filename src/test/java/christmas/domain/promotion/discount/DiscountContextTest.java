@@ -65,7 +65,7 @@ class DiscountContextTest {
             //then
             assertAll(
                     () -> assertThat(applicableDiscountPromotions).hasSize(1),
-                    () -> assertEquals(applicableDiscountPromotions.get(CHRISTMAS_D_DAY_DISCOUNT), 1_000)
+                    () -> assertEquals(applicableDiscountPromotions.get(0), 1_000)
             );
         }
     }
