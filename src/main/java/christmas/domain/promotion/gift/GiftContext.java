@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class GiftContext {
     private final List<GiftPromotion> applicablePromotions;
 
+    //== Constructor ==//
     private GiftContext(
             VisitDay visitDay,
             Orders orders,
@@ -23,6 +24,7 @@ public class GiftContext {
                 .toList();
     }
 
+    //== Static Factory Method ==//
     public static GiftContext create(
             VisitDay visitDay,
             Orders orders,
@@ -31,6 +33,7 @@ public class GiftContext {
         return new GiftContext(visitDay, orders, badge);
     }
 
+    //== Utility Method ==//
     public EnumMap<GiftPromotion, Integer> applyPromotions() {
         return applicablePromotions.stream()
                 .collect(Collectors.toMap(

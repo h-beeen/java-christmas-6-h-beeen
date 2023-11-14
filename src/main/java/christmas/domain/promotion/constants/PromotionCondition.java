@@ -54,6 +54,7 @@ public enum PromotionCondition {
         this.badgeFunction = badgeFunction;
     }
 
+    //== Validation Method ==//
     public boolean isApplicable(
             VisitDay visitDay,
             Orders orders,

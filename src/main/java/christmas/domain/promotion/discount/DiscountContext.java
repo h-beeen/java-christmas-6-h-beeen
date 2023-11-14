@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class DiscountContext {
     private final List<DiscountPromotion> applicablePromotions;
 
+    //== Constructor ==//
     private DiscountContext(
             VisitDay visitDay,
             Orders orders,

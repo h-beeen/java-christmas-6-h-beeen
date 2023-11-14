@@ -44,6 +44,7 @@ public enum BadgePromotion {
         this.applicableFunction = applicableFunction;
     }
 
+    //== Validation Method ==//
     public boolean isApplicable(Integer totalBenefitAmount) {
         return applicableFunction.test(totalBenefitAmount);
     }
@@ -52,6 +53,7 @@ public enum BadgePromotion {
         return promotionPeriod.isPromotionPeriod(visitDay);
     }
 
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
     public String getName() {
         return name;
     }

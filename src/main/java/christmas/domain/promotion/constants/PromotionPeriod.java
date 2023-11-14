@@ -29,6 +29,7 @@ public enum PromotionPeriod {
         this.endDate = endDate;
     }
 
+    //== Validation Method ==//
     public boolean isPromotionPeriod(VisitDay visitDay) {
         return visitDay.containPeriod(startDate, endDate);
     }

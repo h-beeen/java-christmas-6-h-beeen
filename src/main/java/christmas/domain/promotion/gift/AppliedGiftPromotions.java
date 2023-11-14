@@ -10,6 +10,7 @@ import java.util.EnumMap;
 public class AppliedGiftPromotions {
     private final EnumMap<GiftPromotion, Integer> promotions;
 
+    //== Constructor ==//
     private AppliedGiftPromotions(
             VisitDay visitDay,
             Orders orders,
@@ -19,6 +20,7 @@ public class AppliedGiftPromotions {
         this.promotions = giftContext.applyPromotions();
     }
 
+    //== Static Factory Method ==//
     public static AppliedGiftPromotions create(
             VisitDay visitDay,
             Orders orders,
@@ -26,7 +28,8 @@ public class AppliedGiftPromotions {
     ) {
         return new AppliedGiftPromotions(visitDay, orders, badge);
     }
-    
+
+    //== Utility Method ==//
     public int getTotalGiftPrice() {
         return promotions.keySet()
                 .stream()
@@ -38,6 +41,7 @@ public class AppliedGiftPromotions {
         return discountPromotions.getTotalDiscountAmount() + getTotalGiftPrice();
     }
 
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
     public EnumMap<GiftPromotion, Integer> getPromotions() {
         return promotions;
     }

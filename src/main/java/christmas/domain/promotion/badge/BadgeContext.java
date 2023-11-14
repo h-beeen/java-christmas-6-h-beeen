@@ -12,6 +12,7 @@ public class BadgeContext {
     private BadgeContext() {
     }
 
+    //== Utility Method ==//
     public static BadgePromotion applyPromotions(
             VisitDay visitDay,
             AppliedDiscountPromotions discountPromotions,

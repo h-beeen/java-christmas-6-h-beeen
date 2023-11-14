@@ -19,6 +19,7 @@ public enum SpecialPromotionPeriod {
         this.specialPromotionDates = specialPromotionDates;
     }
 
+    //== Validation Method ==//
     public boolean hasSpecialDay(LocalDate visitDay) {
         return specialPromotionDates.stream()
                 .anyMatch(specialDate -> specialDate.isEqual(visitDay));

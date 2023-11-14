@@ -41,6 +41,7 @@ public class AppliedDiscountPromotions {
         return totalOriginPrice - getTotalDiscountAmount();
     }
 
+    //== Getter (Only permit to use Dto/ResponseMapper) ==//
     public EnumMap<DiscountPromotion, Integer> getPromotions() {
         return promotions;
     }

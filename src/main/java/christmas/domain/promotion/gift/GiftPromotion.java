@@ -19,7 +19,7 @@ public enum GiftPromotion {
     private final Menu menu;
     private final PromotionCondition promotionCondition;
     private final int quantity;
-
+    
     GiftPromotion(
             Menu menu,
             PromotionCondition promotionCondition,
