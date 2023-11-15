@@ -4,6 +4,8 @@
 
 </div>
 
+- 해당 `README.md` 는 PR 환경에서 최적화되어 작동합니다. PR 코드리뷰 페이지에서 깔끔한 UI로 확인이 가능합니다 :)
+
 ---
 
 ## 🎄 92명의 리뷰어에게 전하는 프리코스 마지막 이야기
@@ -42,8 +44,7 @@
 
 ▪️ 프리코스를 열심히 완주한 당신! 이번 크리스마스 🎄 `우테코 식당`으로 모여주세요.
 &nbsp;&nbsp;&nbsp;맛있는 `1,554원의 아이스크림`과 `별 배지`가 기다리고 있답니다.
-▪️ 지난 3주 동안, 성장곡선을 [지수함수](https://terms.naver.com/entry.naver?docId=1144291&cid=40942&categoryId=32219)로 그릴 수 있도록 만들어 주신
-92명의 크루 여러분들!
+▪️ 지난 3주 동안, 성장곡선을 [지수함수](https://terms.naver.com/entry.naver?docId=1144291&cid=40942&categoryId=32219)로 그릴 수 있도록 만들어 주신 92명의 크루 여러분들!
 &nbsp;&nbsp;&nbsp;크리스마스에 우테코 식당에서 같이 아이스크림 먹어요! ~~(제가 사겠습니다)~~
 ▪️ 추신) `지수함수`의 정의역, 치역이 0인 지수함수라고 가정합니다.
 &nbsp;&nbsp;&nbsp;(완전 가파르다는 뜻) 참고로 저는 `문과`입니다. ^____^!
@@ -240,9 +241,7 @@
 
 <br>
 
-✅&nbsp;&nbsp;크리스마스 프로모션 프로그램은 java17
-환경에서 [MVC 패턴]("https://ko.wikipedia.org/wiki/%EB%AA%A8%EB%8D%B8-%EB%B7%B0-%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC")에 따라
-설계한다.
+✅&nbsp;&nbsp;크리스마스 프로모션 프로그램은 java17 환경에서 [MVC 패턴]("https://ko.wikipedia.org/wiki/%EB%AA%A8%EB%8D%B8-%EB%B7%B0-%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC")에 따라 설계한다.
 ✅&nbsp;&nbsp;1월 이벤트 간, 본 프로그램을 추가 개발하여 활용할 예정이므로 [YAGNI]("https://ko.wikipedia.org/wiki/YAGNI) 원칙에 입각해 개발한다.
 
     ▪️  중복된 할인과 증정을 허용해서, 고객들이 혜택을 많이 받는다는 것을 체감할 수 있게 하는 것
@@ -252,6 +251,7 @@
     ▪️  배지에 따라 새해 이벤트 참여 시, 각각 다른 새해 선물을 증정할 예정입니다.
 
 ✅&nbsp;&nbsp;필요 구현 요소를 구현함에 있어, 추후 요구 조건을 염두하고, 확장성있게 구현하는 것을 목표로 한다.
+✅&nbsp;&nbsp;DTO/Response/Test 계층에서 사용하는 `@Getter`를 제외하고, `@Getter`, `@Setter` 사용을 금지한다.
 
 
 <br>
@@ -474,13 +474,13 @@ graph TD;
 ```java
 // ▪️  3주차 코드 작성 방법
         
-void Should_ThrowException_When_OutOfRangePayment(){
-// given
-final BuyerFixture tooBig=BuyerFixture.TOO_BIG;
-        // when && then
-        assertThatThrownBy(tooBig::toEntity)
+void Should_ThrowException_When_OutOfRangePayment() {
+    // given
+    final BuyerFixture tooBig=BuyerFixture.TOO_BIG;
+    // when && then
+    assertThatThrownBy(tooBig::toEntity)
         .isInstanceOf(IllegalArgumentException.class);
-        }
+}
 ```
 
 ```java
@@ -492,14 +492,14 @@ final BuyerFixture tooBig=BuyerFixture.TOO_BIG;
  * TotalOriginPrice : 173,000
  */
 
-void calculateTotalOriginPrice(){
-        // given -> expect 173,000
-        Orders orders=VALID__A.toEntity();
-// when
-final var calculatedTotalOriginPrice=orders.calculateTotalOriginPrice();
-        // then 173,000원
-        assertEquals(calculatedTotalOriginPrice,173_000);
-        }
+void calculateTotalOriginPrice() {
+    // given -> expect 173,000
+    Orders orders=VALID__A.toEntity();
+    // when
+    final var calculatedTotalOriginPrice=orders.calculateTotalOriginPrice();
+    // then 173,000원
+    assertEquals(calculatedTotalOriginPrice,173_000);
+}
 ```
 
     ▪️  Fixture 방식의 강력한 엔티티 반환 기능을 보장하면서, 가독성도 해치지 않도록, 주석을 직관적으로 추가했습니다.
@@ -509,33 +509,33 @@ final var calculatedTotalOriginPrice=orders.calculateTotalOriginPrice();
 #### 🌱 0x02 예외 발생 간 재귀를 활용한 재요청시, Stack Overflow Issue
 
 ```java
-public static<T> T retryOnBusinessException(Supplier<T> supplier){
-        while(true){
-        try{
-        return supplier.get();
-        }catch(BusinessException exception){
-        ErrorOutputWriter.println(exception.getMessage());
+public static <T> T retryOnBusinessException(Supplier<T> supplier) {
+    while (true) {
+        try {
+            return supplier.get();
+        } catch (BusinessException exception) {
+            ErrorOutputWriter.println(exception.getMessage());
         }
-        }
-        }
+    }
+}
 
-public static<T> T tryOnParseIntException(Supplier<T> supplier){
-        try{
+public static <T> T tryOnParseIntException(Supplier<T> supplier) {
+    try {
         return supplier.get();
-        }catch(DateTimeException|NumberFormatException exception){
-        throw BusinessException.of(INVALID_DATE,exception);
-        }
-        }
+    } catch (DateTimeException | NumberFormatException exception) {
+        throw BusinessException.of(INVALID_DATE, exception);
+    }
+}
 ```
 
     ▪️  기존에 재귀를 이용해 호출하던 구조를 @JaeHongDev님의 코드리뷰 덕분에 깔끔한 Supplier문으로 변경할 수 있었어요!
     ▪️  Stack Overflow에서 자유롭고, 코드리뷰 받은 방식에서 조금 더 커스텀해, 깔끔한 코드라인을 만들 수 있었답니다.
 
 ```java
-public static Orders requestOrders(){
-        OrderOutputWriter.printMessageResponse(REQUEST_MENU_ORDERS);
-        return ExceptionHandler.retryOnBusinessException(OrderController::createMenuOrdersFromInput);
-        }
+public static Orders requestOrders() {
+    OrderOutputWriter.printMessageResponse(REQUEST_MENU_ORDERS);
+    return ExceptionHandler.retryOnBusinessException(OrderController::createMenuOrdersFromInput);
+}
 ```
 
     ▪️  Supplier를 활용한 Exception Handling + ErrorCode의 validation 활용! 지금 코드리뷰를 통해 만나보세요
@@ -558,31 +558,148 @@ public static Orders requestOrders(){
 
 #### 🌱 0x04 `인터페이스에 일반 구현메소드 작성 방법`
 
+```java
+public interface MyInterface {
+    
+    // regular interface methods
+    
+    default void defaultMethod() {
+        // default method implementation
+    }
+}
+```
+
+> 출처 : [Static and Default Methods in Interfaces in Java](https://www.baeldung.com/java-static-default-methods)
+> Thanks To @IMWoo94
+
+    ▪️  해당 개념을 이번 OutputWriter에 적용하고 싶었지만, Static Method로 활용하면서 적용하지 않게 되었습니다.
+    ▪️  만약 OutputWriter를, 의존관계 주입을 통해 활용한다면, 해당 방법을 꼭 활용해, 더 객체지향적인 설계를 유도하고 싶어요.
+
 ---
 
-## 개발 시 작성한 기능 구현 목록
+#### 🌱 0x05 `중복되는 테스트 코드`를 줄이는 방법
 
-✅&nbsp;&nbsp;사용자에게 방문 날자 메세지 출력 후 요청 -> return VisitingDate
+    ▪️  assertThatIllegalArgumentException() 과 같은 상세 구현 메소드를 활용한다.
+    ▪️  @ParmiterizedTest, @EnumSource, @ValueSource를 적극 활용해, 반복 테스트를 구현한다.
+    ▪️  가독성을 해치지 않는 선에서, 적절한 Fixture 사용을 통해, 테스트에 필요한 생성값을 구현한다.
 
-- `안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.`
-  ✅&nbsp;&nbsp;사용자에게 예상 방문 날짜 입력 (1~31)
-  ✅&nbsp;&nbsp;2023년 12월 기준으로 달력에 없는 날짜 예외처리
-  ✅&nbsp;&nbsp;Parser가 파싱할 수 없는 문자열 예외처리
-  ✅&nbsp;&nbsp;사용자가 메뉴 메세지 입력 -> return MenuOrders
-  ✅&nbsp;&nbsp;`주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)`
-  ✅&nbsp;&nbsp;자체 제약조건 : 음식은 무조건 한글이다. (제로콜라, 타파스가 영어임을 생각했을때)
-  ✅&nbsp;&nbsp;콤마로 끝나거나, 스페이스바가 들어가거나, 음식 이름에 한글만을 포함하지 않거나, whiteSpace를 포함하거나 -> 검증 메소드 처리
-  ✅&nbsp;&nbsp;단일 메뉴 input이 1~20 범위 밖이면 예외처리 -> 정규표현식
-  ✅&nbsp;&nbsp;메뉴의 갯수가 0이하일 경우 예외처리 `"[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."` -> 정규표현식
-  ✅&nbsp;&nbsp;음식-숫자,음식-숫자,음식,숫자 형식이 아닐경우 예외처리 `"[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."` -> 정규표현식
-  ✅&nbsp;&nbsp;tring Input을 콤마 단위로 파싱하기 (파싱 후 `한글-숫자` 형태 검증) -> 정규표현식
-  ✅&nbsp;&nbsp;검증 된 `한글-숫자` 형태의 문자를 Map에 담아 MenusOrder 객체에 생성 및 이후 검증 위임
-  ✅&nbsp;&nbsp;메뉴판에 없는 메뉴 예외처리 `"[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."`
-  ✅&nbsp;&nbsp;메뉴 전체의 총 합이 21개 이상일 경우 예외처리 `"[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."`
-  ✅&nbsp;&nbsp;음료만 주문하면 예외처리 `[ERROR] 음료만 주문할 수 없습니다.`
+---
+
+#### 🌱 0x06 DTO VS Mapper Class 설계
+
+    ▪️  아직까지도 가장 강하게 의문이 있는 로직입니다.
+    ▪️  DTO가 Getter를 제외한 어떤 기능도 가지면 안된다.
+    ▪️  DTO는 어원 그대로, Data Transfer Object의 기능만 수행해야 한다.
+>
+    ▪️  그러면 우리는, 클라이언트에게 리턴할 때 마다, Mapper Class를 구현하고, 설계해야 할까?
+    ▪️  해당 비용을 지불하지 않는 Trade-off로 적정 수준의 도메인 의존성을 갖는다면, 안티패턴일까?
+    ▪️  이 부분에 대해서도 꼭 토론하고 리뷰 받고 싶어요!!
+
+---
+
+#### 🌱 0x07 방어적 복사에 대해서
+
+> UnmodifiableList로 해도 내부의 객체 요소에 대해서는 수정이 가능하며, 
+> 원본이 수정이 되었을 때 같이 수정이 된다는 문제점이 있다.
+
+> stream을 통해 컬렉션의 복사본을 생성하고 
+> 해당 복사본을 다시 unmodifiable로 반환하는 방법은
+> 복사본과 원본이 서로에게 영향을 미치지 않게 된다.
+
+> 하지만 이러한 방법 또한 비용 발생하기 때문에, 
+> List.copyOf()나 Collectors.toUnmodifiableList()를 적절하게 사용하는 것도 좋다.
+
+출처 : [[3주차] 로또 코드리뷰 중 발췌 후 정리](https://github.com/woowacourse-precourse/java-lotto-6/pull/449#discussion_r1387924652) 
+참고 : [[Java] Collection 복사 - 복사 방법(방어적 복사, 얕은 복사, 깊은 복사) 및 상황별 최적의 복사 방법](https://ksh-coding.tistory.com/77)
+Thanks To @SSung023
+
+    ▪️  이번 과제에서는 방어적 복사를 포함한 복사 방법을 활용하지 않았습니다.
+    ▪️  DTO/Response/Test 코드를 제외하고는 Getter 코드를 일체 사용하지 않았기 때문입니다.
+    ▪️  로또 과제에서 리뷰를 받았던 내용이라, 깊이 있게 학습했고, 추후 적극적으로 응용해볼 계획입니다 :)
+
+---
+
+#### 🌱 0x08 `컨트롤러`의 `호출`과 `책임`
+
+```java
+public class LottoMainController {
+    private LottoMainController() {
+    }
+
+    public static void start() {
+        Buyer buyer = BuyerController.requestPayment();
+        Lottos lottos = PurchaseController.purchase(buyer);
+        Prize prize = PrizeController.requestPrizeNumbers();
+        // <후략>
+    }
+```
+
+>▪️  지난 로또 과제에서 리뷰를 통해 알게 된 문제 사항
+    ️     1. Controller는 View와 Domain의 다리인데, Domain에게만 메세지를 전달할 경우 Controller의 책임일까?
+    ️     2. Controller는 View와 Domain의 다리인데, Controller간 통신은 좋은 패턴일까?
+    ️     3. MainController와 Application.main은 어떤 기능적 차이를 갖는가? 왜 컨트롤러 성격을 가져야 할까?
+    ️     4. MainController의 단일 메소드에 모든 기능이 몰려 있어, 단위 테스트가 통합 API 테스트가 되어버린다. 
+
+```java
+public class Application {
+  public static void main(String[] args) {
+    VisitDay visitDay = VisitDayController.requestVisitDay();
+    Orders orders = OrderController.requestOrders();
+
+    VisitDayController.responseVisitDay(visitDay);
+    OrderController.responseOrdersResult(orders);
+    OrderController.responseTotalOriginPriceResult(orders);
+    PromotionController.responseAppliedBenefitResult(visitDay, orders);
+
+    Console.close();
+  }
+}
+```
+
+>▪️  개선 사항
+    ️     1. Controller는 궁극적으로 View와의 통신을 목표로 한다. Model -> Controller -> View의 성격을 계속 염두하자.
+    ️     2. Controller간 호출을 막기 위해, Main 로직을 Application.main에 구현한다. (이 부분의 책임에 대해 리뷰 받고 싶어요)
+    ️     3. Controller의 각 메소드의 책임을 줄이고, Application에서 호출함으로써, 단위 테스트 구현을 가능하게 설계한다.
+
+---
+
+
+## 📝&nbsp;&nbsp;개발 시 작성한 기능 구현 목록
+
+✅&nbsp;&nbsp;사용자에게 방문 날자 메세지 출력 후 요청 -> `Return VisitDay`
+
+    ▪️  `안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.`
+    ▪️  `12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)`
+
+✅&nbsp;&nbsp;사용자에게 예상 방문 날짜 입력 (1~31)
+✅&nbsp;&nbsp;숫자가 아닌 문자열 예외처리
+✅&nbsp;&nbsp;System Constraint 기준으로 해당 달의 달력에 없는 날짜 예외처리
+✅&nbsp;&nbsp;사용자에게 메뉴 입력 메세지 출력 후 요청 -> `Return Orders`
+
+    ▪️  `주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)`
+
+✅&nbsp;&nbsp;자체 제약조건 : 음식은 무조건 한글이다. (제로콜라, 타파스가 영어임을 생각했을때)
+✅&nbsp;&nbsp;콤마로 끝나거나, 스페이스바가 들어가거나, 정규표현식 패턴이 맞지 않거나 whiteSpace를 포함하지 않을 때 예외처리
+✅&nbsp;&nbsp;input을 콤마 단위로 파싱하기 (파싱 후 `한글-숫자` 형태 검증) -> 정규표현식
+✅&nbsp;&nbsp;정규표현식) 단일 메뉴 주문 갯수가 1~20 범위 밖이면 예외처리
+✅&nbsp;&nbsp;정규표현식) 파싱된 각 인자가 `음식-숫자` 형식이 아닐경우 예외처리
+✅&nbsp;&nbsp;Orders 생성자 호출 -> EnumMap 일급 컬렉션 객체 생성
+✅&nbsp;&nbsp;Orders) 메뉴판에 없는 메뉴 예외처리
+✅&nbsp;&nbsp;Orders) 메뉴 전체의 총 합이 20개를 초과 할 경우 예외처리
+✅&nbsp;&nbsp;Orders) 음료만 주문하면 예외처리
 
 ✅&nbsp;&nbsp;주문 메뉴 출력
+
+    <주문 메뉴>
+    티본스테이크 1개
+    바비큐립 1개
+    초코케이크 2개
+    제로콜라 1개
+
 ✅&nbsp;&nbsp;할인 전 총 주문 금액 출력
+    
+    <할인 전 총주문 금액>
+    142,000원
 
 ✅&nbsp;&nbsp;DailyDiscount (12/1 ~ 12/25)
 ✅&nbsp;&nbsp;WeekdayDiscount 평일 할인 (일,월,화,수,목) 디저트 메뉴당 2,023원 할인
@@ -591,10 +708,43 @@ public static Orders requestOrders(){
 ✅&nbsp;&nbsp;(매주 일요일 + 크리스마스 당일) : 총 주문금액에서 1,000원 할인 -> 날짜 enum 하드코딩
 
 ✅&nbsp;&nbsp;최종 할인가를 종합해 증정 이벤트 판별
-✅&nbsp;&nbsp;증정 이벤트 : 총 주문 금액 12만 이상시 샴페인 증정(혜택 25,000원!!)
 ✅&nbsp;&nbsp;마지막 최종 주문금액 산출 후 // 혜택 금액에 증정가 추가
-
 ✅&nbsp;&nbsp;새해 선물 : 총 혜택 금액에 따른 배지 부여
-✅&nbsp;&nbsp;5000원 - 별
-✅&nbsp;&nbsp;10000원 - 트리
-✅&nbsp;&nbsp;20000원 - 산타
+✅&nbsp;&nbsp;증정 이벤트 : 총 주문 금액 12만 이상시 샴페인 증정(혜택 25,000원!!)
+
+✅&nbsp;&nbsp;증정 메뉴 출력 : 총 혜택 금액을 바탕으로
+&nbsp;&nbsp;&nbsp;&nbsp;- TotalDiscountPrice
+
+    <증정 메뉴>
+    샴페인 1개
+
+✅&nbsp;&nbsp;혜택 내역 출력 : 총 할인 금액과, 증정 메뉴 가격을 바탕으로
+&nbsp;&nbsp;&nbsp;&nbsp;- Entry<DiscountPromotion, DiscountedAmount> + TotalGiftPrice   
+
+    <혜택 내역>
+    크리스마스 디데이 할인: -1,200원
+    평일 할인: -4,046원
+    특별 할인: -1,000원
+    증정 이벤트: -25,000원
+
+✅&nbsp;&nbsp;총 혜택 금액 출력 : 총 할인 금액과 증정 메뉴 가격을 바탕으로
+&nbsp;&nbsp;&nbsp;&nbsp;- TotalDiscountAmount + TotalGiftPrice
+
+    <총혜택 금액>
+    -31,246원
+
+✅&nbsp;&nbsp;할인 후 예상 결제 금액 : 총 주문 금액와 총 할인 금액을 바탕으로
+&nbsp;&nbsp;&nbsp;&nbsp;- TotalOriginPrice - TotalDiscountAmount
+
+    <할인 후 예상 결제 금액>
+    135,754원
+
+✅&nbsp;&nbsp;이벤트 배지 : 총 혜택 금액을 바탕으로
+&nbsp;&nbsp;&nbsp;&nbsp;- 5000원 - 별
+&nbsp;&nbsp;&nbsp;&nbsp;- 10000원 - 트리
+&nbsp;&nbsp;&nbsp;&nbsp;- 20000원 - 산타
+
+    <12월 이벤트 배지>
+    산타
+
+#### Special Thanks to Human Papago 🦜@saeyeonn during 4 Weeks
